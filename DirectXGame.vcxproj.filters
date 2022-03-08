@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Исходные файлы">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Файлы заголовков">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Файлы ресурсов">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Файлы заголовков\InputDevice">
+      <UniqueIdentifier>{567642b8-32f2-4328-b69c-9be5fb63176a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\InputDevice">
+      <UniqueIdentifier>{b66399ee-d247-4e2f-94dd-fff8b633718b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\RenderComponents">
+      <UniqueIdentifier>{479de541-1f2c-4b9f-b2dd-6143e17fa1d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\RenderComponents">
+      <UniqueIdentifier>{44c56b0c-24cd-42c4-871b-5610583b8c05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Components">
+      <UniqueIdentifier>{72b473cf-0919-4c95-a69b-d618bb453eee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Components">
+      <UniqueIdentifier>{b205af4e-7617-4552-b340-924be6989bb8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Core">
+      <UniqueIdentifier>{b26db450-7197-4476-a6aa-e20a8482480f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Core">
+      <UniqueIdentifier>{fc676fdc-62b2-4a9f-a2a7-df4bc1a34655}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Core\ComponentSystem">
+      <UniqueIdentifier>{ae65e5be-d6c1-4e98-8ccd-99271523817f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DirectXGame.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="InputDevice\Delegates.cpp">
+      <Filter>Исходные файлы\InputDevice</Filter>
+    </ClCompile>
+    <ClCompile Include="InputDevice\InputDevice.cpp">
+      <Filter>Исходные файлы\InputDevice</Filter>
+    </ClCompile>
+    <ClCompile Include="InputDevice\SimpleMath.cpp">
+      <Filter>Исходные файлы\InputDevice</Filter>
+    </ClCompile>
+    <ClCompile Include="PaddleRenderComponent.cpp">
+      <Filter>Исходные файлы\RenderComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="BallRenderComponent.cpp">
+      <Filter>Исходные файлы\RenderComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="DeviceResources.cpp">
+      <Filter>Исходные файлы\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="FrameCounter.cpp">
+      <Filter>Исходные файлы\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>Исходные файлы\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowApplication.cpp">
+      <Filter>Исходные файлы\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="ColliderComponent.cpp">
+      <Filter>Исходные файлы\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="PaddleInputComponent.cpp">
+      <Filter>Исходные файлы\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="InputComponent.cpp">
+      <Filter>Исходные файлы\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveComponent.cpp">
+      <Filter>Исходные файлы\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="PongGame.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderData.cpp">
+      <Filter>Исходные файлы\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneComponent.cpp">
+      <Filter>Исходные файлы\Components</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Scene.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="InputDevice\Delegates.h">
+      <Filter>Файлы заголовков\InputDevice</Filter>
+    </ClInclude>
+    <ClInclude Include="InputDevice\InputDevice.h">
+      <Filter>Файлы заголовков\InputDevice</Filter>
+    </ClInclude>
+    <ClInclude Include="InputDevice\Keys.h">
+      <Filter>Файлы заголовков\InputDevice</Filter>
+    </ClInclude>
+    <ClInclude Include="InputDevice\SimpleMath.h">
+      <Filter>Файлы заголовков\InputDevice</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderData.h">
+      <Filter>Файлы заголовков\RenderComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="BallRenderComponent.h">
+      <Filter>Файлы заголовков\RenderComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="PaddleRenderComponent.h">
+      <Filter>Файлы заголовков\RenderComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneComponent.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveComponent.h">
+      <Filter>Файлы заголовков\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="InputComponent.h">
+      <Filter>Файлы заголовков\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="ColliderComponent.h">
+      <Filter>Файлы заголовков\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="PaddleInputComponent.h">
+      <Filter>Файлы заголовков\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="ConstantBuffers.h">
+      <Filter>Файлы заголовков\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="DeviceResources.h">
+      <Filter>Файлы заголовков\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowApplication.h">
+      <Filter>Файлы заголовков\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="FrameCounter.h">
+      <Filter>Файлы заголовков\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>Файлы заголовков\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="PongGame.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneActor.h">
+      <Filter>Файлы заголовков\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Actor.h">
+      <Filter>Файлы заголовков\Core\ComponentSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="ComponentBase.h">
+      <Filter>Файлы заголовков\Core\ComponentSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="TransformComponent.h">
+      <Filter>Файлы заголовков\Components</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="InputDevice\Delegates.natvis">
+      <Filter>Файлы ресурсов</Filter>
+    </Natvis>
+  </ItemGroup>
+</Project>
