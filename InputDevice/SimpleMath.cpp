@@ -590,6 +590,11 @@ namespace DirectX
             static const Matrix Identity;
         };
 
+        const Matrix Matrix::Identity = Matrix(1, 0, 0, 0,
+            0, 1, 0, 0,
+            0, 0, 1, 0,
+            0, 0, 0, 1);
+
         // Binary operators
         Matrix operator+ (const Matrix& M1, const Matrix& M2) noexcept;
         Matrix operator- (const Matrix& M1, const Matrix& M2) noexcept;

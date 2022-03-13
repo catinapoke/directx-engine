@@ -94,7 +94,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /y "$(ProjectDir)Shaders" "$(OutDir)" </Command>
+      <Command>xcopy /y /f "$(ProjectDir)Shaders" "$(OutDir)Shaders"
+</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -113,7 +114,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /y "$(ProjectDir)Shaders" "$(OutDir)" </Command>
+      <Command>xcopy /y /f "$(ProjectDir)Shaders" "$(OutDir)Shaders"
+</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -128,7 +130,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /y "$(ProjectDir)Shaders" "$(OutDir)" </Command>
+      <Command>xcopy /y /f "$(ProjectDir)Shaders" "$(OutDir)Shaders"
+</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -147,7 +150,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /y "$(ProjectDir)Shaders" "$(OutDir)" </Command>
+      <Command>xcopy /y /f "$(ProjectDir)Shaders" "$(OutDir)Shaders"
+</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -174,6 +178,7 @@
     <ClCompile Include="PongGame.cpp" />
     <ClCompile Include="RenderData.cpp" />
     <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="RotateComponent.cpp" />
     <ClCompile Include="SceneActor.cpp" />
     <ClCompile Include="SceneComponent.cpp" />
     <ClCompile Include="TransformComponent.cpp" />
@@ -205,6 +210,7 @@
     <ClInclude Include="PongGame.h" />
     <ClInclude Include="RenderData.h" />
     <ClInclude Include="Renderer.h" />
+    <ClInclude Include="RotateComponent.h" />
     <ClInclude Include="SceneActor.h" />
     <ClInclude Include="SceneComponent.h" />
     <ClInclude Include="TransformComponent.h" />
@@ -212,6 +218,20 @@
   </ItemGroup>
   <ItemGroup>
     <Natvis Include="InputDevice\Delegates.natvis" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Shaders\shader.hlsl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </FxCompile>
+    <FxCompile Include="Shaders\shader_3d.hlsl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </FxCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

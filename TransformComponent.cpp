@@ -8,7 +8,7 @@ Vector3 TransformComponent::GetWorldPosition()
 
 Vector3 TransformComponent::GetWorldRotation()
 {
-    return GetWorldRotation();
+    return GetLocalRotation();
 }
 
 Vector3 TransformComponent::GetWorldScale()
@@ -36,7 +36,8 @@ void TransformComponent::SetLocalScale(Vector3 value)
 
 Matrix TransformComponent::CreateLocalModelMatrix()
 {
-    Matrix matrix = Matrix::CreateScale(scale);
+    Matrix matrix = Matrix::Identity;
+    matrix *= Matrix::CreateScale(scale);
     matrix *= Matrix::CreateFromQuaternion(Quaternion(rotation, 1));
     matrix *= Matrix::CreateTranslation(position);
     return matrix;
@@ -57,9 +58,9 @@ Matrix TransformComponent::GetWorldModelMatrix()
     return GetLocalModelMatrix();
 }
 
-void TransformComponent::LookAt(Vector4 targetPosition, Vector4 worldUp)
+void TransformComponent::LookAt(Vector3 targetPosition, Vector3 worldUp)
 {
-    modelMatrix = Matrix::CreateLookAt(position, (Vector3)targetPosition, (Vector3)worldUp);
+    modelMatrix = Matrix::CreateLookAt(position, targetPosition, worldUp);
     Quaternion quaternion;
     modelMatrix.Decompose(position, quaternion, scale);
     rotation = quaternion.ToEuler();

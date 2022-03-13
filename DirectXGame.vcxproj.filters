@@ -135,6 +135,9 @@
     <ClCompile Include="Camera.cpp">
       <Filter>Исходные файлы\Components</Filter>
     </ClCompile>
+    <ClCompile Include="RotateComponent.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="InputDevice\Delegates.h">
@@ -224,10 +227,21 @@
     <ClInclude Include="Basic3DMaterial.h">
       <Filter>Файлы заголовков\Materials</Filter>
     </ClInclude>
+    <ClInclude Include="RotateComponent.h">
+      <Filter>Файлы заголовков\Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Natvis Include="InputDevice\Delegates.natvis">
       <Filter>Файлы ресурсов</Filter>
     </Natvis>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Shaders\shader.hlsl">
+      <Filter>Файлы ресурсов</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\shader_3d.hlsl">
+      <Filter>Файлы ресурсов</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

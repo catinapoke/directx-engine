@@ -2,6 +2,8 @@
 #include "ComponentBase.h"
 #include "InputDevice\SimpleMath.h"
 
+#define M_PI 3.14159265358979323846
+
 typedef DirectX::SimpleMath::Vector4 Vector4;
 typedef DirectX::SimpleMath::Vector3 Vector3;
 typedef DirectX::SimpleMath::Matrix Matrix; 
@@ -20,6 +22,7 @@ public:
         position = start_position;
         rotation = start_rotation;
         scale = start_scale;
+        modelMatrix = CreateLocalModelMatrix();
     }
 
     TransformComponent* GetParent() { return parent; }
@@ -39,7 +42,7 @@ public:
     Matrix GetLocalModelMatrix();
     Matrix GetWorldModelMatrix();
 
-    void LookAt(Vector4 targetPosition, Vector4 worldUp);
+    void LookAt(Vector3 targetPosition, Vector3 worldUp);
 
 private:
     Matrix CreateLocalModelMatrix();

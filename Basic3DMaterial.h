@@ -9,7 +9,7 @@ class TransformComponent;
 class Basic3DMaterial : public Material
 {
 public:
-    Basic3DMaterial(std::shared_ptr<DeviceResources> resources, std::wstring shader = L"shader_3d.hlsl")
+    Basic3DMaterial(std::shared_ptr<DeviceResources> resources, std::wstring shader = L"Shaders/shader_3d.hlsl")
         :Material(resources, shader), camera(nullptr) 
     {
         CreateShader();

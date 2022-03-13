@@ -24,7 +24,7 @@ PS_IN VSMain(VS_IN input)
 {
     PS_IN output = (PS_IN) 0;
     
-    output.pos = mul(input.pos, mul(projection_view_matrix, model_matrix));
+    output.pos = mul(input.pos, mul(model_matrix, projection_view_matrix));
     output.col = input.col;
 	
     return output;

@@ -72,7 +72,7 @@ void Basic3DMaterial::PrepareObjectData(SceneActor* actor)
 
 void Basic3DMaterial::SetProjectionViewMatrix()
 {
-    Matrix matrix = camera->GetProjectionViewMatrix();
+    Matrix matrix = camera->GetProjectionViewMatrix().Transpose();
     ID3D11DeviceContext* context = device_resources->GetDeviceContext();
 
     D3D11_MAPPED_SUBRESOURCE resource = {};
@@ -84,7 +84,7 @@ void Basic3DMaterial::SetProjectionViewMatrix()
 
 void Basic3DMaterial::SetModelMatrix(TransformComponent* transform)
 {
-    Matrix matrix = transform->GetWorldModelMatrix();
+    Matrix matrix = transform->GetWorldModelMatrix().Transpose();
     ID3D11DeviceContext* context = device_resources->GetDeviceContext();
 
     D3D11_MAPPED_SUBRESOURCE resource = {};
