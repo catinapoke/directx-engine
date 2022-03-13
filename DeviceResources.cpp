@@ -1,13 +1,17 @@
 #include "DeviceResources.h"
 
+#include "WindowApplication.h"
+
 HRESULT DeviceResources::InitializeDeviceResources(HWND windowHandle)
 {
     D3D_FEATURE_LEVEL featureLevel[] = { D3D_FEATURE_LEVEL_11_1 };
 
+    DirectX::XMFLOAT2 window_size = WindowApplication::GetInstance()->GetWindowSize();
+
     DXGI_SWAP_CHAIN_DESC swapDesc = {};
     swapDesc.BufferCount = 2;
-    swapDesc.BufferDesc.Width = 640;
-    swapDesc.BufferDesc.Height = 320;
+    swapDesc.BufferDesc.Width = window_size.x;
+    swapDesc.BufferDesc.Height = window_size.y;
     swapDesc.BufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
     swapDesc.BufferDesc.RefreshRate.Numerator = 60;
     swapDesc.BufferDesc.RefreshRate.Denominator = 1;

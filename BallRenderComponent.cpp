@@ -1,7 +1,7 @@
 #include "BallRenderComponent.h"
 #include <array>
 
-BallRenderComponent::BallRenderComponent(ID3D11Device* device)
+BallRenderComponent::BallRenderComponent(ID3D11Device* device): RenderData(nullptr)
 {
     //Vertex buffer
     DirectX::XMFLOAT4 points[18] =

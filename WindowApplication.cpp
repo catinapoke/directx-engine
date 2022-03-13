@@ -3,7 +3,8 @@
 #include "InputDevice\InputDevice.h"
 #include "PaddleRenderComponent.h"
 #include "BallRenderComponent.h"
-#include "PongGame.h"
+#include "Game.h"
+#include "CameraTestLab.h"
 
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
@@ -33,16 +34,13 @@ HRESULT WindowApplication::CreateDesktopWindow()
     RegisterClassEx(&wc);
 
     // Create window
-    int nDefaultWidth = 640;
-    int nDefaultHeight = 320;
-
-    RECT windowRect = { 0, 0, static_cast<LONG>(nDefaultWidth), static_cast<LONG>(nDefaultHeight) };
+    RECT windowRect = { 0, 0, static_cast<LONG>(size.x), static_cast<LONG>(size.y) };
     AdjustWindowRect(&windowRect, WS_OVERLAPPEDWINDOW, FALSE);
 
     auto dwStyle = WS_SYSMENU | WS_CAPTION | WS_MINIMIZEBOX; // Disable resize window -> | WS_THICKFRAME
 
-    auto posX = (GetSystemMetrics(SM_CXSCREEN) - nDefaultWidth) / 2;
-    auto posY = (GetSystemMetrics(SM_CYSCREEN) - nDefaultHeight) / 2;
+    auto posX = (GetSystemMetrics(SM_CXSCREEN) - size.x) / 2;
+    auto posY = (GetSystemMetrics(SM_CYSCREEN) - size.y) / 2;
 
     windowHandle = CreateWindowEx(WS_EX_APPWINDOW, windowClassName, windowClassName,
         dwStyle,
@@ -64,7 +62,7 @@ HRESULT WindowApplication::CreateDesktopWindow()
     }
 
     instance = this;
-    inputDevice = new InputDevice(this);
+    inputDevice = std::shared_ptr<InputDevice>(new InputDevice(this));
 
     return S_OK;
 }
@@ -73,10 +71,11 @@ void WindowApplication::InitScene(std::shared_ptr<DeviceResources> deviceResourc
 {
     ID3D11Device* device = deviceResources->GetDevice();
 
-    game = new PongGame(deviceResources, renderer, inputDevice);
-    game->InitGame();
+    game = new CameraTestLab(deviceResources, inputDevice);
+    game->Awake();
+    game->Start();
 
-    renderer->PassSceneComponents(game->GetSceneComponents());
+    renderer->PassSceneActors(game->GetSceneActors());
 }
 
 void WindowApplication::DisplayFPS(float fps)
@@ -93,8 +92,6 @@ void WindowApplication::HandleInput(MSG* message)
         TranslateMessage(message);
         DispatchMessageW(message);
     }
-
-    game->HandleInput();
 }
 
 HRESULT WindowApplication::Run(std::shared_ptr<DeviceResources> deviceResources, std::shared_ptr<Renderer> renderer)
@@ -144,11 +141,7 @@ LRESULT CALLBACK WindowApplication::ProcessWindowMessages(
     case WM_KEYUP:
     {
         auto key = static_cast<unsigned int>(wParam);
-
         inputDevice->RemovePressedKey(static_cast<Keys>(key));
-        if (static_cast<Keys>(key) == Keys::Space)
-            game->Debug();
-
         break;
     }
     case WM_CLOSE:

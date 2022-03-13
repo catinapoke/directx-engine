@@ -1,11 +1,12 @@
 #pragma once
+
 #include <wrl.h>
 #include "RenderData.h"
-class BallRenderComponent :public RenderData
+class BoxRenderData :public RenderData
 {
 public:
-    BallRenderComponent() :indices_count(0), RenderData(nullptr) {};
-    BallRenderComponent(ID3D11Device* device);
+    BoxRenderData(Material* material) :indices_count(0), RenderData(material) {};
+    BoxRenderData(ID3D11Device* device, Material* material);
     ID3D11Buffer* GetVertexBuffer();
     ID3D11Buffer** GetVertexBufferAdress();
     ID3D11Buffer* GetIndexBuffer();

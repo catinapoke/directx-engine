@@ -7,6 +7,14 @@
 class Actor
 {
 public:
+    Actor() {};
+
+    virtual ~Actor() 
+    {
+        for (auto& pair : components)
+            delete pair.second;
+    }
+
     virtual void Awake() 
     {
         for (auto& pair : components)
@@ -30,9 +38,9 @@ public:
     {
         static_assert(std::is_base_of<ComponentBase, T>::value, "ComponentType is not derived from ComponentBase");
 
-        auto iterator = components.find(std::type_index(T));
+        auto iterator = components.find(std::type_index(typeid(T)));
         if (iterator != components.end())
-            return (*iterator).second;
+            return (T*)iterator->second;
 
         return nullptr;
     }
@@ -42,9 +50,9 @@ public:
     {
         static_assert(std::is_base_of<ComponentBase, T>::value, "ComponentType is not derived from ComponentBase");
 
-        auto iterator = components.find(std::type_index(T));
+        auto iterator = components.find(std::type_index(typeid(T)));
         assert(iterator == components.end() && "Can't add already existing component");
-        components[std::type_index(T)] = component;
+        components[std::type_index(typeid(T))] = dynamic_cast<ComponentBase*>(component);// dynamic_cast<ComponentBase*>(component);
     }
 
 private:

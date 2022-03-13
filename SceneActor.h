@@ -1,26 +1,21 @@
 #pragma once
-#include "Actor.h"
-#include "TransformComponent.h"
+#include <memory>
 #include "RenderData.h"
 
-class SceneActor : Actor
+class Actor;
+class TransformComponent;
+
+class SceneActor
 {
 public:
-    SceneActor(TransformComponent* component, RenderData* data):transform(component), renderData(data), Actor()
-    {
-
-    }
-
-    void Awake() override
-    {
-        AddComponent<TransformComponent>(transform); 
-        Actor::Awake();
-    }
+    SceneActor(Actor* actor, std::shared_ptr<RenderData> data);
+    void Awake();
 
     TransformComponent* GetTransform() { return transform; }
-    RenderData* GetRenderData() { return renderData; }
+    std::shared_ptr<RenderData> GetRenderData() { return renderData; }
 
 private:
     TransformComponent* transform;
-    RenderData* renderData;
+    std::shared_ptr<RenderData> renderData;
+    Actor* actor;
 };

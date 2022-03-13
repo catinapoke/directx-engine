@@ -3,19 +3,20 @@
 #include <winuser.h>
 #include <string>
 #include <memory>
+#include <d3d.h>
 
 #include "DeviceResources.h"
 #include "Renderer.h"
 #include "FrameCounter.h"
 
 class InputDevice;
-class PongGame;
+class Game;
 
 
 class WindowApplication
 {
 public:
-    WindowApplication() :windowHandle(NULL), instanceHandle(NULL), game(NULL) {};
+    WindowApplication() :windowHandle(NULL), instanceHandle(NULL), game(NULL), size(640, 320) {};
     ~WindowApplication() { };
 
     HRESULT CreateDesktopWindow();
@@ -25,6 +26,9 @@ public:
     );
 
     HWND GetHandle() { return windowHandle; }
+
+    DirectX::XMFLOAT2 GetWindowSize() { return size; }
+    float GetAspectRatio() { return size.x / size.y; }
 
     static WindowApplication* GetInstance()
     {
@@ -42,8 +46,9 @@ private:
 private:
     static WindowApplication* instance;
 
-    PongGame* game;
-    InputDevice* inputDevice;
+    Game* game;
+    DirectX::XMFLOAT2 size;
+    std::shared_ptr<InputDevice> inputDevice;
     const LPCWSTR windowClassName = L"DirectXGame";
     HINSTANCE instanceHandle;
     HWND windowHandle;

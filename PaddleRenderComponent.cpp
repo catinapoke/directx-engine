@@ -1,7 +1,7 @@
 #include "PaddleRenderComponent.h"
 #include <array>
 
-PaddleRenderComponent::PaddleRenderComponent(ID3D11Device* device)
+PaddleRenderComponent::PaddleRenderComponent(ID3D11Device* device):RenderData(nullptr)
 {
     //Vertex buffer
     DirectX::XMFLOAT4 points[8] = {

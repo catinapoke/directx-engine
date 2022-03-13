@@ -4,7 +4,7 @@
 class PaddleRenderComponent :public RenderData
 {
 public:
-    PaddleRenderComponent():indices_count(0) {};
+    PaddleRenderComponent():indices_count(0), RenderData(nullptr) {};
     PaddleRenderComponent(ID3D11Device* device);
     ID3D11Buffer* GetVertexBuffer();
     ID3D11Buffer** GetVertexBufferAdress();

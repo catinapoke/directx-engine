@@ -9,8 +9,7 @@
 #include "BallRenderComponent.h"
 #include "InputDevice\Keys.h"
 
-// entt 
-PongGame::PongGame(std::shared_ptr<DeviceResources> deviceResources, std::shared_ptr<Renderer> renderer, InputDevice* input)
+PongGame::PongGame(std::shared_ptr<DeviceResources> deviceResources, InputDevice* input)
 {
     ID3D11Device* device = deviceResources->GetDevice();
 

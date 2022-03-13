@@ -15,7 +15,7 @@ typedef DirectX::SimpleMath::Vector2 Vector2;
 class PongGame
 {
 public:
-    PongGame(std::shared_ptr<DeviceResources> deviceResources, std::shared_ptr<Renderer> renderer, InputDevice* input);
+    PongGame(std::shared_ptr<DeviceResources> deviceResources, InputDevice* input);
 
     void InitGame();
     void Update(float deltaTime);

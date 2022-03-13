@@ -1,4 +1,15 @@
 #include "RenderData.h"
+#include "Material.h"
+
+RenderData::RenderData(Material* material)
+{
+    this->material = material;
+}
+
+Material* RenderData::GetMaterial()
+{
+    return material;
+}
 
 HRESULT RenderData::CreateVertexBuffer(Microsoft::WRL::ComPtr<ID3D11Buffer>& buffer, ID3D11Device* device, DirectX::XMFLOAT4* points, int arraySize)
 {

@@ -19,12 +19,6 @@
     <Filter Include="Исходные файлы\InputDevice">
       <UniqueIdentifier>{b66399ee-d247-4e2f-94dd-fff8b633718b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Файлы заголовков\RenderComponents">
-      <UniqueIdentifier>{479de541-1f2c-4b9f-b2dd-6143e17fa1d5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Исходные файлы\RenderComponents">
-      <UniqueIdentifier>{44c56b0c-24cd-42c4-871b-5610583b8c05}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Файлы заголовков\Components">
       <UniqueIdentifier>{72b473cf-0919-4c95-a69b-d618bb453eee}</UniqueIdentifier>
     </Filter>
@@ -40,11 +34,26 @@
     <Filter Include="Файлы заголовков\Core\ComponentSystem">
       <UniqueIdentifier>{ae65e5be-d6c1-4e98-8ccd-99271523817f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы заголовков\Games">
+      <UniqueIdentifier>{7462d4be-7715-46fd-8be5-6dfc92e43b06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Materials">
+      <UniqueIdentifier>{bfb4e08b-5055-4c81-b198-e688dd086bad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Materials">
+      <UniqueIdentifier>{aaaa5d89-7805-4b80-861e-db59bc615278}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\RenderData">
+      <UniqueIdentifier>{44c56b0c-24cd-42c4-871b-5610583b8c05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\RenderData">
+      <UniqueIdentifier>{479de541-1f2c-4b9f-b2dd-6143e17fa1d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Games">
+      <UniqueIdentifier>{74ae3804-ce21-4fd2-8866-6be7b4f3dbc7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DirectXGame.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="InputDevice\Delegates.cpp">
       <Filter>Исходные файлы\InputDevice</Filter>
     </ClCompile>
@@ -55,10 +64,10 @@
       <Filter>Исходные файлы\InputDevice</Filter>
     </ClCompile>
     <ClCompile Include="PaddleRenderComponent.cpp">
-      <Filter>Исходные файлы\RenderComponents</Filter>
+      <Filter>Исходные файлы\RenderData</Filter>
     </ClCompile>
     <ClCompile Include="BallRenderComponent.cpp">
-      <Filter>Исходные файлы\RenderComponents</Filter>
+      <Filter>Исходные файлы\RenderData</Filter>
     </ClCompile>
     <ClCompile Include="DeviceResources.cpp">
       <Filter>Исходные файлы\Core</Filter>
@@ -93,11 +102,41 @@
     <ClCompile Include="SceneComponent.cpp">
       <Filter>Исходные файлы\Components</Filter>
     </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Исходные файлы\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Material.cpp">
+      <Filter>Исходные файлы\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Material2D.cpp">
+      <Filter>Исходные файлы\Materials</Filter>
+    </ClCompile>
+    <ClCompile Include="Basic3DMaterial.cpp">
+      <Filter>Исходные файлы\Materials</Filter>
+    </ClCompile>
+    <ClCompile Include="TransformComponent.cpp">
+      <Filter>Исходные файлы\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="ComponentBase.cpp">
+      <Filter>Исходные файлы\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="BoxRenderData.cpp">
+      <Filter>Исходные файлы\RenderData</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectXGame.cpp">
+      <Filter>Исходные файлы\Games</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraTestLab.cpp">
+      <Filter>Исходные файлы\Games</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneActor.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Исходные файлы\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Scene.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="InputDevice\Delegates.h">
       <Filter>Файлы заголовков\InputDevice</Filter>
     </ClInclude>
@@ -111,13 +150,13 @@
       <Filter>Файлы заголовков\InputDevice</Filter>
     </ClInclude>
     <ClInclude Include="RenderData.h">
-      <Filter>Файлы заголовков\RenderComponents</Filter>
+      <Filter>Файлы заголовков\RenderData</Filter>
     </ClInclude>
     <ClInclude Include="BallRenderComponent.h">
-      <Filter>Файлы заголовков\RenderComponents</Filter>
+      <Filter>Файлы заголовков\RenderData</Filter>
     </ClInclude>
     <ClInclude Include="PaddleRenderComponent.h">
-      <Filter>Файлы заголовков\RenderComponents</Filter>
+      <Filter>Файлы заголовков\RenderData</Filter>
     </ClInclude>
     <ClInclude Include="SceneComponent.h">
       <Filter>Файлы заголовков</Filter>
@@ -149,9 +188,6 @@
     <ClInclude Include="Renderer.h">
       <Filter>Файлы заголовков\Core</Filter>
     </ClInclude>
-    <ClInclude Include="PongGame.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="SceneActor.h">
       <Filter>Файлы заголовков\Core</Filter>
     </ClInclude>
@@ -163,6 +199,30 @@
     </ClInclude>
     <ClInclude Include="TransformComponent.h">
       <Filter>Файлы заголовков\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Файлы заголовков\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="PongGame.h">
+      <Filter>Файлы заголовков\Games</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraTestLab.h">
+      <Filter>Файлы заголовков\Games</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Файлы заголовков\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="BoxRenderData.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.h">
+      <Filter>Файлы заголовков\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Material2D.h">
+      <Filter>Файлы заголовков\Materials</Filter>
+    </ClInclude>
+    <ClInclude Include="Basic3DMaterial.h">
+      <Filter>Файлы заголовков\Materials</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
