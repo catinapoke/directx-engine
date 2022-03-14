@@ -11,10 +11,14 @@ public:
     ID3D11DeviceContext* GetDeviceContext() { return m_pd3dDeviceContext.Get(); }
     IDXGISwapChain* GetSwapChain() { return m_pDXGISwapChain.Get(); }
     ID3D11RenderTargetView* GetRenderTargetView() { return m_pRenderTarget.Get(); }
+    ID3D11DepthStencilView* GetDepthStencilView() { return m_pDepthStencilView.Get(); }
 
     void Present() { GetSwapChain()->Present(1, 0); }
 
     void GetBackBufferSize(float* width, float* height);
+
+private:
+    HRESULT InitDepthBuffer();
 
 
 private:
@@ -23,11 +27,13 @@ private:
     Microsoft::WRL::ComPtr<IDXGISwapChain>      m_pDXGISwapChain;
 
     // Swap chain resources
-    Microsoft::WRL::ComPtr < ID3D11Texture2D>        m_pBackBuffer;
-    Microsoft::WRL::ComPtr < ID3D11RenderTargetView> m_pRenderTarget;
+    Microsoft::WRL::ComPtr<ID3D11Texture2D>        m_pBackBuffer;
+    Microsoft::WRL::ComPtr<ID3D11RenderTargetView> m_pRenderTarget;
+    Microsoft::WRL::ComPtr<ID3D11DepthStencilView> m_pDepthStencilView;
 
     // Resource metadata
     // D3D_FEATURE_LEVEL       m_featureLevel;
     D3D11_TEXTURE2D_DESC    m_backBufferDesc;
+    D3D11_DEPTH_STENCIL_VIEW_DESC m_depthStencilViewDesc;
     D3D11_VIEWPORT          m_viewport;
 };

@@ -42,11 +42,16 @@ public:
     Matrix GetLocalModelMatrix();
     Matrix GetWorldModelMatrix();
 
+    void SetLocalMatrix(Matrix model);
+
     void LookAt(Vector3 targetPosition, Vector3 worldUp);
 
 private:
     Matrix CreateLocalModelMatrix();
     Matrix CreateWorldModelMatrix();
+
+    void UpdateMatrixFromData();
+    void UpdateDataFromMatrix();
 
 private:
     Vector3 position;

@@ -3,8 +3,6 @@
 #include "WindowApplication.h"
 #include "InputDevice\SimpleMath.h"
 
-
-
 void CameraComponent::Awake()
 {
     transform = GetActor()->GetComponent<TransformComponent>();
@@ -18,13 +16,14 @@ Matrix CameraComponent::GetProjectionViewMatrix()
     Vector3 rotation = transform->GetWorldRotation();
     Vector3 position = transform->GetWorldPosition();
     Matrix rotation_matrix = Matrix::CreateFromYawPitchRoll(
-        rotation.x, rotation.y, rotation.z);
+        rotation.z, rotation.y, rotation.x);
 
     Matrix view = Matrix::CreateLookAt(
         position,
         position + rotation_matrix.Forward(),
         rotation_matrix.Up());
-    return view * projection_matrix; // transform->GetLocalModelMatrix()
+    return view * projection_matrix;
+    //return transform->GetLocalModelMatrix() * projection_matrix;
 }
 
 void CameraComponent::CreateProjectionMatrix()

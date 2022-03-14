@@ -96,9 +96,6 @@
     <ClCompile Include="PongGame.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="RenderData.cpp">
-      <Filter>Исходные файлы\Components</Filter>
-    </ClCompile>
     <ClCompile Include="SceneComponent.cpp">
       <Filter>Исходные файлы\Components</Filter>
     </ClCompile>
@@ -136,7 +133,28 @@
       <Filter>Исходные файлы\Components</Filter>
     </ClCompile>
     <ClCompile Include="RotateComponent.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="OrbitRotator.cpp">
+      <Filter>Исходные файлы\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="TransformController.cpp">
+      <Filter>Исходные файлы\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="SphereRenderData.cpp">
+      <Filter>Исходные файлы\RenderData</Filter>
+    </ClCompile>
+    <ClCompile Include="PlaneRenderData.cpp">
+      <Filter>Исходные файлы\RenderData</Filter>
+    </ClCompile>
+    <ClCompile Include="CommonRenderData.cpp">
+      <Filter>Исходные файлы\RenderData</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderData.cpp">
+      <Filter>Исходные файлы\RenderData</Filter>
+    </ClCompile>
+    <ClCompile Include="LineStripMaterial.cpp">
+      <Filter>Исходные файлы\Materials</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -215,9 +233,6 @@
     <ClInclude Include="Camera.h">
       <Filter>Файлы заголовков\Core</Filter>
     </ClInclude>
-    <ClInclude Include="BoxRenderData.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="Material.h">
       <Filter>Файлы заголовков\Core</Filter>
     </ClInclude>
@@ -229,6 +244,27 @@
     </ClInclude>
     <ClInclude Include="RotateComponent.h">
       <Filter>Файлы заголовков\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="LineStripMaterial.h">
+      <Filter>Файлы заголовков\Materials</Filter>
+    </ClInclude>
+    <ClInclude Include="OrbitRotator.h">
+      <Filter>Файлы заголовков\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="TransformController.h">
+      <Filter>Файлы заголовков\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="BoxRenderData.h">
+      <Filter>Файлы заголовков\RenderData</Filter>
+    </ClInclude>
+    <ClInclude Include="SphereRenderData.h">
+      <Filter>Файлы заголовков\RenderData</Filter>
+    </ClInclude>
+    <ClInclude Include="PlaneRenderData.h">
+      <Filter>Файлы заголовков\RenderData</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonRenderData.h">
+      <Filter>Файлы заголовков\RenderData</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

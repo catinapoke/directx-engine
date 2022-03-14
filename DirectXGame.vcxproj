@@ -161,6 +161,7 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CameraTestLab.cpp" />
     <ClCompile Include="ColliderComponent.cpp" />
+    <ClCompile Include="CommonRenderData.cpp" />
     <ClCompile Include="ComponentBase.cpp" />
     <ClCompile Include="DeviceResources.cpp" />
     <ClCompile Include="DirectXGame.cpp" />
@@ -170,22 +171,29 @@
     <ClCompile Include="InputDevice\Delegates.cpp" />
     <ClCompile Include="InputDevice\InputDevice.cpp" />
     <ClCompile Include="InputDevice\SimpleMath.cpp" />
+    <ClCompile Include="LineStripMaterial.cpp" />
     <ClCompile Include="Material.cpp" />
     <ClCompile Include="Material2D.cpp" />
     <ClCompile Include="MoveComponent.cpp" />
+    <ClCompile Include="OrbitRotator.cpp" />
     <ClCompile Include="PaddleInputComponent.cpp" />
     <ClCompile Include="PaddleRenderComponent.cpp" />
+    <ClCompile Include="PlaneRenderData.cpp" />
     <ClCompile Include="PongGame.cpp" />
     <ClCompile Include="RenderData.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="RotateComponent.cpp" />
     <ClCompile Include="SceneActor.cpp" />
     <ClCompile Include="SceneComponent.cpp" />
+    <ClCompile Include="SphereRenderData.cpp" />
     <ClCompile Include="TransformComponent.cpp" />
+    <ClCompile Include="TransformController.cpp" />
     <ClCompile Include="WindowApplication.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Basic3DMaterial.h" />
+    <ClInclude Include="CommonRenderData.h" />
+    <ClInclude Include="LineStripMaterial.h" />
     <ClInclude Include="Material2D.h" />
     <ClInclude Include="Actor.h" />
     <ClInclude Include="BallRenderComponent.h" />
@@ -205,15 +213,19 @@
     <ClInclude Include="InputDevice\SimpleMath.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="MoveComponent.h" />
+    <ClInclude Include="OrbitRotator.h" />
     <ClInclude Include="PaddleInputComponent.h" />
     <ClInclude Include="PaddleRenderComponent.h" />
+    <ClInclude Include="PlaneRenderData.h" />
     <ClInclude Include="PongGame.h" />
     <ClInclude Include="RenderData.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="RotateComponent.h" />
     <ClInclude Include="SceneActor.h" />
     <ClInclude Include="SceneComponent.h" />
+    <ClInclude Include="SphereRenderData.h" />
     <ClInclude Include="TransformComponent.h" />
+    <ClInclude Include="TransformController.h" />
     <ClInclude Include="WindowApplication.h" />
   </ItemGroup>
   <ItemGroup>

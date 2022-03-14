@@ -23,11 +23,11 @@ public:
 
     void SetCamera(CameraComponent* camera) { this->camera = camera; };
 
-private:
+protected:
     void SetProjectionViewMatrix();
     void SetModelMatrix(TransformComponent* transform);
 
-private:
+protected:
     Microsoft::WRL::ComPtr<ID3D11Buffer> camera_buffer;
     Microsoft::WRL::ComPtr<ID3D11Buffer> model_buffer;
 

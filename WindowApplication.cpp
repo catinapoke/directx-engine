@@ -1,4 +1,5 @@
 #pragma once
+#include <windowsx.h>
 #include "WindowApplication.h"
 #include "InputDevice\InputDevice.h"
 #include "PaddleRenderComponent.h"
@@ -142,6 +143,10 @@ LRESULT CALLBACK WindowApplication::ProcessWindowMessages(
     {
         auto key = static_cast<unsigned int>(wParam);
         inputDevice->RemovePressedKey(static_cast<Keys>(key));
+        break;
+    }
+    case WM_MOUSEMOVE: {
+        inputDevice->MousePosition = DirectX::SimpleMath::Vector2(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
         break;
     }
     case WM_CLOSE:

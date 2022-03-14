@@ -23,10 +23,12 @@ void Renderer::Render()
 {
     ID3D11DeviceContext* context = m_deviceResources->GetDeviceContext();
     ID3D11RenderTargetView* renderTarget = m_deviceResources->GetRenderTargetView();
+    ID3D11DepthStencilView* depthView = m_deviceResources->GetDepthStencilView();
 
     float color[] = { 0.1f, 0.1f, 0.1f, 1.0f };
     context->ClearRenderTargetView(renderTarget, color);
-    context->OMSetRenderTargets(1, &renderTarget, nullptr);
+    context->ClearDepthStencilView(depthView, D3D11_CLEAR_DEPTH, 1, 0);
+    context->OMSetRenderTargets(1, &renderTarget, depthView);
 
     UINT strides[] = { 32 };
     UINT offsets[] = { 0 };
@@ -60,7 +62,7 @@ void Renderer::CreateViewAndPerspective()
     ID3D11DeviceContext* context = m_deviceResources->GetDeviceContext();
 
     CD3D11_RASTERIZER_DESC rastDesc = {};
-    rastDesc.CullMode = D3D11_CULL_NONE;
+    rastDesc.CullMode = D3D11_CULL_BACK;
     rastDesc.FillMode = D3D11_FILL_SOLID;
 
     ID3D11RasterizerState* rastState;
