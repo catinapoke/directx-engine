@@ -22,7 +22,7 @@ CameraTestLab::CameraTestLab(std::shared_ptr<DeviceResources> deviceResources, s
     LineStripMaterial* debug_material = new LineStripMaterial(deviceResources);
     
     std::shared_ptr<RenderData> boxRenderData = std::make_shared<BoxRenderData>(device, material);
-    std::shared_ptr<PlaneRenderData> planeRenderData = std::make_shared<PlaneRenderData>(device, debug_material, Vector2(4,4), 1.f);
+    std::shared_ptr<PlaneRenderData> planeRenderData = std::make_shared<PlaneRenderData>(device, debug_material, Vector2(10,10), 2.5f);
 
     Actor* sun = new Actor();
     TransformComponent* sun_t = new TransformComponent(sun);
@@ -76,7 +76,7 @@ CameraTestLab::CameraTestLab(std::shared_ptr<DeviceResources> deviceResources, s
     material->SetCamera(camera->GetComponent<CameraComponent>());
     debug_material->SetCamera(camera->GetComponent<CameraComponent>());
 
-    actors = { sun,  planet_1,planet_2,planet_3, planet_4, moon_1, moon_2, camera, plane };
+    actors = { sun, planet_1,planet_2,planet_3, planet_4, moon_1, moon_2, camera, plane };
     sceneActors = {
         new SceneActor(sun, boxRenderData),
         new SceneActor(planet_1, boxRenderData),

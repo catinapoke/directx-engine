@@ -126,7 +126,6 @@ HRESULT DeviceResources::InitDepthBuffer()
     // Bind depth stencil state
     m_pd3dDeviceContext->OMSetDepthStencilState(pDSState, 1);
 
-
     // Create the depth stencil view
     hr = m_pd3dDevice->CreateDepthStencilView(pDepthStencil, // Depth stencil texture
         nullptr, // Depth stencil desc
