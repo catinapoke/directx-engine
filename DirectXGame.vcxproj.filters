@@ -93,9 +93,6 @@
     <ClCompile Include="MoveComponent.cpp">
       <Filter>Исходные файлы\Components</Filter>
     </ClCompile>
-    <ClCompile Include="PongGame.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="SceneComponent.cpp">
       <Filter>Исходные файлы\Components</Filter>
     </ClCompile>
@@ -119,9 +116,6 @@
     </ClCompile>
     <ClCompile Include="BoxRenderData.cpp">
       <Filter>Исходные файлы\RenderData</Filter>
-    </ClCompile>
-    <ClCompile Include="DirectXGame.cpp">
-      <Filter>Исходные файлы\Games</Filter>
     </ClCompile>
     <ClCompile Include="CameraTestLab.cpp">
       <Filter>Исходные файлы\Games</Filter>
@@ -155,6 +149,18 @@
     </ClCompile>
     <ClCompile Include="LineStripMaterial.cpp">
       <Filter>Исходные файлы\Materials</Filter>
+    </ClCompile>
+    <ClCompile Include="Actor.cpp">
+      <Filter>Исходные файлы\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="PongGame.cpp">
+      <Filter>Исходные файлы\Games</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectXGame.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="KatamariGame.cpp">
+      <Filter>Исходные файлы\Games</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -265,6 +271,9 @@
     </ClInclude>
     <ClInclude Include="CommonRenderData.h">
       <Filter>Файлы заголовков\RenderData</Filter>
+    </ClInclude>
+    <ClInclude Include="KatamariGame.h">
+      <Filter>Файлы заголовков\Games</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

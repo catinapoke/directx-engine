@@ -109,7 +109,7 @@ HRESULT WindowApplication::Run(std::shared_ptr<DeviceResources> deviceResources,
     FrameCounter frameCounter;
     frameCounter.Init();
 
-    while (message.message != WM_QUIT)
+    while (message.message != WM_QUIT && windowHandle != NULL)
     {
         frameCounter.CountFrame();
         DisplayFPS(frameCounter.GetFPS());
@@ -159,6 +159,7 @@ LRESULT CALLBACK WindowApplication::ProcessWindowMessages(
         }
         DestroyWindow(hWnd);
         UnregisterClass(windowClassName, instanceHandle);
+        windowHandle = NULL;
         return 0;
     }
 

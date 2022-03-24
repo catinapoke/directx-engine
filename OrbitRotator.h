@@ -11,7 +11,7 @@ typedef DirectX::SimpleMath::Vector3 Vector3;
 class OrbitRotator : public ComponentBase
 {
 public:
-    OrbitRotator(Actor* owner) : ComponentBase(owner), transform(nullptr), speed(rand() % 10) {}
+    OrbitRotator() : transform(nullptr), speed(rand() % 10) {}
 
     void Awake() override;
     void Update(float deltaTime) override;

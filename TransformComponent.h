@@ -12,11 +12,10 @@ typedef DirectX::SimpleMath::Quaternion Quaternion;
 class TransformComponent : public ComponentBase
 {
 public:
-    TransformComponent(Actor* owner, Vector3 start_position = Vector3(0, 0, 0), 
+    TransformComponent(Vector3 start_position = Vector3(0, 0, 0), 
         Vector3 start_rotation = Vector3(0, 0, 0),
         Vector3 start_scale = Vector3(1, 1, 1),
         TransformComponent* parentNode = nullptr)
-        :ComponentBase(owner)
     {
         parent = parentNode;
         position = start_position;

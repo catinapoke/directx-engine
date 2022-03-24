@@ -11,8 +11,8 @@ typedef DirectX::SimpleMath::Vector2 Vector2;
 class TransformController : public ComponentBase
 {
 public:
-    TransformController(Actor* actor, std::shared_ptr<InputDevice> device)
-        : ComponentBase(actor), transform(nullptr)
+    TransformController(std::shared_ptr<InputDevice> device)
+        : transform(nullptr)
     {
         input_device = device;
         last_mouse_position = input_device->MousePosition;

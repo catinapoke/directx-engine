@@ -155,6 +155,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Actor.cpp" />
     <ClCompile Include="BallRenderComponent.cpp" />
     <ClCompile Include="Basic3DMaterial.cpp" />
     <ClCompile Include="BoxRenderData.cpp" />
@@ -171,6 +172,7 @@
     <ClCompile Include="InputDevice\Delegates.cpp" />
     <ClCompile Include="InputDevice\InputDevice.cpp" />
     <ClCompile Include="InputDevice\SimpleMath.cpp" />
+    <ClCompile Include="KatamariGame.cpp" />
     <ClCompile Include="LineStripMaterial.cpp" />
     <ClCompile Include="Material.cpp" />
     <ClCompile Include="Material2D.cpp" />
@@ -193,6 +195,7 @@
   <ItemGroup>
     <ClInclude Include="Basic3DMaterial.h" />
     <ClInclude Include="CommonRenderData.h" />
+    <ClInclude Include="KatamariGame.h" />
     <ClInclude Include="LineStripMaterial.h" />
     <ClInclude Include="Material2D.h" />
     <ClInclude Include="Actor.h" />

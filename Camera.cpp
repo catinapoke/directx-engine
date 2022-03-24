@@ -18,12 +18,13 @@ Matrix CameraComponent::GetProjectionViewMatrix()
     Matrix rotation_matrix = Matrix::CreateFromYawPitchRoll(
         rotation.z, rotation.y, rotation.x);
 
-    Matrix view = Matrix::CreateLookAt(
+   /* Matrix view = Matrix::CreateLookAt(
         position,
         position + rotation_matrix.Forward(),
-        rotation_matrix.Up());
+        rotation_matrix.Up());*/
+
+    Matrix view = transform->GetWorldModelMatrix().Invert();
     return view * projection_matrix;
-    //return transform->GetLocalModelMatrix() * projection_matrix;
 }
 
 void CameraComponent::CreateProjectionMatrix()

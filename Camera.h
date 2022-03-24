@@ -11,7 +11,7 @@ class TransformComponent;
 class CameraComponent : public ComponentBase
 {
 public:
-    CameraComponent(Actor* owner) :ComponentBase(owner), transform(nullptr) {}
+    CameraComponent() :transform(nullptr) {}
 
     void Awake() override;
     Matrix GetProjectionViewMatrix();

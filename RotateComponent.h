@@ -7,7 +7,7 @@ class TransformComponent;
 class RotateComponent : public ComponentBase
 {
 public:
-    RotateComponent(Actor* owner) : ComponentBase(owner), transform(nullptr) {}
+    RotateComponent() : transform(nullptr) {}
 
     void Awake() override;
     void Update(float deltaTime) override;
