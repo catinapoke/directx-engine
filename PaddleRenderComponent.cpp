@@ -1,7 +1,7 @@
 #include "PaddleRenderComponent.h"
 #include <array>
 
-PaddleRenderComponent::PaddleRenderComponent(ID3D11Device* device):RenderData(nullptr)
+PaddleRenderComponent::PaddleRenderComponent(ID3D11Device* device):CommonRenderData(nullptr)
 {
     //Vertex buffer
     DirectX::XMFLOAT4 points[8] = {
@@ -18,24 +18,4 @@ PaddleRenderComponent::PaddleRenderComponent(ID3D11Device* device):RenderData(nu
     CreateIndexBuffer(m_pIndexBuffer, device, indices, std::size(indices));
 
     indices_count = std::size(indices);
-}
-
-ID3D11Buffer* PaddleRenderComponent::GetVertexBuffer()
-{
-    return m_pVertexBuffer.Get();
-}
-
-ID3D11Buffer** PaddleRenderComponent::GetVertexBufferAdress()
-{
-    return m_pVertexBuffer.GetAddressOf();
-}
-
-ID3D11Buffer* PaddleRenderComponent::GetIndexBuffer()
-{
-    return m_pIndexBuffer.Get();
-}
-
-int PaddleRenderComponent::GetIndicesCount()
-{
-    return indices_count;
 }

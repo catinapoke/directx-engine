@@ -48,8 +48,10 @@ void Renderer::Render()
 
         currentMaterial->PrepareObjectData(item);
 
-        context->IASetIndexBuffer(renderData->GetIndexBuffer(), DXGI_FORMAT_R32_UINT, 0);
-        context->IASetVertexBuffers(0, 1, renderData->GetVertexBufferAdress(), strides, offsets);
+        renderData->SetBuffers(context);
+
+        // context->IASetIndexBuffer(renderData->GetIndexBuffer(), DXGI_FORMAT_R32_UINT, 0);
+        // context->IASetVertexBuffers(0, 1, renderData->GetVertexBufferAdress(), strides, offsets);
         context->DrawIndexed(renderData->GetIndicesCount(), 0, 0);
     }
 

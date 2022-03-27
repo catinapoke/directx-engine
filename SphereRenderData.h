@@ -1,18 +1,9 @@
 #pragma once
-#include "RenderData.h"
+#include "CommonRenderData.h"
 
-class SphereRenderData :public RenderData
+class SphereRenderData :public CommonRenderData
 {
 public:
-    SphereRenderData(Material* material) :indices_count(0), RenderData(material) {};
+    SphereRenderData(Material* material) :CommonRenderData(material) {};
     SphereRenderData(ID3D11Device* device, Material* material);
-    ID3D11Buffer* GetVertexBuffer();
-    ID3D11Buffer** GetVertexBufferAdress();
-    ID3D11Buffer* GetIndexBuffer();
-    int GetIndicesCount();
-
-private:
-    Microsoft::WRL::ComPtr<ID3D11Buffer> m_pVertexBuffer;
-    Microsoft::WRL::ComPtr<ID3D11Buffer> m_pIndexBuffer;
-    int indices_count;
 };

@@ -11,6 +11,7 @@ public:
     ID3D11Buffer** GetVertexBufferAdress();
     ID3D11Buffer* GetIndexBuffer();
     int GetIndicesCount();
+    void SetBuffers(ID3D11DeviceContext* context) override;
 
 protected:
     Microsoft::WRL::ComPtr<ID3D11Buffer> m_pVertexBuffer;

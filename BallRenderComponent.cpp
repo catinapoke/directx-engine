@@ -1,7 +1,7 @@
 #include "BallRenderComponent.h"
 #include <array>
 
-BallRenderComponent::BallRenderComponent(ID3D11Device* device): RenderData(nullptr)
+BallRenderComponent::BallRenderComponent(ID3D11Device* device): CommonRenderData(nullptr)
 {
     //Vertex buffer
     DirectX::XMFLOAT4 points[18] =
@@ -24,24 +24,4 @@ BallRenderComponent::BallRenderComponent(ID3D11Device* device): RenderData(nullp
     CreateIndexBuffer(m_pIndexBuffer, device, indices, std::size(indices));
 
     indices_count = std::size(indices);
-}
-
-ID3D11Buffer* BallRenderComponent::GetVertexBuffer()
-{
-    return m_pVertexBuffer.Get();
-}
-
-ID3D11Buffer** BallRenderComponent::GetVertexBufferAdress()
-{
-    return m_pVertexBuffer.GetAddressOf();
-}
-
-ID3D11Buffer* BallRenderComponent::GetIndexBuffer()
-{
-    return m_pIndexBuffer.Get();
-}
-
-int BallRenderComponent::GetIndicesCount()
-{
-    return indices_count;
 }

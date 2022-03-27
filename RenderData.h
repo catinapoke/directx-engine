@@ -13,6 +13,7 @@ public:
     virtual ID3D11Buffer** GetVertexBufferAdress() = 0;
     virtual ID3D11Buffer* GetIndexBuffer() = 0;
     virtual int GetIndicesCount() = 0;
+    virtual void SetBuffers(ID3D11DeviceContext* context) = 0;
     Material* GetMaterial();
 
 protected:

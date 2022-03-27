@@ -7,7 +7,7 @@ typedef DirectX::SimpleMath::Vector3 Vector3;
 
 void CreateSphere(std::vector<Vector3>* points, std::vector<int>* indices, int subdivisions);
 
-SphereRenderData::SphereRenderData(ID3D11Device* device, Material* material) :RenderData(material)
+SphereRenderData::SphereRenderData(ID3D11Device* device, Material* material) :CommonRenderData(material)
 {
     //Vertex buffer
     //DirectX::XMFLOAT4 points[16] =
@@ -67,26 +67,6 @@ SphereRenderData::SphereRenderData(ID3D11Device* device, Material* material) :Re
     CreateIndexBuffer(m_pIndexBuffer, device, indices, indixs->size());
 
     indices_count = indixs->size();
-}
-
-ID3D11Buffer* SphereRenderData::GetVertexBuffer()
-{
-    return m_pVertexBuffer.Get();
-}
-
-ID3D11Buffer** SphereRenderData::GetVertexBufferAdress()
-{
-    return m_pVertexBuffer.GetAddressOf();
-}
-
-ID3D11Buffer* SphereRenderData::GetIndexBuffer()
-{
-    return m_pIndexBuffer.Get();
-}
-
-int SphereRenderData::GetIndicesCount()
-{
-    return indices_count;
 }
 
 using Lookup = std::map<std::pair<int, int>, int>;

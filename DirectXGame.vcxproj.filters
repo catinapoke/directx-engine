@@ -52,6 +52,12 @@
     <Filter Include="Исходные файлы\Games">
       <UniqueIdentifier>{74ae3804-ce21-4fd2-8866-6be7b4f3dbc7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Исходные файлы\Utils">
+      <UniqueIdentifier>{c87f9d03-58aa-4ab2-8ff1-cb67504a76ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Utils">
+      <UniqueIdentifier>{ffd8ea61-0170-47b1-81f0-27892473f0f6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="InputDevice\Delegates.cpp">
@@ -161,6 +167,21 @@
     </ClCompile>
     <ClCompile Include="KatamariGame.cpp">
       <Filter>Исходные файлы\Games</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshLoader.cpp">
+      <Filter>Исходные файлы\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Sampler.cpp">
+      <Filter>Исходные файлы\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshMaterial.cpp">
+      <Filter>Исходные файлы\Materials</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshRenderData.cpp">
+      <Filter>Исходные файлы\RenderData</Filter>
+    </ClCompile>
+    <ClCompile Include="InputLayoutScheme.cpp">
+      <Filter>Исходные файлы\Utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -275,6 +296,30 @@
     <ClInclude Include="KatamariGame.h">
       <Filter>Файлы заголовков\Games</Filter>
     </ClInclude>
+    <ClInclude Include="Utils\TextureLoader.h">
+      <Filter>Файлы заголовков\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshRenderData.h">
+      <Filter>Файлы заголовков\RenderData</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Файлы заголовков\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshLoader.h">
+      <Filter>Файлы заголовков\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>Файлы заголовков\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshMaterial.h">
+      <Filter>Файлы заголовков\Materials</Filter>
+    </ClInclude>
+    <ClInclude Include="Sampler.h">
+      <Filter>Файлы заголовков\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="InputLayoutSchemes.h">
+      <Filter>Файлы заголовков\Utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Natvis Include="InputDevice\Delegates.natvis">
@@ -288,5 +333,8 @@
     <FxCompile Include="Shaders\shader_3d.hlsl">
       <Filter>Файлы ресурсов</Filter>
     </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

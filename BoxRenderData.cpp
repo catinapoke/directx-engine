@@ -2,7 +2,7 @@
 #include <vector>
 
 
-BoxRenderData::BoxRenderData(ID3D11Device* device, Material* material):RenderData(material)
+BoxRenderData::BoxRenderData(ID3D11Device* device, Material* material):CommonRenderData(material)
 {
     //Vertex buffer
     DirectX::XMFLOAT4 points[16] =
@@ -42,24 +42,4 @@ BoxRenderData::BoxRenderData(ID3D11Device* device, Material* material):RenderDat
     CreateIndexBuffer(m_pIndexBuffer, device, indices, std::size(indices));
 
     indices_count = std::size(indices);
-}
-
-ID3D11Buffer* BoxRenderData::GetVertexBuffer()
-{
-    return m_pVertexBuffer.Get();
-}
-
-ID3D11Buffer** BoxRenderData::GetVertexBufferAdress()
-{
-    return m_pVertexBuffer.GetAddressOf();
-}
-
-ID3D11Buffer* BoxRenderData::GetIndexBuffer()
-{
-    return m_pIndexBuffer.Get();
-}
-
-int BoxRenderData::GetIndicesCount()
-{
-    return indices_count;
 }

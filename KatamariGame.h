@@ -1,5 +1,6 @@
 #pragma once
 #include <memory>
+#include <string>
 #include "Game.h"
 
 class DeviceResources;
@@ -13,6 +14,7 @@ public:
     KatamariGame(std::shared_ptr<DeviceResources> deviceResources, std::shared_ptr<InputDevice> input);
 
 private:
-    Actor* CreateBox(std::shared_ptr<RenderData> boxRenderData);
+    Actor* CreateSceneActor(std::shared_ptr<RenderData> renderData);
+    Actor* CreateMeshActor(std::string meshPath, std::wstring texturePath, std::shared_ptr<RenderData> renderData);
     CameraComponent* CreateCamera(std::shared_ptr<InputDevice> input);
 };
