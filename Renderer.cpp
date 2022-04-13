@@ -51,7 +51,7 @@ void Renderer::Render()
         renderData->SetBuffers(context);
 
         // context->IASetIndexBuffer(renderData->GetIndexBuffer(), DXGI_FORMAT_R32_UINT, 0);
-        // context->IASetVertexBuffers(0, 1, renderData->GetVertexBufferAdress(), strides, offsets);
+        // context->IASetVertexBuffers(0, 1, renderData->GetVertexBufferAddress(), strides, offsets);
         context->DrawIndexed(renderData->GetIndicesCount(), 0, 0);
     }
 
@@ -64,7 +64,7 @@ void Renderer::CreateViewAndPerspective()
     ID3D11DeviceContext* context = m_deviceResources->GetDeviceContext();
 
     CD3D11_RASTERIZER_DESC rastDesc = {};
-    rastDesc.CullMode = D3D11_CULL_BACK;
+    rastDesc.CullMode = D3D11_CULL_BACK;//
     rastDesc.FillMode = D3D11_FILL_SOLID;
 
     ID3D11RasterizerState* rastState;

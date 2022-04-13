@@ -14,7 +14,7 @@ PaddleRenderComponent::PaddleRenderComponent(ID3D11Device* device):CommonRenderD
     // Index buffer
     int indices[] = { 0,1,2, 1,0,3 };
 
-    CreateVertexBuffer(m_pVertexBuffer, device, points, std::size(points));
+    CreateVertexBuffer(m_pVertexBuffer, device, (void*)points, std::size(points) * sizeof(DirectX::XMFLOAT4));
     CreateIndexBuffer(m_pIndexBuffer, device, indices, std::size(indices));
 
     indices_count = std::size(indices);

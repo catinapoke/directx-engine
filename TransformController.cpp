@@ -56,15 +56,13 @@ Vector3 TransformController::GetDirection() {
 #include <cmath>
 Vector3 TransformController::GetRotation()
 {
-    Vector2 new_position = input_device->MousePosition;
-    Vector2 offset = new_position - last_mouse_position;
-    last_mouse_position = new_position;
+    Vector2 offset = input_device->GetMouseOffset();
 
     Vector2 size = WindowApplication::GetInstance()->GetWindowSize();
     offset.x = abs(offset.x) >= size.x - 1 ? 0 : offset.x;
     offset.y = abs(offset.y) >= size.y - 1 ? 0 : offset.y;
 
-    return Vector3(offset.x, 0, offset.y);
+    return Vector3(0, -offset.y, -offset.x);
 }
 
 float CircleFloat(float value, float low, float hi)

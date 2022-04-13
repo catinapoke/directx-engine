@@ -7,6 +7,8 @@ class DeviceResources;
 class InputDevice;
 class RenderData;
 class CameraComponent;
+class ID3D11Device;
+class MeshMaterial;
 
 class KatamariGame : public Game
 {
@@ -15,6 +17,6 @@ public:
 
 private:
     Actor* CreateSceneActor(std::shared_ptr<RenderData> renderData);
-    Actor* CreateMeshActor(std::string meshPath, std::wstring texturePath, std::shared_ptr<RenderData> renderData);
+    Actor* CreateMeshActor(ID3D11Device* device, const std::string& mesh_path, const std::wstring& texture_path, MeshMaterial* material);
     CameraComponent* CreateCamera(std::shared_ptr<InputDevice> input);
 };

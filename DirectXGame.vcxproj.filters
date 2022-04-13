@@ -183,6 +183,9 @@
     <ClCompile Include="InputLayoutScheme.cpp">
       <Filter>Исходные файлы\Utils</Filter>
     </ClCompile>
+    <ClCompile Include="MouseBehaviour.cpp">
+      <Filter>Исходные файлы\InputDevice</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="InputDevice\Delegates.h">
@@ -320,6 +323,9 @@
     <ClInclude Include="InputLayoutSchemes.h">
       <Filter>Файлы заголовков\Utils</Filter>
     </ClInclude>
+    <ClInclude Include="MouseBehaviour.h">
+      <Filter>Файлы заголовков\InputDevice</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Natvis Include="InputDevice\Delegates.natvis">
@@ -327,14 +333,17 @@
     </Natvis>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="Shaders\shader.hlsl">
-      <Filter>Файлы ресурсов</Filter>
-    </FxCompile>
-    <FxCompile Include="Shaders\shader_3d.hlsl">
-      <Filter>Файлы ресурсов</Filter>
-    </FxCompile>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <FxCompile Include="Content\Shaders\shader.hlsl">
+      <Filter>Файлы ресурсов</Filter>
+    </FxCompile>
+    <FxCompile Include="Content\Shaders\shader_3d.hlsl">
+      <Filter>Файлы ресурсов</Filter>
+    </FxCompile>
+    <FxCompile Include="Content\Shaders\shader_mesh.hlsl">
+      <Filter>Файлы ресурсов</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

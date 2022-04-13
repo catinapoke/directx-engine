@@ -6,7 +6,7 @@ ID3D11Buffer* CommonRenderData::GetVertexBuffer()
     return m_pVertexBuffer.Get();
 }
 
-ID3D11Buffer** CommonRenderData::GetVertexBufferAdress()
+ID3D11Buffer** CommonRenderData::GetVertexBufferAddress()
 {
     return m_pVertexBuffer.GetAddressOf();
 }
@@ -23,8 +23,8 @@ int CommonRenderData::GetIndicesCount()
 
 void CommonRenderData::SetBuffers(ID3D11DeviceContext* context)
 {
-    UINT strides[] = { 32 };
+    UINT strides[] = { static_cast<UINT>(stride) };
     UINT offsets[] = { 0 };
     context->IASetIndexBuffer(GetIndexBuffer(), DXGI_FORMAT_R32_UINT, 0);
-    context->IASetVertexBuffers(0, 1, GetVertexBufferAdress(), strides, offsets);
+    context->IASetVertexBuffers(0, 1, GetVertexBufferAddress(), strides, offsets);
 }

@@ -1,6 +1,6 @@
 #include "InputLayoutSchemes.h"
 
-const D3D11_INPUT_ELEMENT_DESC InputLayoutScheme::Position[] = {
+const InputScheme InputLayoutSchemes::Position = {
    D3D11_INPUT_ELEMENT_DESC {
        "POSITION",
        0,
@@ -11,7 +11,7 @@ const D3D11_INPUT_ELEMENT_DESC InputLayoutScheme::Position[] = {
        0}
 };
 
-const D3D11_INPUT_ELEMENT_DESC InputLayoutScheme::PositionColor[] = {
+const InputScheme InputLayoutSchemes::PositionColor = {
    D3D11_INPUT_ELEMENT_DESC {
        "POSITION",
        0,
@@ -30,7 +30,7 @@ const D3D11_INPUT_ELEMENT_DESC InputLayoutScheme::PositionColor[] = {
        0}
 };
 
-const D3D11_INPUT_ELEMENT_DESC InputLayoutScheme::PositionTexture[] = {
+const InputScheme InputLayoutSchemes::PositionTexture = {
     D3D11_INPUT_ELEMENT_DESC {
         "POSITION",
         0,
@@ -51,7 +51,7 @@ const D3D11_INPUT_ELEMENT_DESC InputLayoutScheme::PositionTexture[] = {
     }
 };
 
-const D3D11_INPUT_ELEMENT_DESC InputLayoutScheme::PositionTextureNormal[] = {
+const InputScheme InputLayoutSchemes::PositionTextureNormal = {
     D3D11_INPUT_ELEMENT_DESC {
         "POSITION",
         0,

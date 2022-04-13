@@ -63,7 +63,7 @@ SphereRenderData::SphereRenderData(ID3D11Device* device, Material* material) :Co
         indices[i] = (*indixs)[i];
     }
 
-    CreateVertexBuffer(m_pVertexBuffer, device, points_array, points->size());
+    CreateVertexBuffer(m_pVertexBuffer, device, points_array, (int)points->size());
     CreateIndexBuffer(m_pIndexBuffer, device, indices, indixs->size());
 
     indices_count = indixs->size();

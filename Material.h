@@ -2,13 +2,14 @@
 #include <string>
 #include <memory>
 #include "DeviceResources.h"
+#include "InputLayoutSchemes.h"
 #include "SceneActor.h"
 
 class Material
 {
 public:
-    Material(std::shared_ptr<DeviceResources> resources, std::wstring shader)
-        :shader_name(shader), device_resources(resources) {};
+    Material(std::shared_ptr<DeviceResources> resources, std::wstring shader, InputScheme scheme = InputLayoutSchemes::PositionColor)
+        :shader_name(shader), device_resources(resources), input_scheme(scheme) {};
 
     virtual void PrepareRender() = 0; // Set Shaders, buffers
     virtual void PrepareObjectData(SceneActor* actor) = 0;
@@ -20,6 +21,7 @@ protected:
 
 protected:
     std::wstring shader_name;
+    InputScheme input_scheme;
     std::shared_ptr<DeviceResources> device_resources;
 
     Microsoft::WRL::ComPtr<ID3D11VertexShader> vertex_shader;

@@ -18,6 +18,8 @@
 #include "Camera.h"
 #include "TransformController.h"
 
+Mesh* CreateBoxMesh();
+
 KatamariGame::KatamariGame(std::shared_ptr<DeviceResources> deviceResources, std::shared_ptr<InputDevice> input)
 {
     ID3D11Device* device = deviceResources->GetDevice();
@@ -26,17 +28,27 @@ KatamariGame::KatamariGame(std::shared_ptr<DeviceResources> deviceResources, std
     LineStripMaterial* debug_material = new LineStripMaterial(deviceResources);
     MeshMaterial* mesh_material = new MeshMaterial(deviceResources);
 
-    std::shared_ptr<RenderData> boxRenderData = std::make_shared<BoxRenderData>(device, material);
-    std::shared_ptr<RenderData> planeRenderData = std::make_shared<PlaneRenderData>(device, debug_material, Vector2(10, 10), 2.5f);
-    std::shared_ptr<RenderData> meshRenderData = std::make_shared<MeshRenderData>(device, mesh_material);
+    Texture* texture = new Texture(device, L"Textures/clown.png");
+    Mesh* simple_mesh = MeshLoader::LoadFirst("Meshes/sphere.obj");
+    //Mesh* simple_mesh = MeshLoader::LoadFirst("Meshes/box_rotate.obj");
+    //Mesh* simple_mesh = CreateBoxMesh();// MeshLoader::LoadFirst("Meshes/box_rotate.obj");
+
+    std::shared_ptr<RenderData> box_render_data = std::make_shared<BoxRenderData>(device, material);
+    std::shared_ptr<RenderData> plane_render_data = std::make_shared<PlaneRenderData>(device, debug_material, Vector2(10, 10), 2.5f);
+    std::shared_ptr<RenderData> mesh_render_data = std::make_shared<MeshRenderData>(device, mesh_material, simple_mesh, texture);
     // Load bunch of models
 
     CameraComponent* camera = CreateCamera(input);
 
     material->SetCamera(camera);
     debug_material->SetCamera(camera);
+    mesh_material->SetCamera(camera);
 
-    CreateSceneActor(boxRenderData);
+    Actor* box = CreateSceneActor(box_render_data);
+    CreateSceneActor(plane_render_data);
+    CreateSceneActor(mesh_render_data);
+
+    box->GetComponent<TransformComponent>()->SetLocalPosition(Vector3(0, 3, 0));
 
     // CreatePickableActors
 }
@@ -60,14 +72,69 @@ CameraComponent* KatamariGame::CreateCamera(std::shared_ptr<InputDevice> input)
     camera->AddComponent(new TransformComponent(Vector3(0, 2, 0)));
     camera->AddComponent(new TransformController(input));
     CameraComponent* component = camera->AddComponent<CameraComponent>();
-    
+
     return component;
 }
 
-Actor* KatamariGame::CreateMeshActor(std::string meshPath, 
-    std::wstring texturePath, std::shared_ptr<RenderData> renderData)
+Actor* KatamariGame::CreateMeshActor(ID3D11Device* device, const std::string& mesh_path,
+    const std::wstring& texture_path, MeshMaterial* material)
 {
-    Mesh* mesh = MeshLoader::LoadFirst(meshPath);
-    DirectX::ScratchImage* image;
-    TextureLoader::LoadWic(texturePath.c_str(), image);
+    Texture* texture = new Texture(device, texture_path.c_str());
+    Mesh* mesh = MeshLoader::LoadFirst(mesh_path);
+    std::shared_ptr<RenderData> mesh_render_data = std::make_shared<MeshRenderData>(device, material, mesh, texture);
+    return CreateSceneActor(mesh_render_data);
+}
+
+#include <vector>
+
+Mesh* CreateBoxMesh()
+{
+    //Vertex buffer
+    const DirectX::XMFLOAT4 points[8] =
+    {
+        DirectX::XMFLOAT4(-0.5f, 0.5f, -0.5f, 1.0f),  // +Y (top face)
+        DirectX::XMFLOAT4(0.5f, 0.5f, -0.5f, 1.0f),
+        DirectX::XMFLOAT4(0.5f, 0.5f,  0.5f, 1.0f),
+        DirectX::XMFLOAT4(-0.5f, 0.5f,  0.5f, 1.0f),
+
+        DirectX::XMFLOAT4(-0.5f, -0.5f,  0.5f, 1.0f),  // -Y (bottom face)
+        DirectX::XMFLOAT4(0.5f, -0.5f,  0.5f, 1.0f),
+        DirectX::XMFLOAT4(0.5f, -0.5f, -0.5f, 1.0f),
+        DirectX::XMFLOAT4(-0.5f, -0.5f, -0.5f, 1.0f),
+
+    };
+
+    // Index buffer
+    const int indices[36] = { 0, 1, 2,
+    0, 2, 3,
+
+    4, 5, 6,
+    4, 6, 7,
+
+    3, 2, 5,
+    3, 5, 4,
+
+    2, 1, 6,
+    2, 6, 5,
+
+    1, 7, 6,
+    1, 0, 7,
+
+    0, 3, 4,
+    0, 4, 7 };
+
+    std::vector<VertexData> vertices = {};
+    for (int i = 0; i < std::size(points); i++)
+    {
+        DirectX::SimpleMath::Vector3 pos = { points[i].x, points[i].y, points[i].z };
+        vertices.push_back(VertexData(pos));
+    }
+
+    std::vector<int> indices_arr = {};
+    for (int i = 0; i < std::size(indices); i++)
+    {
+        indices_arr.push_back(indices[i]);
+    }
+
+    return new Mesh(vertices, indices_arr);
 }

@@ -20,7 +20,7 @@ BallRenderComponent::BallRenderComponent(ID3D11Device* device): CommonRenderData
     // Index buffer
     int indices[24] = { 0, 1, 2, 2, 0, 3, 3, 0, 4, 4, 0, 5, 5, 0, 6, 6, 0, 7, 7, 0, 8, 8, 0, 1 };
 
-    CreateVertexBuffer(m_pVertexBuffer, device, points, std::size(points));
+    CreateVertexBuffer(m_pVertexBuffer, device, points, (int)std::size(points));
     CreateIndexBuffer(m_pIndexBuffer, device, indices, std::size(indices));
 
     indices_count = std::size(indices);

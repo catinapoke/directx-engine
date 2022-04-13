@@ -38,7 +38,7 @@ BoxRenderData::BoxRenderData(ID3D11Device* device, Material* material):CommonRen
     0, 3, 4,
     0, 4, 7 };
 
-    CreateVertexBuffer(m_pVertexBuffer, device, points, std::size(points));
+    CreateVertexBuffer(m_pVertexBuffer, device, points, (int)std::size(points));
     CreateIndexBuffer(m_pIndexBuffer, device, indices, std::size(indices));
 
     indices_count = std::size(indices);

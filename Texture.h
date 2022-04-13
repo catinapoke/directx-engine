@@ -4,12 +4,23 @@
 #include <DirectXTex.h>
 #include <wrl/client.h>
 
+#include "Utils/TextureLoader.h"
+
 class Texture {
 public:
 	Texture():
 		texture_(nullptr), 
 		texture_view_(nullptr)
 	{}
+
+	Texture(ID3D11Device* device, const wchar_t* path) :
+		texture_(nullptr),
+		texture_view_(nullptr)
+	{
+        DirectX::ScratchImage image;
+		TextureLoader::LoadWic(path, &image);
+		Init(device, image);
+	}
 
 	HRESULT Init(ID3D11Device* device, const DirectX::ScratchImage& image) {
 

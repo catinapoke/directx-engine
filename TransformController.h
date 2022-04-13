@@ -15,7 +15,7 @@ public:
         : transform(nullptr)
     {
         input_device = device;
-        last_mouse_position = input_device->MousePosition;
+        last_mouse_position = input_device->GetMousePosition();
     }
 
     void Awake() override;

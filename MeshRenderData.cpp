@@ -2,9 +2,10 @@
 
 void MeshRenderData::ConvertToBuffers(ID3D11Device* device, Mesh* mesh)
 {
-    // TODO: Handle passing size and count
-    CreateVertexBuffer(m_pVertexBuffer, device, points, std::size(points));
-    CreateIndexBuffer(m_pIndexBuffer, device, indices, std::size(indices));
+    const size_t vertex_size = std::size(mesh->vertices) * sizeof(mesh->vertices[0]);
 
-    indices_count = std::size(indices);
+    CreateVertexBuffer(m_pVertexBuffer, device, (void*)mesh->vertices.data(), vertex_size);
+    CreateIndexBuffer(m_pIndexBuffer, device, (int*)mesh->indices.data(), std::size(mesh->indices));
+
+    indices_count = std::size(mesh->indices);
 }

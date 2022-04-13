@@ -1,5 +1,4 @@
 #pragma once
-#include <string>
 #include "CommonRenderData.h"
 #include "Texture.h"
 #include "Mesh.h"
@@ -8,11 +7,10 @@ class MeshRenderData : public CommonRenderData
 {
 public:
 	MeshRenderData(ID3D11Device* device, Material* material, Mesh* mesh, Texture* texture) :
-		CommonRenderData(material)
-	{
+		CommonRenderData(material, sizeof(mesh->vertices[0])), texture(texture)
+    {
 		ConvertToBuffers(device, mesh);
-		this->texture = texture;
-	}
+    }
 
 	void SetBuffers(ID3D11DeviceContext* context) override
 	{
@@ -20,7 +18,7 @@ public:
 		texture->SetTexture(context);
 	}
 
-	Texture* GetTexture() { return texture; }
+	Texture* GetTexture() const { return texture; }
 
 private:
 	void ConvertToBuffers(ID3D11Device* device, Mesh* mesh);

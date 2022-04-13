@@ -4,6 +4,8 @@
 
 #include "MeshLoader.h"
 
+
+
 HRESULT MeshLoader::Load(std::vector<Mesh>& model, const std::string& path) {
 	model.clear();
 	Assimp::Importer importer;
@@ -21,15 +23,14 @@ HRESULT MeshLoader::Load(std::vector<Mesh>& model, const std::string& path) {
 Mesh* MeshLoader::LoadFirst(const std::string& path)
 {
 	Assimp::Importer importer;
-	const aiScene* scene = importer.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs);
+	const aiScene* scene = importer.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs | aiProcess_FlipWindingOrder);
 
 	if (scene == nullptr || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || scene->mRootNode == nullptr) {
 		std::cout << importer.GetErrorString() << std::endl;
 		return nullptr;
 	}
 
-	return ConvertMeshDynamic(scene->mMeshes[scene->mRootNode->mMeshes[0]]);
-
+	return ConvertMeshDynamic(scene->mMeshes[0]); //scene->mRootNode->mMeshes[0]
 }
 
 void MeshLoader::ProcessNodesRecursive(std::vector<Mesh>& model, const aiScene* scene, const aiNode* node) {
@@ -73,16 +74,25 @@ void MeshLoader::GetMeshData(const aiMesh* mesh, std::vector<VertexData>& vertic
 	for (size_t i = 0; i < mesh->mNumVertices; ++i) {
 		VertexData vertex;
 
-		vertex.position = {
+		vertex.position = Vector3(
 			mesh->mVertices[i].x,
 			mesh->mVertices[i].y,
 			mesh->mVertices[i].z
-		};
+		);
+
+		/*
+		if (mesh->HasNormals()) {
+			vertex.normal = Vector3{
+				mesh->mNormals[i].x,
+				mesh->mNormals[i].y,
+				mesh->mNormals[i].z
+			};
+		}
+		*/
 
 		vertex.texture_coords =
 			(mesh->mTextureCoords[0] != nullptr)
-			? Vector2(mesh->mTextureCoords[0][i].x,
-				mesh->mTextureCoords[0][i].y)
+			? Vector2(mesh->mTextureCoords[0][i].x, mesh->mTextureCoords[0][i].y)
 			: Vector2(0.0f, 0.0f);
 
 		vertices.push_back(vertex);

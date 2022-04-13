@@ -9,14 +9,14 @@ class TransformComponent;
 class Basic3DMaterial : public Material
 {
 public:
-    Basic3DMaterial(std::shared_ptr<DeviceResources> resources, std::wstring shader = L"Shaders/shader_3d.hlsl")
-        :Material(resources, shader), camera(nullptr) 
+    Basic3DMaterial(std::shared_ptr<DeviceResources> resources, std::wstring shader = L"Shaders/shader_3d.hlsl", 
+        InputScheme scheme = InputLayoutSchemes::PositionColor)
+        :Material(resources, shader, scheme), camera(nullptr)
     {
         CreateShader();
         CreateBuffers();
     };
 
-    HRESULT CreateInputLayout(ID3DBlob* compiledVertexBlob) override;
     HRESULT CreateBuffers() override;
     void PrepareRender() override;
     void PrepareObjectData(SceneActor* actor) override;

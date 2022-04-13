@@ -1,5 +1,6 @@
 #pragma once
 #include <assimp/scene.h>
+#include <winerror.h>
 #include "Mesh.h"
 
 class MeshLoader

@@ -13,13 +13,18 @@ Material* RenderData::GetMaterial()
 
 HRESULT RenderData::CreateVertexBuffer(Microsoft::WRL::ComPtr<ID3D11Buffer>& buffer, ID3D11Device* device, DirectX::XMFLOAT4* points, int arraySize)
 {
+    return CreateVertexBuffer(buffer, device, (void*)points, sizeof(DirectX::XMFLOAT4) * arraySize);
+}
+
+HRESULT RenderData::CreateVertexBuffer(Microsoft::WRL::ComPtr<ID3D11Buffer>& buffer, ID3D11Device* device, void* points, size_t data_size)
+{
     D3D11_BUFFER_DESC vertexBufDesc = {};
     vertexBufDesc.Usage = D3D11_USAGE_DEFAULT;
     vertexBufDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
     vertexBufDesc.CPUAccessFlags = 0;
     vertexBufDesc.MiscFlags = 0;
     vertexBufDesc.StructureByteStride = 0;
-    vertexBufDesc.ByteWidth = sizeof(DirectX::XMFLOAT4) * arraySize;
+    vertexBufDesc.ByteWidth = data_size;
 
     D3D11_SUBRESOURCE_DATA vertexData = {};
     vertexData.pSysMem = points;

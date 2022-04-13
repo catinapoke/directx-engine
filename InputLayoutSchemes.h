@@ -1,11 +1,14 @@
 #pragma once
+#include <vector>
 #include <d3d11.h>
 
-class InputLayoutScheme
+using InputScheme = std::vector<D3D11_INPUT_ELEMENT_DESC>;
+
+class InputLayoutSchemes
 {
 public:
-    static const D3D11_INPUT_ELEMENT_DESC Position[];
-    static const D3D11_INPUT_ELEMENT_DESC PositionColor[];
-    static const D3D11_INPUT_ELEMENT_DESC PositionTexture[];
-    static const D3D11_INPUT_ELEMENT_DESC PositionTextureNormal[];
+    static const InputScheme Position;
+    static const InputScheme PositionColor;
+    static const InputScheme PositionTexture;
+    static const InputScheme PositionTextureNormal;
 };

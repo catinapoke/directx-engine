@@ -8,6 +8,7 @@ using namespace DirectX::SimpleMath;
 InputDevice::InputDevice(WindowApplication* application) : app(application)
 {
     keys = new std::unordered_set<Keys>();
+    SetLockState(true);
 
     RAWINPUTDEVICE Rid[2];
 
@@ -69,8 +70,8 @@ void InputDevice::OnMouseMove(RawMouseEventArgs args)
     GetCursorPos(&p);
     ScreenToClient(app->GetHandle(), &p);
 
-    MousePosition = Vector2(p.x, p.y);
-    MouseOffset = Vector2(args.X, args.Y);
+    DirectX::SimpleMath::Vector2 MousePosition = DirectX::SimpleMath::Vector2(p.x, p.y);
+    DirectX::SimpleMath::Vector2 MouseOffset = DirectX::SimpleMath::Vector2(args.X, args.Y);
     MouseWheelDelta = args.WheelDelta;
 
     const MouseMoveEventArgs moveArgs = { MousePosition, MouseOffset, MouseWheelDelta };
@@ -98,5 +99,33 @@ void InputDevice::RemovePressedKey(Keys key)
 bool InputDevice::IsKeyDown(Keys key)
 {
     return keys->count(key);
+}
+
+void InputDevice::UpdateCursorData()
+{
+    mouse_behaviour->UpdateCursorData(&cursor_data);
+}
+
+void InputDevice::SetLockState(bool isLocked)
+{
+    MouseBehaviour* behaviour;
+    if (isLocked)
+    {
+        behaviour = new LockedBehaviour(this);
+        SetMousePosition({ 0,0 });
+    }
+    else
+        behaviour = new UnlockedBehaviour(this);
+
+    SetBehaviour(behaviour);
+}
+
+void InputDevice::SetBehaviour(MouseBehaviour* behaviour)
+{
+    if (behaviour == nullptr) return;
+
+    delete mouse_behaviour;
+
+    mouse_behaviour = behaviour;
 }
 

@@ -4,16 +4,6 @@
 #include "InputLayoutSchemes.h"
 
 
-HRESULT Basic3DMaterial::CreateInputLayout(ID3DBlob* compiledVertexBlob)
-{
-    return device_resources->GetDevice()->CreateInputLayout(
-        InputLayoutScheme::PositionColor,
-        2,
-        compiledVertexBlob->GetBufferPointer(),
-        compiledVertexBlob->GetBufferSize(),
-        &input_layout);
-}
-
 HRESULT Basic3DMaterial::CreateBuffers()
 {
     ID3D11Device* device = device_resources->GetDevice();

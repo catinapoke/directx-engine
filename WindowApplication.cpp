@@ -1,11 +1,13 @@
-#pragma once
 #include <windowsx.h>
+
 #include "WindowApplication.h"
-#include "InputDevice\InputDevice.h"
+#include "InputDevice/InputDevice.h"
 #include "PaddleRenderComponent.h"
 #include "BallRenderComponent.h"
+
 #include "Game.h"
 #include "CameraTestLab.h"
+#include "KatamariGame.h"
 
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
@@ -72,7 +74,7 @@ void WindowApplication::InitScene(std::shared_ptr<DeviceResources> deviceResourc
 {
     ID3D11Device* device = deviceResources->GetDevice();
 
-    game = new CameraTestLab(deviceResources, inputDevice);
+    game = new KatamariGame(deviceResources, inputDevice);
     game->Awake();
     game->Start();
 
@@ -115,6 +117,7 @@ HRESULT WindowApplication::Run(std::shared_ptr<DeviceResources> deviceResources,
         DisplayFPS(frameCounter.GetFPS());
         delta = frameCounter.GetDeltaTime();
 
+        inputDevice->UpdateCursorData();
         HandleInput(&message);
         game->Update(delta);
         renderer->Render();
@@ -146,9 +149,17 @@ LRESULT CALLBACK WindowApplication::ProcessWindowMessages(
         break;
     }
     case WM_MOUSEMOVE: {
-        inputDevice->MousePosition = DirectX::SimpleMath::Vector2(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
+        //inputDevice->MousePosition = DirectX::SimpleMath::Vector2(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
         break;
     }
+    case WM_ACTIVATEAPP:{
+        // ? Active window : Inactive window
+        std::cout << (wParam == TRUE ? "SHOW" : "HIDE") << std::endl;
+        if(inputDevice)
+            inputDevice->SetLockState(wParam == TRUE ? true : false);
+        break;
+    }
+    case WM_QUIT:
     case WM_CLOSE:
     {
         HMENU hMenu;
