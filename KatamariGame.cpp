@@ -1,9 +1,8 @@
 #include "KatamariGame.h"
-#include <DirectXTex.h>
+#include <vector>
 
 #include "DeviceResources.h"
 #include "MeshLoader.h"
-#include "Utils\TextureLoader.h"
 #include "InputDevice/InputDevice.h"
 
 #include "Basic3DMaterial.h"
@@ -16,6 +15,9 @@
 
 #include "TransformComponent.h"
 #include "Camera.h"
+#include "KatamariSphereController.h"
+#include "OrbitTransform.h"
+#include "OrbitTransformController.h"
 #include "TransformController.h"
 
 Mesh* CreateBoxMesh();
@@ -28,7 +30,7 @@ KatamariGame::KatamariGame(std::shared_ptr<DeviceResources> deviceResources, std
     LineStripMaterial* debug_material = new LineStripMaterial(deviceResources);
     MeshMaterial* mesh_material = new MeshMaterial(deviceResources);
 
-    Texture* texture = new Texture(device, L"Textures/clown.png");
+    Texture* texture = new Texture(device, L"Textures/clown_double.png");
     Mesh* simple_mesh = MeshLoader::LoadFirst("Meshes/sphere.obj");
     //Mesh* simple_mesh = MeshLoader::LoadFirst("Meshes/box_rotate.obj");
     //Mesh* simple_mesh = CreateBoxMesh();// MeshLoader::LoadFirst("Meshes/box_rotate.obj");
@@ -39,6 +41,7 @@ KatamariGame::KatamariGame(std::shared_ptr<DeviceResources> deviceResources, std
     // Load bunch of models
 
     CameraComponent* camera = CreateCamera(input);
+    camera->GetActor()->GetComponent<TransformComponent>()->SetLocalPosition(Vector3(0, 2, 3));
 
     material->SetCamera(camera);
     debug_material->SetCamera(camera);
@@ -46,10 +49,13 @@ KatamariGame::KatamariGame(std::shared_ptr<DeviceResources> deviceResources, std
 
     Actor* box = CreateSceneActor(box_render_data);
     CreateSceneActor(plane_render_data);
-    CreateSceneActor(mesh_render_data);
+    Actor* mr_clown = CreateSceneActor(mesh_render_data);
+    mr_clown->AddComponent(new KatamariSphereController(input, camera));
 
     box->GetComponent<TransformComponent>()->SetLocalPosition(Vector3(0, 3, 0));
 
+    camera->GetActor()->GetComponent<TransformComponent>()->SetParent(mr_clown->GetComponent<TransformComponent>());
+    //camera->GetActor()->GetComponent<TransformComponent>()->SetParent(nullptr);
     // CreatePickableActors
 }
 
@@ -69,8 +75,8 @@ CameraComponent* KatamariGame::CreateCamera(std::shared_ptr<InputDevice> input)
     Actor* camera = new Actor();
     actors.push_back(camera);
 
-    camera->AddComponent(new TransformComponent(Vector3(0, 2, 0)));
-    camera->AddComponent(new TransformController(input));
+    camera->AddComponent(new OrbitTransform());
+    camera->AddComponent(new OrbitTransformController(input));
     CameraComponent* component = camera->AddComponent<CameraComponent>();
 
     return component;
@@ -84,8 +90,6 @@ Actor* KatamariGame::CreateMeshActor(ID3D11Device* device, const std::string& me
     std::shared_ptr<RenderData> mesh_render_data = std::make_shared<MeshRenderData>(device, material, mesh, texture);
     return CreateSceneActor(mesh_render_data);
 }
-
-#include <vector>
 
 Mesh* CreateBoxMesh()
 {

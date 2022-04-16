@@ -5,6 +5,11 @@
 
 class ComponentBase;
 
+template<typename Base, typename T>
+inline bool instance_of(const T* t) {
+    return dynamic_cast<const Base*>(t) != nullptr;
+}
+
 class Actor
 {
 public:
@@ -20,9 +25,14 @@ public:
     {
         static_assert(std::is_base_of<ComponentBase, T>::value, "ComponentType is not derived from ComponentBase");
 
-        auto iterator = components.find(std::type_index(typeid(T)));
+        const auto iterator = components.find(std::type_index(typeid(T)));
         if (iterator != components.end())
-            return (T*)iterator->second;
+            return static_cast<T*>(iterator->second);
+
+        for(auto item : components)
+        {
+            if (instance_of<T>(item.second)) return static_cast<T*>(item.second);
+        }
 
         return nullptr;
     }

@@ -1,8 +1,7 @@
 #pragma once
 #include "ComponentBase.h"
+#include "UtilityFunctions.h"
 #include "InputDevice\SimpleMath.h"
-
-#define M_PI 3.14159265358979323846
 
 typedef DirectX::SimpleMath::Vector4 Vector4;
 typedef DirectX::SimpleMath::Vector3 Vector3;
@@ -21,36 +20,48 @@ public:
         position = start_position;
         rotation = start_rotation;
         scale = start_scale;
-        modelMatrix = CreateLocalModelMatrix();
+        UpdateMatrixFromData();
+        //modelMatrix = CreateLocalModelMatrix();
     }
 
-    TransformComponent* GetParent() { return parent; }
+    TransformComponent* GetParent() const { return parent; }
 
-    Vector3 GetLocalPosition() { return position; }
-    Vector3 GetLocalRotation() { return rotation; }
-    Vector3 GetLocalScale() { return scale; }
+    Vector3 GetLocalPosition() const { return position; }
+    Vector3 GetLocalRotation() const { return rotation; }
+    Vector3 GetLocalScale() const { return scale; }
 
-    Vector3 GetWorldPosition();
-    Vector3 GetWorldRotation();
-    Vector3 GetWorldScale();
+    Vector3 GetWorldPosition() const;
+    Vector3 GetWorldRotation() const;
+    Vector3 GetWorldScale() const;
 
     void SetLocalPosition(Vector3 value);
     void SetLocalRotation(Vector3 value);
     void SetLocalScale(Vector3 value);
 
-    Matrix GetLocalModelMatrix();
-    Matrix GetWorldModelMatrix();
+    Quaternion GetLocalQuaternion() const;
+    Matrix GetLocalModelMatrix() const;
+    Matrix GetWorldModelMatrix() const;
+
+    virtual Matrix GetParentWorldModelMatrix() const;
+
+    void SetParent(TransformComponent* new_parent);
 
     void SetLocalMatrix(Matrix model);
 
     void LookAt(Vector3 targetPosition, Vector3 worldUp);
 
-private:
-    Matrix CreateLocalModelMatrix();
-    Matrix CreateWorldModelMatrix();
+    Matrix CreateLocalModelMatrix() const;
+    Matrix CreateWorldModelMatrix() const;
 
+protected:
+    virtual Matrix CreateParentWorldModelMatrix() const;
+
+private:
     void UpdateMatrixFromData();
     void UpdateDataFromMatrix();
+
+protected:
+    TransformComponent* parent;
 
 private:
     Vector3 position;
@@ -58,5 +69,4 @@ private:
     Vector3 scale;
 
     Matrix modelMatrix;
-    TransformComponent* parent;
 };

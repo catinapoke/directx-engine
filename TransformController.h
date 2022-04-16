@@ -15,18 +15,21 @@ public:
         : transform(nullptr)
     {
         input_device = device;
-        last_mouse_position = input_device->GetMousePosition();
     }
 
     void Awake() override;
     void Update(float deltaTime) override;
 
-private:
-    Vector3 GetDirection();
-    Vector3 GetRotation();
+protected:
+    virtual Vector3 GetMoveDirection() const;
+    Vector3 get_input_direction() const;
 
-private:
-    Vector2 last_mouse_position;
+    Vector3 GetRotationOffset() const;
+
+protected:
     TransformComponent* transform;
     std::shared_ptr<InputDevice> input_device;
+
+    const float direction_weight = 2.5f;
+    const float rotation_weight = 0.3f;
 };

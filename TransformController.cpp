@@ -1,13 +1,8 @@
-#include <assert.h>
 #include "TransformController.h"
-#include "TransformComponent.h"
+#include <cassert>
 #include "Actor.h"
+#include "TransformComponent.h"
 #include "InputDevice\Keys.h"
-
-float CircleFloat(float value, float low, float hi);
-Vector3 CircleRotation(Vector3 rotation);
-static constexpr float rotation_weight = 0.3f;
-static constexpr float direction_weight = 2.5f;
 
 void TransformController::Awake()
 {
@@ -20,14 +15,15 @@ void TransformController::Update(float deltaTime)
     Vector3 position = transform->GetLocalPosition();
     Vector3 rotation = transform->GetLocalRotation();
 
-    position += GetDirection() * direction_weight * deltaTime;
-    rotation = CircleRotation(rotation + GetRotation() * rotation_weight * deltaTime);
+    position += GetMoveDirection() * direction_weight * deltaTime;
+    rotation = CircleRotation(rotation + GetRotationOffset() * rotation_weight * deltaTime);
 
     transform->SetLocalPosition(position);
     transform->SetLocalRotation(rotation);
 }
 
-Vector3 TransformController::GetDirection() {
+Vector3 TransformController::get_input_direction() const
+{
     Vector3 direction(0, 0, 0);
 
     if (input_device->IsKeyDown(Keys::D)) {
@@ -53,27 +49,19 @@ Vector3 TransformController::GetDirection() {
     return direction;
 }
 
-#include <cmath>
-Vector3 TransformController::GetRotation()
+Vector3 TransformController::GetMoveDirection() const
 {
-    Vector2 offset = input_device->GetMouseOffset();
-
-    Vector2 size = WindowApplication::GetInstance()->GetWindowSize();
-    offset.x = abs(offset.x) >= size.x - 1 ? 0 : offset.x;
-    offset.y = abs(offset.y) >= size.y - 1 ? 0 : offset.y;
-
-    return Vector3(0, -offset.y, -offset.x);
+    Vector3 direction = get_input_direction();
+    const float yaw = transform->GetLocalRotation().z;
+    direction = (
+        Matrix::CreateTranslation(direction) * 
+        Matrix::CreateFromQuaternion(Quaternion::CreateFromYawPitchRoll(yaw, 0, 0))
+        ).Translation();
+    return direction;
 }
 
-float CircleFloat(float value, float low, float hi)
+Vector3 TransformController::GetRotationOffset() const
 {
-    return value - (hi - low) * trunc((value - low) / (hi - low));
-}
-
-Vector3 CircleRotation(Vector3 rotation)
-{
-    rotation.x = CircleFloat(rotation.x, -M_PI, M_PI);
-    rotation.y = CircleFloat(rotation.y, -M_PI, M_PI);
-    rotation.z = CircleFloat(rotation.z, -M_PI, M_PI);
-    return rotation;
+    const Vector2 offset = input_device->GetMouseOffset();
+    return {0, -offset.y, -offset.x};
 }

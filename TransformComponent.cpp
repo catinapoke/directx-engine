@@ -1,12 +1,11 @@
 #include "TransformComponent.h"
 
-// TODO: add parent logic
-Vector3 TransformComponent::GetWorldPosition()
+Vector3 TransformComponent::GetWorldPosition() const
 {
     return GetWorldModelMatrix().Translation();
 }
 
-Vector3 TransformComponent::GetWorldRotation()
+Vector3 TransformComponent::GetWorldRotation() const
 {
     Quaternion quaternion;
     Vector3 world_position, world_scale;
@@ -14,7 +13,7 @@ Vector3 TransformComponent::GetWorldRotation()
     return quaternion.ToEuler();
 }
 
-Vector3 TransformComponent::GetWorldScale()
+Vector3 TransformComponent::GetWorldScale() const
 {
     Quaternion quaternion;
     Vector3 world_position, world_scale;
@@ -40,22 +39,32 @@ void TransformComponent::SetLocalScale(Vector3 value)
     UpdateMatrixFromData();
 }
 
-Matrix TransformComponent::CreateLocalModelMatrix()
+Quaternion TransformComponent::GetLocalQuaternion() const
+{
+    return Quaternion::CreateFromYawPitchRoll(rotation.z, rotation.y, rotation.x);
+}
+
+Matrix TransformComponent::CreateLocalModelMatrix() const
 {
     Matrix matrix = Matrix::Identity;
     matrix *= Matrix::CreateScale(scale);
-    Quaternion q = Quaternion::CreateFromYawPitchRoll(rotation.z, rotation.y, rotation.x);
+    Quaternion q = GetLocalQuaternion();
     matrix *= Matrix::CreateFromQuaternion(q);
     matrix *= Matrix::CreateTranslation(position);
     return matrix;
 }
 
-Matrix TransformComponent::CreateWorldModelMatrix()
+Matrix TransformComponent::CreateWorldModelMatrix() const
 {
-    Matrix matrix = CreateLocalModelMatrix();
-    if(parent != nullptr)
-        matrix *= parent->CreateWorldModelMatrix();
+    Matrix matrix = CreateLocalModelMatrix() * CreateParentWorldModelMatrix();
     return matrix;
+}
+
+Matrix TransformComponent::CreateParentWorldModelMatrix() const
+{
+    if (parent != nullptr)
+        return parent->CreateWorldModelMatrix();
+    return Matrix::Identity;
 }
 
 void TransformComponent::UpdateMatrixFromData()
@@ -66,21 +75,43 @@ void TransformComponent::UpdateMatrixFromData()
 void TransformComponent::UpdateDataFromMatrix()
 {
     Quaternion quaternion;
-    modelMatrix.Decompose(position, quaternion, scale);
+    modelMatrix.Decompose(scale, quaternion, position);
     rotation = quaternion.ToEuler();
 }
 
-Matrix TransformComponent::GetLocalModelMatrix()
+Matrix TransformComponent::GetLocalModelMatrix() const
 {
     return modelMatrix;
 }
 
-Matrix TransformComponent::GetWorldModelMatrix()
+Matrix TransformComponent::GetWorldModelMatrix() const
 {
-    Matrix matrix = GetLocalModelMatrix();
-    if (parent != nullptr)
-        matrix *= parent->GetWorldModelMatrix();
+    Matrix matrix = GetLocalModelMatrix() * GetParentWorldModelMatrix();
     return matrix;
+}
+
+Matrix TransformComponent::GetParentWorldModelMatrix() const
+{
+    if (parent != nullptr)
+       return parent->GetWorldModelMatrix();
+    return Matrix::Identity;
+}
+
+void TransformComponent::SetParent(TransformComponent* new_parent)
+{
+    if (new_parent != nullptr)
+    {
+        modelMatrix = GetWorldModelMatrix() * new_parent->GetWorldModelMatrix().Invert();
+        Matrix oop = modelMatrix * new_parent->GetWorldModelMatrix();
+        Matrix oop12 = modelMatrix * new_parent->GetWorldModelMatrix();
+    }
+    else
+    {
+        modelMatrix = GetWorldModelMatrix();
+    }
+
+    UpdateDataFromMatrix();
+    parent = new_parent;
 }
 
 void TransformComponent::SetLocalMatrix(Matrix model)
