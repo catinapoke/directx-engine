@@ -2,10 +2,11 @@
 #include <memory>
 
 #include "ComponentBase.h"
-#include "InputDevice/SimpleMath.h"
+#include "SphericalCoords.h"
 
 class InputDevice;
 class TransformComponent;
+struct SphericalCoords;
 
 class OrbitTransformController : public ComponentBase
 {
@@ -16,12 +17,12 @@ public:
     void Update(float deltaTime) override;
 
 protected:
-    DirectX::SimpleMath::Vector3 GetRotationOffset() const;
-    DirectX::SimpleMath::Quaternion GetRotationOffsetQ(float coefficient) const;
+    SphericalCoords GetRotationOffset() const;
 
 protected:
     TransformComponent* transform;
     std::shared_ptr<InputDevice> input_device;
 
-    const float rotation_weight = 3.0f;
+    SphericalCoords coords;
+    const float rotation_weight = 0.5f;
 };

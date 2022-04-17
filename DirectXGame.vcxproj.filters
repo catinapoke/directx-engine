@@ -350,6 +350,9 @@
     <ClInclude Include="OrbitTransformController.h">
       <Filter>Файлы заголовков\Components</Filter>
     </ClInclude>
+    <ClInclude Include="SphericalCoords.h">
+      <Filter>Файлы заголовков\Utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Natvis Include="InputDevice\Delegates.natvis">

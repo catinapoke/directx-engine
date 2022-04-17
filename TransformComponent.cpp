@@ -122,6 +122,6 @@ void TransformComponent::SetLocalMatrix(Matrix model)
 
 void TransformComponent::LookAt(Vector3 targetPosition, Vector3 worldUp)
 {
-    modelMatrix = Matrix::CreateLookAt(position, targetPosition, worldUp);
+    modelMatrix = Matrix::CreateLookAt(position, targetPosition, worldUp).Invert();
     UpdateDataFromMatrix();
 }

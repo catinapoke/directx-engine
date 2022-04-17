@@ -243,6 +243,7 @@
     <ClInclude Include="SceneComponent.h" />
     <ClInclude Include="SphereCollider.h" />
     <ClInclude Include="SphereRenderData.h" />
+    <ClInclude Include="SphericalCoords.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TransformComponent.h" />
     <ClInclude Include="TransformController.h" />
