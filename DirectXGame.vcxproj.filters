@@ -58,6 +58,12 @@
     <Filter Include="Файлы заголовков\Utils">
       <UniqueIdentifier>{ffd8ea61-0170-47b1-81f0-27892473f0f6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы заголовков\Components\Katamari">
+      <UniqueIdentifier>{53c23f5b-4c2f-45a3-b47b-42b5eefe59a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Components\Katamari">
+      <UniqueIdentifier>{afa0a8ca-5fd1-4066-a1b4-8f994f60ad78}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="InputDevice\Delegates.cpp">
@@ -190,10 +196,13 @@
       <Filter>Исходные файлы\Components</Filter>
     </ClCompile>
     <ClCompile Include="KatamariSphereController.cpp">
-      <Filter>Исходные файлы\Components</Filter>
+      <Filter>Исходные файлы\Components\Katamari</Filter>
     </ClCompile>
     <ClCompile Include="OrbitTransformController.cpp">
-      <Filter>Исходные файлы\Components</Filter>
+      <Filter>Исходные файлы\Components\Katamari</Filter>
+    </ClCompile>
+    <ClCompile Include="KatamariPicker.cpp">
+      <Filter>Исходные файлы\Components\Katamari</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -338,20 +347,23 @@
     <ClInclude Include="SphereCollider.h">
       <Filter>Файлы заголовков\Components</Filter>
     </ClInclude>
-    <ClInclude Include="KatamariSphereController.h">
-      <Filter>Файлы заголовков\Components</Filter>
-    </ClInclude>
     <ClInclude Include="UtilityFunctions.h">
       <Filter>Файлы заголовков\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="OrbitTransform.h">
-      <Filter>Файлы заголовков\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="OrbitTransformController.h">
-      <Filter>Файлы заголовков\Components</Filter>
-    </ClInclude>
     <ClInclude Include="SphericalCoords.h">
       <Filter>Файлы заголовков\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="KatamariSphereController.h">
+      <Filter>Файлы заголовков\Components\Katamari</Filter>
+    </ClInclude>
+    <ClInclude Include="OrbitTransform.h">
+      <Filter>Файлы заголовков\Components\Katamari</Filter>
+    </ClInclude>
+    <ClInclude Include="OrbitTransformController.h">
+      <Filter>Файлы заголовков\Components\Katamari</Filter>
+    </ClInclude>
+    <ClInclude Include="KatamariPicker.h">
+      <Filter>Файлы заголовков\Components\Katamari</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -5,7 +5,7 @@
 typedef DirectX::SimpleMath::Matrix Matrix;
 
 KatamariSphereController::KatamariSphereController(std::shared_ptr<InputDevice> device, CameraComponent* camera)
-: transform(nullptr), camera_(camera->GetActor()->GetComponent<TransformComponent>())
+    : transform(nullptr), camera_(camera->GetActor()->GetComponent<TransformComponent>())
 {
     input_device = device;
 }
@@ -32,7 +32,7 @@ void KatamariSphereController::Update(float deltaTime)
     transform->SetLocalRotation(rotation);
 }
 
-Vector3 KatamariSphereController::GetMoveDirection()
+Vector3 KatamariSphereController::GetMoveDirection() const
 {
     Vector3 direction(0, 0, 0);
 
@@ -43,30 +43,23 @@ Vector3 KatamariSphereController::GetMoveDirection()
         direction += Vector3(-1.0f, 0.0f, 0.0f);
     }
     if (input_device->IsKeyDown(Keys::W)) {
-        direction += Vector3(0.0f, 0.0f, -1.0f);
-    }
-    if (input_device->IsKeyDown(Keys::S)) {
         direction += Vector3(0.0f, 0.0f, 1.0f);
     }
-
-    const float yaw = GetLookRotation().z;
-    direction = (
-        Matrix::CreateTranslation(direction) *
-        Matrix::CreateFromQuaternion(Quaternion::CreateFromYawPitchRoll(yaw, 0, 0))
-        ).Translation();
+    if (input_device->IsKeyDown(Keys::S)) {
+        direction += Vector3(0.0f, 0.0f, -1.0f);
+    }
 
     direction.Normalize();
-    return direction;
-}
 
-Vector3 KatamariSphereController::GetLookRotation()
-{
-    Vector3 scale;
-    Quaternion rotation;
-    Vector3 look_vector = transform->GetWorldPosition() - camera_->GetWorldPosition();
+    Vector3 forward = transform->GetWorldPosition() - camera_->GetWorldPosition();
 
-    (Matrix::CreateTranslation(look_vector) * transform->GetParentWorldModelMatrix().Invert()).Decompose(scale, rotation, look_vector);
-    return rotation.ToEuler();
+    forward = (Matrix::CreateTranslation(forward) * transform->GetParentWorldModelMatrix().Invert()).Translation();
+    forward.y = 0;
+    forward.Normalize();
+
+    const Vector3 right = forward.Cross(Vector3(0, 1, 0));
+
+    return forward * direction.z + right * direction.x;
 }
 
 Vector3 KatamariSphereController::GetRotationOffset(Vector3 move_direction)

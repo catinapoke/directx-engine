@@ -1,4 +1,5 @@
 #pragma once
+#include <DirectXMath.h>
 #include <memory>
 #include <string>
 #include "Game.h"
@@ -18,5 +19,6 @@ public:
 private:
     Actor* CreateSceneActor(std::shared_ptr<RenderData> renderData);
     Actor* CreateMeshActor(ID3D11Device* device, const std::string& mesh_path, const std::wstring& texture_path, MeshMaterial* material);
+    Actor* CreatePickableActor(std::shared_ptr<RenderData> renderData, float radius, DirectX::XMFLOAT3 position);
     CameraComponent* CreateCamera(std::shared_ptr<InputDevice> input);
 };

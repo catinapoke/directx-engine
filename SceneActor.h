@@ -11,7 +11,8 @@ public:
     SceneActor(Actor* actor, std::shared_ptr<RenderData> data);
     void Awake();
 
-    TransformComponent* GetTransform() { return transform; }
+    Actor* GetActor() const { return actor; }
+    TransformComponent* GetTransform() const { return transform; }
     std::shared_ptr<RenderData> GetRenderData() { return renderData; }
 
 private:

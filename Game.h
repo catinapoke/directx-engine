@@ -10,7 +10,7 @@ class SceneActor;
 class Game
 {
 public:
-    Game() {};
+    Game() = default;
     Game(std::shared_ptr<DeviceResources> deviceResources, std::shared_ptr<InputDevice> input) {};
     ~Game();
 
@@ -21,7 +21,11 @@ public:
 
     std::vector<SceneActor*>* GetSceneActors();
 
+    static Game* GetCurrentGame();
+
 protected:
     std::vector<Actor*> actors;
     std::vector<SceneActor*> sceneActors;
+
+    static Game* current_game;
 };

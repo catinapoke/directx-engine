@@ -63,6 +63,36 @@ public:
         return c;
     }
 
+    template<typename T>
+    void RemoveComponent()
+    {
+        static_assert(std::is_base_of<ComponentBase, T>::value, "ComponentType is not derived from ComponentBase");
+
+        auto iterator = components.find(std::type_index(typeid(T)));
+        assert(iterator != components.end() && "Can't remove non-existing component");
+
+        T* component = nullptr;
+        if(iterator == components.end())
+        {
+            for (auto item : components)
+            {
+                if (instance_of<T>(item.second))
+                {
+                    component = dynamic_cast<T*>(item.second);
+                    components.erase(item.first);
+                    break;
+                }
+            }
+        }
+        else
+        {
+            component = dynamic_cast<T*>(iterator->second);
+            components.erase(iterator);
+        }
+
+        delete component;
+    }
+
 private:
     void SetActor(ComponentBase* component);
 

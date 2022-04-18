@@ -25,7 +25,7 @@ void OrbitTransformController::Update(float deltaTime)
 {
     ComponentBase::Update(deltaTime);
 
-    // TODO: orbit view and move
+    // Orbit view and move
 
     const SphericalCoords offset = GetRotationOffset();
     const float delta = deltaTime * rotation_weight;
@@ -39,9 +39,6 @@ void OrbitTransformController::Update(float deltaTime)
     transform->SetLocalPosition(position);
 
     transform->LookAt(Vector3(0,0,0), Vector3(0,1,0));
-
-    if (offset.h_angle != 0 && offset.v_angle != 0)
-        std::cout << coords.h_angle << " " << coords.v_angle << std::endl;
 }
 
 SphericalCoords OrbitTransformController::GetRotationOffset() const

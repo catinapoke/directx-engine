@@ -16,3 +16,8 @@ bool SphereCollider::IsOverlapping(SphereCollider& collider) const
     const float distance_sqr = (collider.transform_->GetWorldPosition() - transform_->GetWorldPosition()).LengthSquared();
     return distance_sqr < pow(collider.radius_ + radius_, 2);
 }
+
+void SphereCollider::AppendRadiusByArea(const SphereCollider& collider)
+{
+    radius_ = GetRadiusByArea(GetAreaByRadius(radius_) + GetAreaByRadius(collider.radius_));
+}

@@ -1,9 +1,10 @@
 #include "Game.h"
 
-#include "DeviceResources.h"
 #include "InputDevice\InputDevice.h"
 #include "Actor.h"
 #include "SceneActor.h"
+
+Game* Game::current_game = nullptr;
 
 Game::~Game()
 {
@@ -13,6 +14,7 @@ Game::~Game()
 
 void Game::Awake()
 {
+    current_game = this;
     for (Actor* actor : actors)
         actor->Awake();
 }
@@ -41,5 +43,10 @@ void Game::AddActors(std::vector<Actor*> actors)
 
 std::vector<SceneActor*>* Game::GetSceneActors()
 {
-    return &sceneActors; 
+    return &sceneActors;
+}
+
+Game* Game::GetCurrentGame()
+{
+    return current_game;
 }

@@ -12,8 +12,7 @@ public:
     void Update(float deltaTime) override;
 
 protected:
-    Vector3 GetMoveDirection();
-    Vector3 GetLookRotation();
+    Vector3 GetMoveDirection() const;
     Vector3 GetRotationOffset(Vector3 move_direction);
 
 protected:

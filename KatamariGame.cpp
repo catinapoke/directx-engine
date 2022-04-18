@@ -15,9 +15,11 @@
 
 #include "TransformComponent.h"
 #include "Camera.h"
+#include "KatamariPicker.h"
 #include "KatamariSphereController.h"
 #include "OrbitTransform.h"
 #include "OrbitTransformController.h"
+#include "SphereCollider.h"
 #include "TransformController.h"
 
 Mesh* CreateBoxMesh();
@@ -32,12 +34,20 @@ KatamariGame::KatamariGame(std::shared_ptr<DeviceResources> deviceResources, std
 
     Texture* texture = new Texture(device, L"Textures/clown_double.png");
     Mesh* simple_mesh = MeshLoader::LoadFirst("Meshes/sphere.obj");
-    //Mesh* simple_mesh = MeshLoader::LoadFirst("Meshes/box_rotate.obj");
-    //Mesh* simple_mesh = CreateBoxMesh();// MeshLoader::LoadFirst("Meshes/box_rotate.obj");
+
+    Texture* money_texture = new Texture(device, L"Textures/money.png");
+    Mesh* money_mesh = MeshLoader::LoadFirst("Meshes/money.obj");
+
+    Texture* gas_texture = new Texture(device, L"Textures/gas_bottle.png");
+    Mesh* gas_mesh = MeshLoader::LoadFirst("Meshes/gas_bottle.obj");
+
 
     std::shared_ptr<RenderData> box_render_data = std::make_shared<BoxRenderData>(device, material);
     std::shared_ptr<RenderData> plane_render_data = std::make_shared<PlaneRenderData>(device, debug_material, Vector2(10, 10), 2.5f);
     std::shared_ptr<RenderData> mesh_render_data = std::make_shared<MeshRenderData>(device, mesh_material, simple_mesh, texture);
+
+    std::shared_ptr<RenderData> money_render_data = std::make_shared<MeshRenderData>(device, mesh_material, money_mesh, money_texture);
+    std::shared_ptr<RenderData> gas_render_data = std::make_shared<MeshRenderData>(device, mesh_material, gas_mesh, gas_texture);
     // Load bunch of models
 
     CameraComponent* camera = CreateCamera(input);
@@ -47,16 +57,21 @@ KatamariGame::KatamariGame(std::shared_ptr<DeviceResources> deviceResources, std
     debug_material->SetCamera(camera);
     mesh_material->SetCamera(camera);
 
-    Actor* box = CreateSceneActor(box_render_data);
+
     CreateSceneActor(plane_render_data);
     Actor* mr_clown = CreateSceneActor(mesh_render_data);
     mr_clown->AddComponent(new KatamariSphereController(input, camera));
+    mr_clown->AddComponent(new SphereCollider(0.5f));
+    mr_clown->AddComponent<KatamariPicker>();
 
-    box->GetComponent<TransformComponent>()->SetLocalPosition(Vector3(0, 3, 0));
+    CreatePickableActor(money_render_data, 0.25f, { 1,0,0 });
+    CreatePickableActor(money_render_data, 0.25f, { 1,0,1 })
+        ->GetComponent<TransformComponent>()->SetLocalScale({ 0.5f,0.5f, 0.5f });
+    CreatePickableActor(gas_render_data, 0.6f, { 1,0,0 })
+        ->GetComponent<TransformComponent>()->SetLocalScale({ 0.25f,0.25f, 0.25f });
+    CreatePickableActor(box_render_data, 0.4f, { 0, 0, 4 });
 
     camera->GetActor()->GetComponent<TransformComponent>()->SetParent(mr_clown->GetComponent<TransformComponent>());
-    //camera->GetActor()->GetComponent<TransformComponent>()->SetParent(nullptr);
-    // CreatePickableActors
 }
 
 Actor* KatamariGame::CreateSceneActor(std::shared_ptr<RenderData> renderData)
@@ -89,6 +104,14 @@ Actor* KatamariGame::CreateMeshActor(ID3D11Device* device, const std::string& me
     Mesh* mesh = MeshLoader::LoadFirst(mesh_path);
     std::shared_ptr<RenderData> mesh_render_data = std::make_shared<MeshRenderData>(device, material, mesh, texture);
     return CreateSceneActor(mesh_render_data);
+}
+
+Actor* KatamariGame::CreatePickableActor(std::shared_ptr<RenderData> renderData, float radius, DirectX::XMFLOAT3 position)
+{
+    Actor* actor = CreateSceneActor(renderData);
+    actor->AddComponent(new SphereCollider(radius));
+    actor->GetComponent<TransformComponent>()->SetLocalPosition(position);
+    return actor;
 }
 
 Mesh* CreateBoxMesh()

@@ -170,6 +170,7 @@
     <ClCompile Include="InputDevice\SimpleMath.cpp" />
     <ClCompile Include="InputLayoutScheme.cpp" />
     <ClCompile Include="KatamariGame.cpp" />
+    <ClCompile Include="KatamariPicker.cpp" />
     <ClCompile Include="KatamariSphereController.cpp" />
     <ClCompile Include="LineStripMaterial.cpp" />
     <ClCompile Include="Material.cpp" />
@@ -202,6 +203,7 @@
     <ClInclude Include="CommonRenderData.h" />
     <ClInclude Include="InputLayoutSchemes.h" />
     <ClInclude Include="KatamariGame.h" />
+    <ClInclude Include="KatamariPicker.h" />
     <ClInclude Include="KatamariSphereController.h" />
     <ClInclude Include="LineStripMaterial.h" />
     <ClInclude Include="Material2D.h" />
