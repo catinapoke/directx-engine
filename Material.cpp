@@ -106,3 +106,21 @@ HRESULT Material::CreateInputLayout(ID3DBlob* compiledVertexBlob)
         compiledVertexBlob->GetBufferSize(),
         &input_layout);
 }
+
+void Material::MapBuffer(ID3D11Buffer* buffer, void* data, size_t size)
+{
+    ID3D11DeviceContext* context = device_resources->GetDeviceContext();
+
+    D3D11_MAPPED_SUBRESOURCE resource = {};
+    context->Map(buffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &resource);
+    auto resource_data = reinterpret_cast<float*>(resource.pData);
+    memcpy(resource_data, data, size);
+    context->Unmap(buffer, 0);
+}
+
+//void Material::MapBuffer(Microsoft::WRL::ComPtr<ID3D11Buffer> buffer, void* data, size_t size, int slot)
+//{
+//    ID3D11DeviceContext* context = device_resources->GetDeviceContext();
+//    context->PSSetConstantBuffers(slot, 1, buffer.GetAddressOf());
+//    context->UpdateSubresource(buffer.Get(), 0, nullptr, data, 0, 0);
+//}

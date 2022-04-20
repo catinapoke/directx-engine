@@ -204,6 +204,12 @@
     <ClCompile Include="KatamariPicker.cpp">
       <Filter>Исходные файлы\Components\Katamari</Filter>
     </ClCompile>
+    <ClCompile Include="LightComponent.cpp">
+      <Filter>Исходные файлы\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="PhongMeshMaterial.cpp">
+      <Filter>Исходные файлы\Materials</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="InputDevice\Delegates.h">
@@ -365,6 +371,15 @@
     <ClInclude Include="KatamariPicker.h">
       <Filter>Файлы заголовков\Components\Katamari</Filter>
     </ClInclude>
+    <ClInclude Include="LightComponent.h">
+      <Filter>Файлы заголовков\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="PhongMeshMaterial.h">
+      <Filter>Файлы заголовков\Materials</Filter>
+    </ClInclude>
+    <ClInclude Include="PhongRenderData.h">
+      <Filter>Файлы заголовков\RenderData</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Natvis Include="InputDevice\Delegates.natvis">
@@ -382,6 +397,9 @@
       <Filter>Файлы ресурсов</Filter>
     </FxCompile>
     <FxCompile Include="Content\Shaders\shader_mesh.hlsl">
+      <Filter>Файлы ресурсов</Filter>
+    </FxCompile>
+    <FxCompile Include="Content\Shaders\shader_mesh_light.hlsl">
       <Filter>Файлы ресурсов</Filter>
     </FxCompile>
   </ItemGroup>

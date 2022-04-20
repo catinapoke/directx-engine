@@ -60,6 +60,11 @@ Matrix TransformComponent::CreateWorldModelMatrix() const
     return matrix;
 }
 
+Vector3 TransformComponent::GetForward() const
+{
+    return modelMatrix.Forward();
+}
+
 Matrix TransformComponent::CreateParentWorldModelMatrix() const
 {
     if (parent != nullptr)

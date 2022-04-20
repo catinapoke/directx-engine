@@ -19,6 +19,8 @@ protected:
     virtual HRESULT CreateInputLayout(ID3DBlob* compiledVertexBlob);
     virtual HRESULT CreateBuffers() = 0;
 
+    void MapBuffer(ID3D11Buffer* buffer, void* data, size_t size);
+
 protected:
     std::wstring shader_name;
     InputScheme input_scheme;

@@ -70,7 +70,6 @@ void MeshLoader::GetMeshData(const aiMesh* mesh, std::vector<VertexData>& vertic
 {
 	using namespace DirectX::SimpleMath;
 
-	// TODO: normals
 	for (size_t i = 0; i < mesh->mNumVertices; ++i) {
 		VertexData vertex;
 
@@ -80,7 +79,6 @@ void MeshLoader::GetMeshData(const aiMesh* mesh, std::vector<VertexData>& vertic
 			mesh->mVertices[i].z
 		);
 
-		/*
 		if (mesh->HasNormals()) {
 			vertex.normal = Vector3{
 				mesh->mNormals[i].x,
@@ -88,7 +86,6 @@ void MeshLoader::GetMeshData(const aiMesh* mesh, std::vector<VertexData>& vertic
 				mesh->mNormals[i].z
 			};
 		}
-		*/
 
 		vertex.texture_coords =
 			(mesh->mTextureCoords[0] != nullptr)

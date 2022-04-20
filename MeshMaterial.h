@@ -14,6 +14,6 @@ public:
 
     void PrepareRender() override;
 
-private:
+protected:
     Sampler* sampler;
 };

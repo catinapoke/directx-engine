@@ -17,6 +17,23 @@ void KatamariSphereController::Awake()
     assert(transform != nullptr);
 }
 
+void RotateMatrix(TransformComponent* transform, const Vector3 rotation)
+{
+    if (rotation == Vector3{ 0,0,0 }) return;
+
+    Matrix model = Matrix::CreateScale(transform->GetLocalScale());
+    model *= Matrix::CreateFromQuaternion(transform->GetLocalQuaternion());
+    //model *= Matrix::CreateFromQuaternion(Quaternion::CreateFromYawPitchRoll(rotation.z, rotation.y, rotation.x));
+    model *= Matrix::CreateRotationX(rotation.x);
+    model *= Matrix::CreateRotationY(rotation.y);
+    model *= Matrix::CreateRotationZ(rotation.z);
+    model *= Matrix::CreateTranslation(transform->GetLocalPosition());
+    transform->SetLocalMatrix(model);
+
+    Vector3 r = transform->GetLocalRotation();
+    std::cout << "R: " << r.x << " " << r.y << " " << r.z << std::endl;
+}
+
 void KatamariSphereController::Update(float deltaTime)
 {
     ComponentBase::Update(deltaTime);
@@ -26,10 +43,12 @@ void KatamariSphereController::Update(float deltaTime)
 
     const Vector3 move_direction = GetMoveDirection();
     position += move_direction * direction_weight * deltaTime;
-    rotation = CircleRotation(rotation + GetRotationOffset(move_direction) * rotation_weight * deltaTime);
-
     transform->SetLocalPosition(position);
+
+    rotation = CircleRotation(rotation + GetRotationOffset(move_direction) * rotation_weight * deltaTime);
     transform->SetLocalRotation(rotation);
+
+    // RotateMatrix(transform, GetRotationOffset(move_direction) * rotation_weight * deltaTime);
 }
 
 Vector3 KatamariSphereController::GetMoveDirection() const

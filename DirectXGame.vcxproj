@@ -172,6 +172,7 @@
     <ClCompile Include="KatamariGame.cpp" />
     <ClCompile Include="KatamariPicker.cpp" />
     <ClCompile Include="KatamariSphereController.cpp" />
+    <ClCompile Include="LightComponent.cpp" />
     <ClCompile Include="LineStripMaterial.cpp" />
     <ClCompile Include="Material.cpp" />
     <ClCompile Include="Material2D.cpp" />
@@ -184,6 +185,7 @@
     <ClCompile Include="OrbitTransformController.cpp" />
     <ClCompile Include="PaddleInputComponent.cpp" />
     <ClCompile Include="PaddleRenderComponent.cpp" />
+    <ClCompile Include="PhongMeshMaterial.cpp" />
     <ClCompile Include="PlaneRenderData.cpp" />
     <ClCompile Include="PongGame.cpp" />
     <ClCompile Include="RenderData.cpp" />
@@ -205,6 +207,7 @@
     <ClInclude Include="KatamariGame.h" />
     <ClInclude Include="KatamariPicker.h" />
     <ClInclude Include="KatamariSphereController.h" />
+    <ClInclude Include="LightComponent.h" />
     <ClInclude Include="LineStripMaterial.h" />
     <ClInclude Include="Material2D.h" />
     <ClInclude Include="Actor.h" />
@@ -235,6 +238,8 @@
     <ClInclude Include="OrbitTransformController.h" />
     <ClInclude Include="PaddleInputComponent.h" />
     <ClInclude Include="PaddleRenderComponent.h" />
+    <ClInclude Include="PhongMeshMaterial.h" />
+    <ClInclude Include="PhongRenderData.h" />
     <ClInclude Include="PlaneRenderData.h" />
     <ClInclude Include="PongGame.h" />
     <ClInclude Include="RenderData.h" />
@@ -273,6 +278,12 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </FxCompile>
     <FxCompile Include="Content\Shaders\shader_mesh.hlsl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </FxCompile>
+    <FxCompile Include="Content\Shaders\shader_mesh_light.hlsl">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>

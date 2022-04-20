@@ -12,6 +12,7 @@ public:
 
 	DirectX::SimpleMath::Vector3 position;
 	DirectX::SimpleMath::Vector2 texture_coords;
+	DirectX::SimpleMath::Vector3 normal;
 };
 
 class Mesh {

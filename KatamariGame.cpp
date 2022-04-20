@@ -15,10 +15,13 @@
 
 #include "TransformComponent.h"
 #include "Camera.h"
+#include "LightComponent.h"
 #include "KatamariPicker.h"
 #include "KatamariSphereController.h"
 #include "OrbitTransform.h"
 #include "OrbitTransformController.h"
+#include "PhongMeshMaterial.h"
+#include "PhongRenderData.h"
 #include "SphereCollider.h"
 #include "TransformController.h"
 
@@ -30,8 +33,9 @@ KatamariGame::KatamariGame(std::shared_ptr<DeviceResources> deviceResources, std
 
     Basic3DMaterial* material = new Basic3DMaterial(deviceResources);
     LineStripMaterial* debug_material = new LineStripMaterial(deviceResources);
-    MeshMaterial* mesh_material = new MeshMaterial(deviceResources);
+    PhongMeshMaterial* mesh_material = new PhongMeshMaterial(deviceResources);
 
+    // Load models and textures
     Texture* texture = new Texture(device, L"Textures/clown_double.png");
     Mesh* simple_mesh = MeshLoader::LoadFirst("Meshes/sphere.obj");
 
@@ -41,22 +45,26 @@ KatamariGame::KatamariGame(std::shared_ptr<DeviceResources> deviceResources, std
     Texture* gas_texture = new Texture(device, L"Textures/gas_bottle.png");
     Mesh* gas_mesh = MeshLoader::LoadFirst("Meshes/gas_bottle.obj");
 
-
+    // Link render data
     std::shared_ptr<RenderData> box_render_data = std::make_shared<BoxRenderData>(device, material);
     std::shared_ptr<RenderData> plane_render_data = std::make_shared<PlaneRenderData>(device, debug_material, Vector2(10, 10), 2.5f);
-    std::shared_ptr<RenderData> mesh_render_data = std::make_shared<MeshRenderData>(device, mesh_material, simple_mesh, texture);
+    std::shared_ptr<RenderData> mesh_render_data = std::shared_ptr<PhongRenderData>(new PhongRenderData(device, mesh_material, simple_mesh, texture, {0.2f,0.2f,0.1f,0}));
 
-    std::shared_ptr<RenderData> money_render_data = std::make_shared<MeshRenderData>(device, mesh_material, money_mesh, money_texture);
-    std::shared_ptr<RenderData> gas_render_data = std::make_shared<MeshRenderData>(device, mesh_material, gas_mesh, gas_texture);
-    // Load bunch of models
+    std::shared_ptr<RenderData> money_render_data = std::shared_ptr<PhongRenderData>(new PhongRenderData(device, mesh_material, money_mesh, money_texture, { 0.2f,0.1f,0.3f,0 }));
+    std::shared_ptr<RenderData> gas_render_data = std::shared_ptr<PhongRenderData>(new PhongRenderData(device, mesh_material, gas_mesh, gas_texture, { 0.2f,0.3f,0.1f,0 }));
 
+    // Init actors
+    LightComponent* light = CreateLight(
+        {0,0,3},
+        {0, 0, 0}
+    );
     CameraComponent* camera = CreateCamera(input);
     camera->GetActor()->GetComponent<TransformComponent>()->SetLocalPosition(Vector3(0, 2, 3));
 
     material->SetCamera(camera);
     debug_material->SetCamera(camera);
     mesh_material->SetCamera(camera);
-
+    mesh_material->SetLight(light);
 
     CreateSceneActor(plane_render_data);
     Actor* mr_clown = CreateSceneActor(mesh_render_data);
@@ -97,8 +105,23 @@ CameraComponent* KatamariGame::CreateCamera(std::shared_ptr<InputDevice> input)
     return component;
 }
 
+LightComponent* KatamariGame::CreateLight(DirectX::XMFLOAT3 position, DirectX::XMFLOAT3 rotation, DirectX::XMFLOAT4 color)
+{
+    Actor* actor = new Actor();
+    actors.push_back(actor);
+
+    TransformComponent* transform = actor->AddComponent<TransformComponent>();
+    transform->SetLocalPosition(position);
+    transform->SetLocalRotation(rotation);
+
+    LightComponent* light = new LightComponent(color);
+    actor->AddComponent(light);
+
+    return light;
+}
+
 Actor* KatamariGame::CreateMeshActor(ID3D11Device* device, const std::string& mesh_path,
-    const std::wstring& texture_path, MeshMaterial* material)
+                                     const std::wstring& texture_path, MeshMaterial* material)
 {
     Texture* texture = new Texture(device, texture_path.c_str());
     Mesh* mesh = MeshLoader::LoadFirst(mesh_path);

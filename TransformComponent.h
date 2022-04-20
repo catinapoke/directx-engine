@@ -53,6 +53,8 @@ public:
     Matrix CreateLocalModelMatrix() const;
     Matrix CreateWorldModelMatrix() const;
 
+    Vector3 GetForward() const;
+
 protected:
     virtual Matrix CreateParentWorldModelMatrix() const;
 
