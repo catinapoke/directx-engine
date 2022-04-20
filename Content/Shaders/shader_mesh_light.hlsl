@@ -35,7 +35,7 @@ cbuffer MaterialData : register(b1)
 
 cbuffer LightBuffer : register(b2)
 {
-    float3 l_position;
+    float3 view_position;
 	float space1;
     float3 l_direction;
 	float space2;
@@ -73,7 +73,7 @@ float4 PSMain(PS_IN input) : SV_Target
 	float3 diffuse = diff * l_color;
 
 	// specular
-	float3 view_direction = normalize(l_position - input.world_pos.xyz);
+	float3 view_direction = normalize(view_position - input.world_pos.xyz);
 	float3 reflect_direction = normalize(reflect(l_direction, normal));
 	float spec = pow(max(0.0, dot(view_direction, reflect_direction)), m_shininess);
 	float3 specular = m_specular * spec * l_color;

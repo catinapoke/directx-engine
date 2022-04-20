@@ -3,12 +3,11 @@
 #include "InputDevice/SimpleMath.h"
 
 class TransformComponent;
-typedef DirectX::SimpleMath::Vector4 Vector4;
 
 class LightComponent : public ComponentBase
 {
 public:
-    LightComponent(Vector4 color = {0,0,0,0}):ComponentBase(), color_(color) {}
+    LightComponent(DirectX::SimpleMath::Vector4 color = {1, 1, 1, 1}) :ComponentBase(), color_(color) {}
 
     void Awake() override;
 
