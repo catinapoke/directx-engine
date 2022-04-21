@@ -37,7 +37,7 @@ cbuffer LightBuffer : register(b2)
 {
     float3 view_position;
 	float space1;
-    float3 l_direction;
+    float3 l_direction; // position
 	float space2;
     float3 l_color;
 	float space3;
@@ -66,17 +66,21 @@ float4 PSMain(PS_IN input) : SV_Target
 	// ambient
 	float3 ambient = m_ambient * l_color;
 
+	float3 light_direction = -normalize(l_direction - input.world_pos.xyz);
+	float distance = length(l_direction - input.world_pos.xyz);
+	float3 light_color = l_color * pow(clamp((20 - distance) / 10, 0, 1), 2);
+
 	// diffuse
 	float3 normal = normalize(input.normal.xyz);
-	float3 to_light_direction = -l_direction;
+	float3 to_light_direction = -light_direction;
 	float diff = max(0.0, dot(to_light_direction, normal));
-	float3 diffuse = diff * l_color;
+	float3 diffuse = diff * light_color;
 
 	// specular
 	float3 view_direction = normalize(view_position - input.world_pos.xyz);
-	float3 reflect_direction = normalize(reflect(l_direction, normal));
+	float3 reflect_direction = normalize(reflect(light_direction, normal));
 	float spec = pow(max(0.0, dot(view_direction, reflect_direction)), m_shininess);
-	float3 specular = m_specular * spec * l_color;
+	float3 specular = m_specular * spec * light_color;
 
 	float3 result = clamp(ambient + diffuse + specular, 0, 1) * color.xyz;
 	return float4(result, 1.0f);

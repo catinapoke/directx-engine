@@ -82,7 +82,7 @@ void PhongMeshMaterial::SetLightBuffer()
 {
     Vector4 light_data[3];
     light_data[0] = Vector4(camera_->GetActor()->GetComponent<TransformComponent>()->GetWorldPosition());
-    light_data[1] = Vector4(light_->GetDirection());
+    light_data[1] = Vector4(light_->GetPosition());
     light_data[2] = Vector4(light_->GetColor());
     MapBuffer(light_buffer.Get(), light_data, sizeof(light_data));
 }

@@ -48,10 +48,10 @@ KatamariGame::KatamariGame(std::shared_ptr<DeviceResources> deviceResources, std
     // Link render data
     std::shared_ptr<RenderData> box_render_data = std::make_shared<BoxRenderData>(device, material);
     std::shared_ptr<RenderData> plane_render_data = std::make_shared<PlaneRenderData>(device, debug_material, Vector2(10, 10), 2.5f);
-    std::shared_ptr<RenderData> mesh_render_data = std::shared_ptr<PhongRenderData>(new PhongRenderData(device, mesh_material, simple_mesh, texture, {0.2f,0.2f,0.1f,0}));
+    std::shared_ptr<RenderData> mesh_render_data = std::shared_ptr<PhongRenderData>(new PhongRenderData(device, mesh_material, simple_mesh, texture, {0.05f,0.2f,0.1f,0}));
 
-    std::shared_ptr<RenderData> money_render_data = std::shared_ptr<PhongRenderData>(new PhongRenderData(device, mesh_material, money_mesh, money_texture, { 0.2f,0.1f,0.3f,0 }));
-    std::shared_ptr<RenderData> gas_render_data = std::shared_ptr<PhongRenderData>(new PhongRenderData(device, mesh_material, gas_mesh, gas_texture, { 0.2f,0.3f,0.1f,0 }));
+    std::shared_ptr<RenderData> money_render_data = std::shared_ptr<PhongRenderData>(new PhongRenderData(device, mesh_material, money_mesh, money_texture, { 0.05f,0.1f,0.3f,0 }));
+    std::shared_ptr<RenderData> gas_render_data = std::shared_ptr<PhongRenderData>(new PhongRenderData(device, mesh_material, gas_mesh, gas_texture, { 0.05f,0.3f,0.1f,0 }));
 
     // Init actors
     LightComponent* light = CreateLight(
