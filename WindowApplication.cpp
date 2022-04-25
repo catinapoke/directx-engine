@@ -1,6 +1,9 @@
 #include <windowsx.h>
 
 #include "WindowApplication.h"
+
+#include <iostream>
+
 #include "InputDevice/InputDevice.h"
 #include "PaddleRenderComponent.h"
 #include "BallRenderComponent.h"
@@ -74,7 +77,7 @@ void WindowApplication::InitScene(std::shared_ptr<DeviceResources> deviceResourc
 {
     ID3D11Device* device = deviceResources->GetDevice();
 
-    game = new KatamariGame(deviceResources, inputDevice);
+    game = new KatamariGame(deviceResources, inputDevice, renderer);
     game->Awake();
     game->Start();
 

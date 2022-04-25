@@ -15,13 +15,13 @@ HRESULT PhongMeshMaterial::CreateBuffers()
     buffer_desc.MiscFlags = 0;
     buffer_desc.StructureByteStride = 0;
 
-    buffer_desc.ByteWidth = sizeof(Matrix) * 3;
+    buffer_desc.ByteWidth = sizeof(transform_data);
     result = device->CreateBuffer(&buffer_desc, nullptr, &transform_buffer);
 
-    buffer_desc.ByteWidth = sizeof(float) * 4;
+    buffer_desc.ByteWidth = sizeof(PhongMaterial);
     result = device->CreateBuffer(&buffer_desc, nullptr, &material_buffer);
 
-    buffer_desc.ByteWidth = sizeof(float) * 12;
+    buffer_desc.ByteWidth = sizeof(Vector4) * 3;
     result = device->CreateBuffer(&buffer_desc, nullptr, &light_buffer);
 
     return result;
@@ -42,6 +42,7 @@ void PhongMeshMaterial::PrepareRender()
     SaveProjectionViewMatrix();
     SetLightBuffer();
     sampler->SetSampler();
+    sampler_texture->SetSampler(1);
 }
 
 void PhongMeshMaterial::PrepareObjectData(SceneActor* actor)
@@ -69,6 +70,7 @@ void PhongMeshMaterial::MapTransformData()
 void PhongMeshMaterial::SaveProjectionViewMatrix()
 {
     transform_data[2] = camera_->GetProjectionViewMatrix().Transpose();
+    transform_data[3] = light_->GetProjectionViewMatrix().Transpose();
 }
 
 void PhongMeshMaterial::SaveModelMatrices(TransformComponent* transform)
@@ -82,7 +84,7 @@ void PhongMeshMaterial::SetLightBuffer()
 {
     Vector4 light_data[3];
     light_data[0] = Vector4(camera_->GetActor()->GetComponent<TransformComponent>()->GetWorldPosition());
-    light_data[1] = Vector4(light_->GetPosition());
+    light_data[1] = Vector4(light_->GetDirection());
     light_data[2] = Vector4(light_->GetColor());
     MapBuffer(light_buffer.Get(), light_data, sizeof(light_data));
 }

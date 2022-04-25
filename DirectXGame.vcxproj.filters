@@ -64,6 +64,12 @@
     <Filter Include="Исходные файлы\Components\Katamari">
       <UniqueIdentifier>{afa0a8ca-5fd1-4066-a1b4-8f994f60ad78}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы заголовков\RenderStages">
+      <UniqueIdentifier>{4b38fdec-3dd0-4355-b621-1153a9acfda3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\RenderStages">
+      <UniqueIdentifier>{a567c71c-f703-466a-a48c-50d807dfb7bc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="InputDevice\Delegates.cpp">
@@ -131,9 +137,6 @@
     </ClCompile>
     <ClCompile Include="CameraTestLab.cpp">
       <Filter>Исходные файлы\Games</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneActor.cpp">
-      <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="Camera.cpp">
       <Filter>Исходные файлы\Components</Filter>
@@ -210,6 +213,18 @@
     <ClCompile Include="PhongMeshMaterial.cpp">
       <Filter>Исходные файлы\Materials</Filter>
     </ClCompile>
+    <ClCompile Include="SceneActor.cpp">
+      <Filter>Исходные файлы\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="DefaultRenderPass.cpp">
+      <Filter>Исходные файлы\RenderStages</Filter>
+    </ClCompile>
+    <ClCompile Include="ShadowMapPass.cpp">
+      <Filter>Исходные файлы\RenderStages</Filter>
+    </ClCompile>
+    <ClCompile Include="DebugTextureMaterial.cpp">
+      <Filter>Исходные файлы\Materials</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="InputDevice\Delegates.h">
@@ -232,9 +247,6 @@
     </ClInclude>
     <ClInclude Include="PaddleRenderComponent.h">
       <Filter>Файлы заголовков\RenderData</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneComponent.h">
-      <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="MoveComponent.h">
       <Filter>Файлы заголовков\Components</Filter>
@@ -380,6 +392,27 @@
     <ClInclude Include="PhongRenderData.h">
       <Filter>Файлы заголовков\RenderData</Filter>
     </ClInclude>
+    <ClInclude Include="ShadowMap.h">
+      <Filter>Файлы заголовков\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="ShadowCastMaterial.h">
+      <Filter>Файлы заголовков\Materials</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneComponent.h">
+      <Filter>Файлы заголовков\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderPass.h">
+      <Filter>Файлы заголовков\RenderStages</Filter>
+    </ClInclude>
+    <ClInclude Include="DefaultRenderPass.h">
+      <Filter>Файлы заголовков\RenderStages</Filter>
+    </ClInclude>
+    <ClInclude Include="ShadowMapPass.h">
+      <Filter>Файлы заголовков\RenderStages</Filter>
+    </ClInclude>
+    <ClInclude Include="DebugTextureMaterial.h">
+      <Filter>Файлы заголовков\Materials</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Natvis Include="InputDevice\Delegates.natvis">
@@ -400,6 +433,15 @@
       <Filter>Файлы ресурсов</Filter>
     </FxCompile>
     <FxCompile Include="Content\Shaders\shader_mesh_light.hlsl">
+      <Filter>Файлы ресурсов</Filter>
+    </FxCompile>
+    <FxCompile Include="Content\Shaders\shader_shadow_map.hlsl">
+      <Filter>Файлы ресурсов</Filter>
+    </FxCompile>
+    <FxCompile Include="Content\Shaders\shader_light_shadow.hlsl">
+      <Filter>Файлы ресурсов</Filter>
+    </FxCompile>
+    <FxCompile Include="Content\Shaders\shader_texture_debug.hlsl">
       <Filter>Файлы ресурсов</Filter>
     </FxCompile>
   </ItemGroup>

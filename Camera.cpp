@@ -11,20 +11,14 @@ void CameraComponent::Awake()
     CreateProjectionMatrix();
 }
 
-Matrix CameraComponent::GetProjectionViewMatrix()
+Matrix CameraComponent::GetProjectionViewMatrix() const
 {
-    Vector3 rotation = transform->GetWorldRotation();
-    Vector3 position = transform->GetWorldPosition();
-    Matrix rotation_matrix = Matrix::CreateFromYawPitchRoll(
-        rotation.z, rotation.y, rotation.x);
+    return transform->GetViewMatrix() * projection_matrix;
+}
 
-   /* Matrix view = Matrix::CreateLookAt(
-        position,
-        position + rotation_matrix.Forward(),
-        rotation_matrix.Up());*/
-
-    Matrix view = transform->GetWorldModelMatrix().Invert();
-    return view * projection_matrix;
+Matrix CameraComponent::CreateOrtoProjectionMatrix() const
+{
+    return DirectX::SimpleMath::Matrix::CreateOrthographicOffCenter(-20.0f, 20.0f, -20.0f, 20.0f, 1.0f, 30.0f);
 }
 
 void CameraComponent::CreateProjectionMatrix()

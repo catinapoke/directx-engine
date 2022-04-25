@@ -41,6 +41,7 @@ public:
     Quaternion GetLocalQuaternion() const;
     Matrix GetLocalModelMatrix() const;
     Matrix GetWorldModelMatrix() const;
+    Matrix GetViewMatrix() const;
 
     virtual Matrix GetParentWorldModelMatrix() const;
 

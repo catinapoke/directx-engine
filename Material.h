@@ -14,6 +14,8 @@ public:
     virtual void PrepareRender() = 0; // Set Shaders, buffers
     virtual void PrepareObjectData(SceneActor* actor) = 0;
 
+    InputScheme GetInputScheme() const { return input_scheme; }
+
 protected:
     HRESULT CreateShader();
     virtual HRESULT CreateInputLayout(ID3DBlob* compiledVertexBlob);

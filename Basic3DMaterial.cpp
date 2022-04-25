@@ -28,8 +28,8 @@ void Basic3DMaterial::PrepareRender()
 
     context->IASetInputLayout(input_layout.Get());
     context->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-    context->VSSetConstantBuffers(0, 1, camera_buffer.GetAddressOf());
-    context->VSSetConstantBuffers(1, 1, model_buffer.GetAddressOf());
+    context->VSSetConstantBuffers(0, 1, model_buffer.GetAddressOf());
+    context->VSSetConstantBuffers(1, 1, camera_buffer.GetAddressOf());
     context->VSSetShader(vertex_shader.Get(), nullptr, 0);
     context->PSSetShader(pixel_shader.Get(), nullptr, 0);
 
@@ -43,24 +43,12 @@ void Basic3DMaterial::PrepareObjectData(SceneActor* actor)
 
 void Basic3DMaterial::SetProjectionViewMatrix()
 {
-    Matrix matrix = camera->GetProjectionViewMatrix().Transpose();
-    ID3D11DeviceContext* context = device_resources->GetDeviceContext();
-
-    D3D11_MAPPED_SUBRESOURCE resource = {};
-    context->Map(camera_buffer.Get(), 0, D3D11_MAP_WRITE_DISCARD, 0, &resource);
-    auto data = reinterpret_cast<float*>(resource.pData);
-    memcpy(data, &matrix, sizeof(Matrix));
-    context->Unmap(camera_buffer.Get(), 0);
+    Matrix matrix = camera_->GetProjectionViewMatrix().Transpose();
+    MapBuffer(camera_buffer.Get(), &matrix, sizeof(Matrix));
 }
 
 void Basic3DMaterial::SetModelMatrix(TransformComponent* transform)
 {
     Matrix matrix = transform->GetWorldModelMatrix().Transpose();
-    ID3D11DeviceContext* context = device_resources->GetDeviceContext();
-
-    D3D11_MAPPED_SUBRESOURCE resource = {};
-    context->Map(model_buffer.Get(), 0, D3D11_MAP_WRITE_DISCARD, 0, &resource);
-    auto data = reinterpret_cast<float*>(resource.pData);
-    memcpy(data, &matrix, sizeof(Matrix));
-    context->Unmap(model_buffer.Get(), 0);
+    MapBuffer(model_buffer.Get(), &matrix, sizeof(Matrix));
 }

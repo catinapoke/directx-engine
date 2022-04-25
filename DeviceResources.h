@@ -7,15 +7,16 @@ class DeviceResources
 public:
     HRESULT InitializeDeviceResources(HWND windowHandle);
 
-    ID3D11Device* GetDevice() { return m_pd3dDevice.Get(); }
-    ID3D11DeviceContext* GetDeviceContext() { return m_pd3dDeviceContext.Get(); }
-    IDXGISwapChain* GetSwapChain() { return m_pDXGISwapChain.Get(); }
-    ID3D11RenderTargetView* GetRenderTargetView() { return m_pRenderTarget.Get(); }
-    ID3D11DepthStencilView* GetDepthStencilView() { return m_pDepthStencilView.Get(); }
+    ID3D11Device* GetDevice() const { return m_pd3dDevice.Get(); }
+    ID3D11DeviceContext* GetDeviceContext() const { return m_pd3dDeviceContext.Get(); }
+    IDXGISwapChain* GetSwapChain() const { return m_pDXGISwapChain.Get(); }
+    ID3D11RenderTargetView* GetRenderTargetView() const { return m_pRenderTarget.Get(); }
+    ID3D11DepthStencilView* GetDepthStencilView() const { return m_pDepthStencilView.Get(); }
+    void SetViewport() const;
 
     void Present() { GetSwapChain()->Present(1, 0); }
 
-    void GetBackBufferSize(float* width, float* height);
+    void GetBackBufferSize(float* width, float* height) const;
 
 private:
     HRESULT InitDepthBuffer();
@@ -30,6 +31,7 @@ private:
     Microsoft::WRL::ComPtr<ID3D11Texture2D>        m_pBackBuffer;
     Microsoft::WRL::ComPtr<ID3D11RenderTargetView> m_pRenderTarget;
     Microsoft::WRL::ComPtr<ID3D11DepthStencilView> m_pDepthStencilView;
+    Microsoft::WRL::ComPtr<ID3D11DepthStencilState> m_pDepthStencilState;
 
     // Resource metadata
     // D3D_FEATURE_LEVEL       m_featureLevel;

@@ -160,6 +160,8 @@
     <ClCompile Include="ColliderComponent.cpp" />
     <ClCompile Include="CommonRenderData.cpp" />
     <ClCompile Include="ComponentBase.cpp" />
+    <ClCompile Include="DebugTextureMaterial.cpp" />
+    <ClCompile Include="DefaultRenderPass.cpp" />
     <ClCompile Include="DeviceResources.cpp" />
     <ClCompile Include="DirectXGame.cpp" />
     <ClCompile Include="FrameCounter.cpp" />
@@ -194,6 +196,7 @@
     <ClCompile Include="Sampler.cpp" />
     <ClCompile Include="SceneActor.cpp" />
     <ClCompile Include="SceneComponent.cpp" />
+    <ClCompile Include="ShadowMapPass.cpp" />
     <ClCompile Include="SphereCollider.cpp" />
     <ClCompile Include="SphereRenderData.cpp" />
     <ClCompile Include="TransformComponent.cpp" />
@@ -203,6 +206,8 @@
   <ItemGroup>
     <ClInclude Include="Basic3DMaterial.h" />
     <ClInclude Include="CommonRenderData.h" />
+    <ClInclude Include="DebugTextureMaterial.h" />
+    <ClInclude Include="DefaultRenderPass.h" />
     <ClInclude Include="InputLayoutSchemes.h" />
     <ClInclude Include="KatamariGame.h" />
     <ClInclude Include="KatamariPicker.h" />
@@ -244,10 +249,14 @@
     <ClInclude Include="PongGame.h" />
     <ClInclude Include="RenderData.h" />
     <ClInclude Include="Renderer.h" />
+    <ClInclude Include="RenderPass.h" />
     <ClInclude Include="RotateComponent.h" />
     <ClInclude Include="Sampler.h" />
     <ClInclude Include="SceneActor.h" />
     <ClInclude Include="SceneComponent.h" />
+    <ClInclude Include="ShadowCastMaterial.h" />
+    <ClInclude Include="ShadowMap.h" />
+    <ClInclude Include="ShadowMapPass.h" />
     <ClInclude Include="SphereCollider.h" />
     <ClInclude Include="SphereRenderData.h" />
     <ClInclude Include="SphericalCoords.h" />
@@ -277,6 +286,12 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </FxCompile>
+    <FxCompile Include="Content\Shaders\shader_light_shadow.hlsl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </FxCompile>
     <FxCompile Include="Content\Shaders\shader_mesh.hlsl">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -284,6 +299,18 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </FxCompile>
     <FxCompile Include="Content\Shaders\shader_mesh_light.hlsl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </FxCompile>
+    <FxCompile Include="Content\Shaders\shader_shadow_map.hlsl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </FxCompile>
+    <FxCompile Include="Content\Shaders\shader_texture_debug.hlsl">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>

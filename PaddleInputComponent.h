@@ -1,7 +1,5 @@
 #pragma once
 #include <map>
-#include <memory>
-#include <d3d.h>
 #include <directxmath.h>
 #include "InputDevice\Keys.h"
 #include "InputComponent.h"

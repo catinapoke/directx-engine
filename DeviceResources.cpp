@@ -1,5 +1,7 @@
 #include "DeviceResources.h"
 
+#include <DirectXMath.h>
+
 #include "WindowApplication.h"
 
 HRESULT DeviceResources::InitializeDeviceResources(HWND windowHandle)
@@ -70,7 +72,12 @@ HRESULT DeviceResources::InitializeDeviceResources(HWND windowHandle)
     return result;
 }
 
-void DeviceResources::GetBackBufferSize(float* width, float* height)
+void DeviceResources::SetViewport() const
+{
+    m_pd3dDeviceContext->RSSetViewports(1, &m_viewport);
+}
+
+void DeviceResources::GetBackBufferSize(float* width, float* height) const
 {
     *height = (float)m_backBufferDesc.Height;
     *width = (float)m_backBufferDesc.Width;
@@ -100,7 +107,7 @@ HRESULT DeviceResources::InitDepthBuffer()
     // Depth test parameters
     dsDesc.DepthEnable = true;
     dsDesc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;
-    dsDesc.DepthFunc = D3D11_COMPARISON_LESS;
+    dsDesc.DepthFunc = D3D11_COMPARISON_LESS_EQUAL; //D3D11_COMPARISON_LESS
 
     // Stencil test parameters
     dsDesc.StencilEnable = true;
@@ -120,11 +127,10 @@ HRESULT DeviceResources::InitDepthBuffer()
     dsDesc.BackFace.StencilFunc = D3D11_COMPARISON_ALWAYS;
 
     // Create depth stencil state
-    ID3D11DepthStencilState* pDSState;
-    m_pd3dDevice->CreateDepthStencilState(&dsDesc, &pDSState);
+    m_pd3dDevice->CreateDepthStencilState(&dsDesc, m_pDepthStencilState.GetAddressOf());
 
     // Bind depth stencil state
-    m_pd3dDeviceContext->OMSetDepthStencilState(pDSState, 1);
+    m_pd3dDeviceContext->OMSetDepthStencilState(m_pDepthStencilState.Get(), 1);
 
     // Create the depth stencil view
     hr = m_pd3dDevice->CreateDepthStencilView(pDepthStencil, // Depth stencil texture

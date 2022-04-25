@@ -2,6 +2,7 @@
 #include <memory>
 #include <vector>
 
+class Renderer;
 class DeviceResources;
 class InputDevice;
 class Actor;
@@ -11,7 +12,7 @@ class Game
 {
 public:
     Game() = default;
-    Game(std::shared_ptr<DeviceResources> deviceResources, std::shared_ptr<InputDevice> input) {};
+    Game(std::shared_ptr<DeviceResources> deviceResources, std::shared_ptr<InputDevice> input, std::shared_ptr<Renderer> renderer) {};
     ~Game();
 
     virtual void Awake();

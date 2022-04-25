@@ -1,4 +1,7 @@
 #include "KatamariSphereController.h"
+
+#include <iostream>
+
 #include "TransformComponent.h"
 #include "Camera.h"
 

@@ -95,6 +95,11 @@ Matrix TransformComponent::GetWorldModelMatrix() const
     return matrix;
 }
 
+Matrix TransformComponent::GetViewMatrix() const
+{
+    return GetWorldModelMatrix().Invert();
+}
+
 Matrix TransformComponent::GetParentWorldModelMatrix() const
 {
     if (parent != nullptr)

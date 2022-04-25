@@ -11,7 +11,7 @@ class Basic3DMaterial : public Material
 public:
     Basic3DMaterial(std::shared_ptr<DeviceResources> resources, std::wstring shader = L"Shaders/shader_3d.hlsl", 
         InputScheme scheme = InputLayoutSchemes::PositionColor)
-        :Material(resources, shader, scheme), camera(nullptr)
+        :Material(resources, shader, scheme), camera_(nullptr)
     {
         CreateShader();
         CreateBuffers();
@@ -21,15 +21,15 @@ public:
     void PrepareRender() override;
     void PrepareObjectData(SceneActor* actor) override;
 
-    void SetCamera(CameraComponent* camera) { this->camera = camera; };
+    void SetCamera(CameraComponent* camera) { this->camera_ = camera; };
 
 protected:
-    void SetProjectionViewMatrix();
+    virtual void SetProjectionViewMatrix();
     void SetModelMatrix(TransformComponent* transform);
 
 protected:
     Microsoft::WRL::ComPtr<ID3D11Buffer> camera_buffer;
     Microsoft::WRL::ComPtr<ID3D11Buffer> model_buffer;
 
-    CameraComponent* camera;
+    CameraComponent* camera_;
 };

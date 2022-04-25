@@ -14,7 +14,10 @@ public:
     CameraComponent() :transform(nullptr) {}
 
     void Awake() override;
-    Matrix GetProjectionViewMatrix();
+    Matrix GetProjectionViewMatrix() const;
+    Matrix GetProjectionMatrix() const { return projection_matrix; }
+    Matrix CreateOrtoProjectionMatrix() const;
+
 
 private:
     void CreateProjectionMatrix();

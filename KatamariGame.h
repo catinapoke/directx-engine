@@ -9,13 +9,13 @@ class DeviceResources;
 class InputDevice;
 class RenderData;
 class CameraComponent;
-class ID3D11Device;
+struct ID3D11Device;
 class MeshMaterial;
 
 class KatamariGame : public Game
 {
 public:
-    KatamariGame(std::shared_ptr<DeviceResources> deviceResources, std::shared_ptr<InputDevice> input);
+    KatamariGame(std::shared_ptr<DeviceResources> deviceResources, std::shared_ptr<InputDevice> input, std::shared_ptr<Renderer> renderer);
 
 private:
     Actor* CreateSceneActor(std::shared_ptr<RenderData> renderData);

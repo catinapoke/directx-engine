@@ -1,15 +1,13 @@
 #pragma once
 #include <memory>
-#include <directxmath.h>
-#include <d3dcompiler.h>
-#include <iostream>
-#include <chrono>
 #include <vector>
 
 #include "DeviceResources.h"
-#include "ConstantBuffers.h"
+#include "LightComponent.h"
 
+class CameraComponent;
 class SceneActor;
+class RenderPass;
 
 class Renderer
 {
@@ -18,14 +16,19 @@ public:
     ~Renderer() {};
 
     void CreateDeviceDependentResources();
+
+    void Render() const;
+
+    void AddShadowMapPass(CameraComponent* camera, LightComponent* light);
     void PassSceneActors(std::vector<SceneActor*>* actors);
-    void CreateWindowSizeDependentResources();
-    void Render();
 
 private:
-    void CreateViewAndPerspective();
+    void CreateRasterizerState();
 
 private:
     std::vector<SceneActor*>* sceneActors;
-    std::shared_ptr<DeviceResources> m_deviceResources;
+    std::shared_ptr<DeviceResources> device_resources;
+
+    RenderPass* main_;
+    std::vector<RenderPass*> additional_stages;
 };
