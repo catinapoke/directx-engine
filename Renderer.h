@@ -15,15 +15,11 @@ public:
     Renderer(std::shared_ptr<DeviceResources> deviceResources);
     ~Renderer() {};
 
-    void CreateDeviceDependentResources();
-
     void Render() const;
 
     void AddShadowMapPass(CameraComponent* camera, LightComponent* light);
+    void ChangeMain(RenderPass* pass);
     void PassSceneActors(std::vector<SceneActor*>* actors);
-
-private:
-    void CreateRasterizerState();
 
 private:
     std::vector<SceneActor*>* sceneActors;

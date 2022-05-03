@@ -1,6 +1,7 @@
 #include "DeviceResources.h"
 
 #include <DirectXMath.h>
+#include <iostream>
 
 #include "WindowApplication.h"
 
@@ -68,6 +69,7 @@ HRESULT DeviceResources::InitializeDeviceResources(HWND windowHandle)
     );
 
     result = InitDepthBuffer();
+    result = CreateRasterizerStates();
 
     return result;
 }
@@ -79,8 +81,36 @@ void DeviceResources::SetViewport() const
 
 void DeviceResources::GetBackBufferSize(float* width, float* height) const
 {
-    *height = (float)m_backBufferDesc.Height;
-    *width = (float)m_backBufferDesc.Width;
+    *height = static_cast<float>(m_backBufferDesc.Height);
+    *width = static_cast<float>(m_backBufferDesc.Width);
+}
+
+void DeviceResources::GetBackBufferSize(int* width, int* height) const
+{
+    *height = static_cast<int>(m_backBufferDesc.Height);
+    *width = static_cast<int>(m_backBufferDesc.Width);
+}
+
+void DeviceResources::SetCullBackSolidState() const
+{
+    m_pd3dDeviceContext->RSSetState(m_pCullBackSolidState.Get());
+}
+
+void DeviceResources::SetCullNoneSolidState() const
+{
+    m_pd3dDeviceContext->RSSetState(m_pCullNoneSolidState.Get());
+}
+
+void DeviceResources::SetBlendOneOneState() const
+{
+    constexpr float blend[4] = { 1, 1, 1, 1 };
+    m_pd3dDeviceContext->OMSetBlendState(m_pBlendOneOneState.Get(), blend, 0xFFFFFFFF);
+}
+
+void DeviceResources::SetBlendNoneState() const
+{
+    constexpr float blend[4] = { 0, 0, 0, 0 };
+    m_pd3dDeviceContext->OMSetBlendState(m_pBlendNoneState.Get(), blend, 0xFFFFFFFF);
 }
 
 HRESULT DeviceResources::InitDepthBuffer()
@@ -101,6 +131,12 @@ HRESULT DeviceResources::InitDepthBuffer()
     descDepth.CPUAccessFlags = 0;
     descDepth.MiscFlags = 0;
     hr = m_pd3dDevice->CreateTexture2D(&descDepth, NULL, &pDepthStencil);
+
+    if (FAILED(hr))
+    {
+        std::cout << "Failed to create depth stencil" << std::endl;
+        return hr;
+    }
 
     D3D11_DEPTH_STENCIL_DESC dsDesc;
 
@@ -138,4 +174,66 @@ HRESULT DeviceResources::InitDepthBuffer()
         &m_pDepthStencilView);  // [out] Depth stencil view
 
     return hr;
+}
+
+HRESULT DeviceResources::CreateRasterizerStates()
+{
+    CD3D11_RASTERIZER_DESC rasterizer_desc = {};
+    rasterizer_desc.CullMode = D3D11_CULL_BACK;
+    rasterizer_desc.FillMode = D3D11_FILL_SOLID;
+
+    HRESULT result = m_pd3dDevice->CreateRasterizerState(&rasterizer_desc, m_pCullBackSolidState.GetAddressOf());
+    if (FAILED(result))
+    {
+        std::cout << "Failed to CreateRasterizerState\n";
+        return result;
+    }
+
+    rasterizer_desc.CullMode = D3D11_CULL_NONE;
+    result = m_pd3dDevice->CreateRasterizerState(&rasterizer_desc, m_pCullNoneSolidState.GetAddressOf());
+    if (FAILED(result))
+    {
+        std::cout << "Failed to CreateRasterizerState\n";
+        return result;
+    }
+
+    m_pd3dDeviceContext->RSSetState(m_pCullBackSolidState.Get());
+
+    return result;
+}
+
+HRESULT DeviceResources::CreateBlendStates()
+{
+    HRESULT result = S_OK;
+
+    D3D11_BLEND_DESC blend_desc;
+    ZeroMemory(&blend_desc, sizeof(blend_desc));
+    blend_desc.AlphaToCoverageEnable = false;
+    blend_desc.IndependentBlendEnable = false;
+    blend_desc.RenderTarget[0].BlendEnable = true;
+    blend_desc.RenderTarget[0].SrcBlend = D3D11_BLEND_ONE;
+    blend_desc.RenderTarget[0].DestBlend = D3D11_BLEND_ONE;
+    blend_desc.RenderTarget[0].BlendOp = D3D11_BLEND_OP_ADD;
+    blend_desc.RenderTarget[0].SrcBlendAlpha = D3D11_BLEND_ONE;
+    blend_desc.RenderTarget[0].DestBlendAlpha = D3D11_BLEND_ONE;
+    blend_desc.RenderTarget[0].BlendOpAlpha = D3D11_BLEND_OP_ADD;
+    blend_desc.RenderTarget[0].RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL;
+
+    result = m_pd3dDevice->CreateBlendState(&blend_desc, m_pBlendOneOneState.GetAddressOf());
+
+    if (FAILED(result))
+    {
+        std::cout << "Failed to CreateBlendState\n";
+        return result;
+    }
+
+    ZeroMemory(&blend_desc, sizeof(D3D11_BLEND_DESC));
+    blend_desc.RenderTarget[0].BlendEnable = FALSE;
+    blend_desc.RenderTarget[0].RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL;
+    result = m_pd3dDevice->CreateBlendState(&blend_desc, m_pBlendNoneState.GetAddressOf());
+
+    if (FAILED(result))
+        std::cout << "Failed to CreateBlendState\n";
+
+    return result;
 }

@@ -13,12 +13,12 @@ public:
 		texture_view_(nullptr)
 	{}
 
-	Texture(ID3D11Device* device, const wchar_t* path) :
+	Texture(ID3D11Device* device, const wchar_t* path, bool sRGB = false) :
 		texture_(nullptr),
 		texture_view_(nullptr)
 	{
         DirectX::ScratchImage image;
-		TextureLoader::LoadWic(path, &image);
+		TextureLoader::LoadWic(path, &image, sRGB);
 		Init(device, image);
 	}
 

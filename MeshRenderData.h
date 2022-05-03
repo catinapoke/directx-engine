@@ -15,7 +15,8 @@ public:
 	void SetBuffers(ID3D11DeviceContext* context) override
 	{
 		CommonRenderData::SetBuffers(context);
-		texture->SetTexture(context);
+		if(texture)
+		    texture->SetTexture(context);
 	}
 
 	Texture* GetTexture() const { return texture; }

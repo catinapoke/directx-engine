@@ -1,14 +1,5 @@
 ﻿#pragma once
-#include <windows.h>
-#include <WinUser.h>
-#include <wrl.h>
-#include <iostream>
 #include <memory>
-#include <d3d.h>
-#include <d3d11.h>
-#include <d3dcompiler.h>
-#include <directxmath.h>
-#include <chrono>
 
 #include "WindowApplication.h"
 #include "DeviceResources.h"
@@ -27,7 +18,6 @@ int main(int argc, char** argv)
 
     application->CreateDesktopWindow();
     resources->InitializeDeviceResources(application->GetHandle());
-    renderer->CreateDeviceDependentResources();
 
     application->Run(resources, renderer);
 }

@@ -10,6 +10,7 @@
 
 #include "Game.h"
 #include "CameraTestLab.h"
+#include "DeferredLightLab.h"
 #include "KatamariGame.h"
 
 
@@ -77,7 +78,7 @@ void WindowApplication::InitScene(std::shared_ptr<DeviceResources> deviceResourc
 {
     ID3D11Device* device = deviceResources->GetDevice();
 
-    game = new KatamariGame(deviceResources, inputDevice, renderer);
+    game = new DeferredLightLab(deviceResources, inputDevice, renderer); // KatamariGame
     game->Awake();
     game->Start();
 

@@ -17,9 +17,18 @@ public:
     void Present() { GetSwapChain()->Present(1, 0); }
 
     void GetBackBufferSize(float* width, float* height) const;
+    void GetBackBufferSize(int* width, int* height) const;
+
+    void SetCullBackSolidState() const;
+    void SetCullNoneSolidState() const;
+
+    void SetBlendOneOneState() const;
+    void SetBlendNoneState() const;
 
 private:
     HRESULT InitDepthBuffer();
+    HRESULT CreateRasterizerStates();
+    HRESULT CreateBlendStates();
 
 
 private:
@@ -32,6 +41,12 @@ private:
     Microsoft::WRL::ComPtr<ID3D11RenderTargetView> m_pRenderTarget;
     Microsoft::WRL::ComPtr<ID3D11DepthStencilView> m_pDepthStencilView;
     Microsoft::WRL::ComPtr<ID3D11DepthStencilState> m_pDepthStencilState;
+
+    Microsoft::WRL::ComPtr<ID3D11RasterizerState> m_pCullNoneSolidState;
+    Microsoft::WRL::ComPtr<ID3D11RasterizerState> m_pCullBackSolidState;
+
+    Microsoft::WRL::ComPtr<ID3D11BlendState> m_pBlendOneOneState;
+    Microsoft::WRL::ComPtr<ID3D11BlendState> m_pBlendNoneState;
 
     // Resource metadata
     // D3D_FEATURE_LEVEL       m_featureLevel;

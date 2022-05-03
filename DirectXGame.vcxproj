@@ -162,10 +162,17 @@
     <ClCompile Include="ComponentBase.cpp" />
     <ClCompile Include="DebugTextureMaterial.cpp" />
     <ClCompile Include="DefaultRenderPass.cpp" />
+    <ClCompile Include="DeferredAmbientMaterial.cpp" />
+    <ClCompile Include="DeferredDirectionalMaterial.cpp" />
+    <ClCompile Include="DeferredLightLab.cpp" />
+    <ClCompile Include="DeferredMeshMaterial.cpp" />
+    <ClCompile Include="DeferredPointMaterial.cpp" />
+    <ClCompile Include="DeferredRenderPass.cpp" />
     <ClCompile Include="DeviceResources.cpp" />
     <ClCompile Include="DirectXGame.cpp" />
     <ClCompile Include="FrameCounter.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GeometryBuffer.cpp" />
     <ClCompile Include="InputComponent.cpp" />
     <ClCompile Include="InputDevice\Delegates.cpp" />
     <ClCompile Include="InputDevice\InputDevice.cpp" />
@@ -178,6 +185,7 @@
     <ClCompile Include="LineStripMaterial.cpp" />
     <ClCompile Include="Material.cpp" />
     <ClCompile Include="Material2D.cpp" />
+    <ClCompile Include="MeshLibrary.cpp" />
     <ClCompile Include="MeshLoader.cpp" />
     <ClCompile Include="MeshMaterial.cpp" />
     <ClCompile Include="MeshRenderData.cpp" />
@@ -204,10 +212,20 @@
     <ClCompile Include="WindowApplication.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AmbientRenderData.h" />
     <ClInclude Include="Basic3DMaterial.h" />
     <ClInclude Include="CommonRenderData.h" />
     <ClInclude Include="DebugTextureMaterial.h" />
     <ClInclude Include="DefaultRenderPass.h" />
+    <ClInclude Include="DeferredAmbientMaterial.h" />
+    <ClInclude Include="DeferredDirectionalMaterial.h" />
+    <ClInclude Include="DeferredLightLab.h" />
+    <ClInclude Include="DeferredLightMaterial.h" />
+    <ClInclude Include="DeferredMeshMaterial.h" />
+    <ClInclude Include="DeferredPointMaterial.h" />
+    <ClInclude Include="DeferredRenderPass.h" />
+    <ClInclude Include="LightRenderData.h" />
+    <ClInclude Include="GeometryBuffer.h" />
     <ClInclude Include="InputLayoutSchemes.h" />
     <ClInclude Include="KatamariGame.h" />
     <ClInclude Include="KatamariPicker.h" />
@@ -233,6 +251,7 @@
     <ClInclude Include="InputDevice\SimpleMath.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="Mesh.h" />
+    <ClInclude Include="MeshLibrary.h" />
     <ClInclude Include="MeshLoader.h" />
     <ClInclude Include="MeshMaterial.h" />
     <ClInclude Include="MeshRenderData.h" />
@@ -250,6 +269,7 @@
     <ClInclude Include="RenderData.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="RenderPass.h" />
+    <ClInclude Include="RenderTexture.h" />
     <ClInclude Include="RotateComponent.h" />
     <ClInclude Include="Sampler.h" />
     <ClInclude Include="SceneActor.h" />
@@ -281,6 +301,30 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </FxCompile>
     <FxCompile Include="Content\Shaders\shader_3d.hlsl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </FxCompile>
+    <FxCompile Include="Content\Shaders\shader_deferred_light_directional.hlsl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </FxCompile>
+    <FxCompile Include="Content\Shaders\shader_deferred_light_point.hlsl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </FxCompile>
+    <FxCompile Include="Content\Shaders\shader_deferred_light_ambient.hlsl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </FxCompile>
+    <FxCompile Include="Content\Shaders\shader_deferred_mesh.hlsl">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>

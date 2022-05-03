@@ -1,0 +1,81 @@
+struct VS_IN
+{
+	float3 pos : POSITION0;
+};
+
+struct PS_IN
+{
+    float4 world_pos : SV_POSITION;
+	float4 screen_space_pos : TEXCOORD0;
+};
+
+struct TransformData
+{
+	float4x4 model_matrix;
+    float4x4 projection_view_matrix;
+};
+
+struct LightData
+{
+    float3 pos;
+    float space1;
+    float3 color;
+    float space2;
+    float3 view_position; // camera_position
+    float space3;
+};
+
+cbuffer TransformBuffer : register(b0)
+{
+	TransformData transform;
+}
+
+cbuffer LightBuffer : register(b1)
+{
+	LightData light;
+}
+
+Texture2D Position : register(t0);
+Texture2D NormalMap : register(t1);
+Texture2D Color : register(t2);
+
+SamplerState Sampler : register(s0);
+
+PS_IN VSMain(VS_IN input)
+{
+	PS_IN output = (PS_IN)0;
+
+	output.world_pos = mul(float4(input.pos, 1), transform.model_matrix);
+	output.screen_space_pos = mul(float4(input.pos, 1), \
+		mul(transform.model_matrix, transform.projection_view_matrix));
+
+	return output;
+}
+
+float4 PSMain(PS_IN input) : SV_Target
+{
+    const int3 data_uv = int3(input.screen_space_pos.xy, 0);
+
+    float3 data_position = Position.Load(data_uv).xyz;
+    float3 data_normal = NormalMap.Load(data_uv).xyz;
+    float3 data_diffuse = Color.Load(data_uv).xyz;
+
+    float3 light_direction = -normalize(light.pos - input.world_pos);
+    const float distance = length(light.pos - input.world_pos);
+	float3 light_color = light.color * (1.0 / pow(distance, 2));
+
+	// diffuse
+	float3 normal = normalize(data_normal);
+	float3 to_light_direction = -light_direction;
+	float diff = max(0.0, dot(to_light_direction, normal));
+	float3 diffuse = diff * light_color;
+
+	// specular
+	float3 view_direction = normalize(light.view_position - data_position);
+	float3 reflect_direction = normalize(reflect(light_direction, normal));
+	float spec = pow(max(0.0, dot(view_direction, reflect_direction)), m_shininess);
+	float3 specular = m_specular * spec * light_color;
+
+	float3 result = clamp(diffuse + specular, 0, 1) * light_color.xyz;
+	return float4(result, 1.0f);
+}

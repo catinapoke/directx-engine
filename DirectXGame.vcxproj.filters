@@ -70,6 +70,15 @@
     <Filter Include="Исходные файлы\RenderStages">
       <UniqueIdentifier>{a567c71c-f703-466a-a48c-50d807dfb7bc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы заголовков\Materials\LightMaterials">
+      <UniqueIdentifier>{8aff99ec-f38e-4be1-b390-981bc82e72ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Materials\LightMaterials">
+      <UniqueIdentifier>{36dcf7e3-38c5-4ed4-8bf5-82fabbcaa3e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\RenderData\LightRenderData">
+      <UniqueIdentifier>{f8b5d6a7-8cb3-4b95-9a66-dba41a526a80}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="InputDevice\Delegates.cpp">
@@ -224,6 +233,30 @@
     </ClCompile>
     <ClCompile Include="DebugTextureMaterial.cpp">
       <Filter>Исходные файлы\Materials</Filter>
+    </ClCompile>
+    <ClCompile Include="GeometryBuffer.cpp">
+      <Filter>Исходные файлы\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="DeferredRenderPass.cpp">
+      <Filter>Исходные файлы\RenderStages</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshLibrary.cpp">
+      <Filter>Исходные файлы\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="DeferredDirectionalMaterial.cpp">
+      <Filter>Исходные файлы\Materials\LightMaterials</Filter>
+    </ClCompile>
+    <ClCompile Include="DeferredPointMaterial.cpp">
+      <Filter>Исходные файлы\Materials\LightMaterials</Filter>
+    </ClCompile>
+    <ClCompile Include="DeferredAmbientMaterial.cpp">
+      <Filter>Исходные файлы\Materials\LightMaterials</Filter>
+    </ClCompile>
+    <ClCompile Include="DeferredMeshMaterial.cpp">
+      <Filter>Исходные файлы\Materials</Filter>
+    </ClCompile>
+    <ClCompile Include="DeferredLightLab.cpp">
+      <Filter>Исходные файлы\Games</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -413,6 +446,42 @@
     <ClInclude Include="DebugTextureMaterial.h">
       <Filter>Файлы заголовков\Materials</Filter>
     </ClInclude>
+    <ClInclude Include="GeometryBuffer.h">
+      <Filter>Файлы заголовков\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderTexture.h">
+      <Filter>Файлы заголовков\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="DeferredMeshMaterial.h">
+      <Filter>Файлы заголовков\Materials</Filter>
+    </ClInclude>
+    <ClInclude Include="DeferredRenderPass.h">
+      <Filter>Файлы заголовков\RenderStages</Filter>
+    </ClInclude>
+    <ClInclude Include="DeferredLightMaterial.h">
+      <Filter>Файлы заголовков\Materials\LightMaterials</Filter>
+    </ClInclude>
+    <ClInclude Include="DeferredAmbientMaterial.h">
+      <Filter>Файлы заголовков\Materials\LightMaterials</Filter>
+    </ClInclude>
+    <ClInclude Include="DeferredPointMaterial.h">
+      <Filter>Файлы заголовков\Materials\LightMaterials</Filter>
+    </ClInclude>
+    <ClInclude Include="DeferredDirectionalMaterial.h">
+      <Filter>Файлы заголовков\Materials\LightMaterials</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshLibrary.h">
+      <Filter>Файлы заголовков\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="LightRenderData.h">
+      <Filter>Файлы заголовков\RenderData\LightRenderData</Filter>
+    </ClInclude>
+    <ClInclude Include="AmbientRenderData.h">
+      <Filter>Файлы заголовков\RenderData\LightRenderData</Filter>
+    </ClInclude>
+    <ClInclude Include="DeferredLightLab.h">
+      <Filter>Файлы заголовков\Games</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Natvis Include="InputDevice\Delegates.natvis">
@@ -442,6 +511,18 @@
       <Filter>Файлы ресурсов</Filter>
     </FxCompile>
     <FxCompile Include="Content\Shaders\shader_texture_debug.hlsl">
+      <Filter>Файлы ресурсов</Filter>
+    </FxCompile>
+    <FxCompile Include="Content\Shaders\shader_deferred_mesh.hlsl">
+      <Filter>Файлы ресурсов</Filter>
+    </FxCompile>
+    <FxCompile Include="Content\Shaders\shader_deferred_light_point.hlsl">
+      <Filter>Файлы ресурсов</Filter>
+    </FxCompile>
+    <FxCompile Include="Content\Shaders\shader_deferred_light_ambient.hlsl">
+      <Filter>Файлы ресурсов</Filter>
+    </FxCompile>
+    <FxCompile Include="Content\Shaders\shader_deferred_light_directional.hlsl">
       <Filter>Файлы ресурсов</Filter>
     </FxCompile>
   </ItemGroup>
