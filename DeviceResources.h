@@ -21,9 +21,14 @@ public:
 
     void SetCullBackSolidState() const;
     void SetCullNoneSolidState() const;
+    void SetCullFrontSolidState() const;
 
     void SetBlendOneOneState() const;
     void SetBlendNoneState() const;
+
+    void SetDepthDefaultState() const;
+    void SetDepthLightScreenState() const;
+    void SetDepthLightState() const;
 
 private:
     HRESULT InitDepthBuffer();
@@ -41,9 +46,12 @@ private:
     Microsoft::WRL::ComPtr<ID3D11RenderTargetView> m_pRenderTarget;
     Microsoft::WRL::ComPtr<ID3D11DepthStencilView> m_pDepthStencilView;
     Microsoft::WRL::ComPtr<ID3D11DepthStencilState> m_pDepthStencilState;
+    Microsoft::WRL::ComPtr<ID3D11DepthStencilState> m_pDepthLightStencilState;
+    Microsoft::WRL::ComPtr<ID3D11DepthStencilState> m_pDepthLightScreenStencilState;
 
     Microsoft::WRL::ComPtr<ID3D11RasterizerState> m_pCullNoneSolidState;
     Microsoft::WRL::ComPtr<ID3D11RasterizerState> m_pCullBackSolidState;
+    Microsoft::WRL::ComPtr<ID3D11RasterizerState> m_pCullFrontSolidState;
 
     Microsoft::WRL::ComPtr<ID3D11BlendState> m_pBlendOneOneState;
     Microsoft::WRL::ComPtr<ID3D11BlendState> m_pBlendNoneState;

@@ -69,6 +69,7 @@ HRESULT DeviceResources::InitializeDeviceResources(HWND windowHandle)
     );
 
     result = InitDepthBuffer();
+    result = CreateBlendStates();
     result = CreateRasterizerStates();
 
     return result;
@@ -101,6 +102,11 @@ void DeviceResources::SetCullNoneSolidState() const
     m_pd3dDeviceContext->RSSetState(m_pCullNoneSolidState.Get());
 }
 
+void DeviceResources::SetCullFrontSolidState() const
+{
+    m_pd3dDeviceContext->RSSetState(m_pCullFrontSolidState.Get());
+}
+
 void DeviceResources::SetBlendOneOneState() const
 {
     constexpr float blend[4] = { 1, 1, 1, 1 };
@@ -111,6 +117,21 @@ void DeviceResources::SetBlendNoneState() const
 {
     constexpr float blend[4] = { 0, 0, 0, 0 };
     m_pd3dDeviceContext->OMSetBlendState(m_pBlendNoneState.Get(), blend, 0xFFFFFFFF);
+}
+
+void DeviceResources::SetDepthDefaultState() const
+{
+    m_pd3dDeviceContext->OMSetDepthStencilState(m_pDepthStencilState.Get(), 1);
+}
+
+void DeviceResources::SetDepthLightScreenState() const
+{
+    m_pd3dDeviceContext->OMSetDepthStencilState(m_pDepthLightScreenStencilState.Get(), 1);
+}
+
+void DeviceResources::SetDepthLightState() const
+{
+    m_pd3dDeviceContext->OMSetDepthStencilState(m_pDepthLightStencilState.Get(), 1);
 }
 
 HRESULT DeviceResources::InitDepthBuffer()
@@ -165,6 +186,14 @@ HRESULT DeviceResources::InitDepthBuffer()
     // Create depth stencil state
     m_pd3dDevice->CreateDepthStencilState(&dsDesc, m_pDepthStencilState.GetAddressOf());
 
+    dsDesc.DepthEnable = false;
+    dsDesc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ZERO;
+    m_pd3dDevice->CreateDepthStencilState(&dsDesc, m_pDepthLightScreenStencilState.GetAddressOf());
+
+    dsDesc.DepthEnable = true;
+    dsDesc.DepthFunc = D3D11_COMPARISON_GREATER_EQUAL;
+    m_pd3dDevice->CreateDepthStencilState(&dsDesc, m_pDepthLightStencilState.GetAddressOf());
+
     // Bind depth stencil state
     m_pd3dDeviceContext->OMSetDepthStencilState(m_pDepthStencilState.Get(), 1);
 
@@ -197,6 +226,14 @@ HRESULT DeviceResources::CreateRasterizerStates()
         return result;
     }
 
+    rasterizer_desc.CullMode = D3D11_CULL_FRONT;
+    result = m_pd3dDevice->CreateRasterizerState(&rasterizer_desc, m_pCullFrontSolidState.GetAddressOf());
+    if (FAILED(result))
+    {
+        std::cout << "Failed to CreateRasterizerState\n";
+        return result;
+    }
+
     m_pd3dDeviceContext->RSSetState(m_pCullBackSolidState.Get());
 
     return result;
@@ -211,7 +248,7 @@ HRESULT DeviceResources::CreateBlendStates()
     blend_desc.AlphaToCoverageEnable = false;
     blend_desc.IndependentBlendEnable = false;
     blend_desc.RenderTarget[0].BlendEnable = true;
-    blend_desc.RenderTarget[0].SrcBlend = D3D11_BLEND_ONE;
+    blend_desc.RenderTarget[0].SrcBlend = D3D11_BLEND_SRC_ALPHA;
     blend_desc.RenderTarget[0].DestBlend = D3D11_BLEND_ONE;
     blend_desc.RenderTarget[0].BlendOp = D3D11_BLEND_OP_ADD;
     blend_desc.RenderTarget[0].SrcBlendAlpha = D3D11_BLEND_ONE;

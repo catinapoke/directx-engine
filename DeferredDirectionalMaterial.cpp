@@ -14,6 +14,8 @@ void DeferredDirectionalMaterial::SetCamera(CameraComponent* camera)
 void DeferredDirectionalMaterial::PrepareRender()
 {
     ID3D11DeviceContext* context = device_resources->GetDeviceContext();
+    device_resources->SetCullNoneSolidState();
+    device_resources->SetDepthLightScreenState();
 
     context->IASetInputLayout(input_layout.Get());
     context->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);

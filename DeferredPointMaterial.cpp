@@ -14,6 +14,8 @@ void DeferredPointMaterial::SetCamera(CameraComponent* camera)
 void DeferredPointMaterial::PrepareRender()
 {
     ID3D11DeviceContext* context = device_resources->GetDeviceContext();
+    device_resources->SetCullFrontSolidState();
+    device_resources->SetDepthLightState();
 
     context->IASetInputLayout(input_layout.Get());
     context->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);

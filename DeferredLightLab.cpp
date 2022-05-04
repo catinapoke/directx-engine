@@ -79,7 +79,7 @@ DeferredLightLab::DeferredLightLab(std::shared_ptr<DeviceResources> deviceResour
 
     // Init actors
     LightComponent* ambient = CreateAmbientLight(device, ambient_light_material, 0.05);
-    LightComponent* directional = CreateDirectionalLight(device, directional_light_material, { 0, -45, 0 });
+    //LightComponent* directional = CreateDirectionalLight(device, directional_light_material, { 0, -45, 0 });
     LightComponent* point = CreatePointLight(device, point_light_material, { 0, 0, 5 });
 
     CameraComponent* camera = CreateCamera(input);

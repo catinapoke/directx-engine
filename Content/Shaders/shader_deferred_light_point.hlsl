@@ -85,5 +85,5 @@ float4 PSMain(PS_IN input) : SV_Target
 	float3 specular = m_specular * spec * light_color;
 
 	float3 result = clamp(diffuse + specular, 0, 1) * light_color.xyz;
-	return pow(float4(result, 1.0f),1/2.2f);
+	return pow(float4(result, 1.0f), 1 / 2.2f);
 }

@@ -25,6 +25,7 @@ void DeferredRenderPass::RenderObjects(std::vector<SceneActor*>& actors)
     FilterByMaterialInBuffer<DeferredMeshMaterial>(actors);
 
     device_resources->SetBlendNoneState();
+    device_resources->SetDepthDefaultState();
     // Clear depth buffer
     // Set render targets
     // Clear render targets
@@ -49,8 +50,6 @@ void DeferredRenderPass::RenderLights(std::vector<SceneActor*>& actors)
     context->ClearRenderTargetView(view, back_color);
 
     geometry_buffer_->SetTextures();
-    // Set culling none
-    device_resources->SetCullNoneSolidState();
 
     RenderActorsFromBuffer();
 }
