@@ -81,412 +81,410 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="InputDevice\Delegates.cpp">
-      <Filter>Исходные файлы\InputDevice</Filter>
-    </ClCompile>
-    <ClCompile Include="InputDevice\InputDevice.cpp">
-      <Filter>Исходные файлы\InputDevice</Filter>
-    </ClCompile>
-    <ClCompile Include="InputDevice\SimpleMath.cpp">
-      <Filter>Исходные файлы\InputDevice</Filter>
-    </ClCompile>
-    <ClCompile Include="PaddleRenderComponent.cpp">
-      <Filter>Исходные файлы\RenderData</Filter>
-    </ClCompile>
-    <ClCompile Include="BallRenderComponent.cpp">
-      <Filter>Исходные файлы\RenderData</Filter>
-    </ClCompile>
-    <ClCompile Include="DeviceResources.cpp">
-      <Filter>Исходные файлы\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="FrameCounter.cpp">
-      <Filter>Исходные файлы\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Renderer.cpp">
-      <Filter>Исходные файлы\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="WindowApplication.cpp">
-      <Filter>Исходные файлы\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="ColliderComponent.cpp">
-      <Filter>Исходные файлы\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="PaddleInputComponent.cpp">
-      <Filter>Исходные файлы\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="InputComponent.cpp">
-      <Filter>Исходные файлы\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="MoveComponent.cpp">
-      <Filter>Исходные файлы\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneComponent.cpp">
-      <Filter>Исходные файлы\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>Исходные файлы\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Material.cpp">
-      <Filter>Исходные файлы\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Material2D.cpp">
-      <Filter>Исходные файлы\Materials</Filter>
-    </ClCompile>
-    <ClCompile Include="Basic3DMaterial.cpp">
-      <Filter>Исходные файлы\Materials</Filter>
-    </ClCompile>
-    <ClCompile Include="TransformComponent.cpp">
-      <Filter>Исходные файлы\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="ComponentBase.cpp">
-      <Filter>Исходные файлы\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="BoxRenderData.cpp">
-      <Filter>Исходные файлы\RenderData</Filter>
-    </ClCompile>
-    <ClCompile Include="CameraTestLab.cpp">
-      <Filter>Исходные файлы\Games</Filter>
-    </ClCompile>
-    <ClCompile Include="Camera.cpp">
-      <Filter>Исходные файлы\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="RotateComponent.cpp">
-      <Filter>Исходные файлы\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="OrbitRotator.cpp">
-      <Filter>Исходные файлы\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="TransformController.cpp">
-      <Filter>Исходные файлы\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="SphereRenderData.cpp">
-      <Filter>Исходные файлы\RenderData</Filter>
-    </ClCompile>
-    <ClCompile Include="PlaneRenderData.cpp">
-      <Filter>Исходные файлы\RenderData</Filter>
-    </ClCompile>
-    <ClCompile Include="CommonRenderData.cpp">
-      <Filter>Исходные файлы\RenderData</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderData.cpp">
-      <Filter>Исходные файлы\RenderData</Filter>
-    </ClCompile>
-    <ClCompile Include="LineStripMaterial.cpp">
-      <Filter>Исходные файлы\Materials</Filter>
-    </ClCompile>
-    <ClCompile Include="Actor.cpp">
-      <Filter>Исходные файлы\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="PongGame.cpp">
-      <Filter>Исходные файлы\Games</Filter>
-    </ClCompile>
-    <ClCompile Include="DirectXGame.cpp">
+    <ClCompile Include="src\DirectXGame.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="KatamariGame.cpp">
-      <Filter>Исходные файлы\Games</Filter>
-    </ClCompile>
-    <ClCompile Include="MeshLoader.cpp">
-      <Filter>Исходные файлы\Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="Sampler.cpp">
-      <Filter>Исходные файлы\Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="MeshMaterial.cpp">
-      <Filter>Исходные файлы\Materials</Filter>
-    </ClCompile>
-    <ClCompile Include="MeshRenderData.cpp">
-      <Filter>Исходные файлы\RenderData</Filter>
-    </ClCompile>
-    <ClCompile Include="InputLayoutScheme.cpp">
-      <Filter>Исходные файлы\Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="MouseBehaviour.cpp">
-      <Filter>Исходные файлы\InputDevice</Filter>
-    </ClCompile>
-    <ClCompile Include="SphereCollider.cpp">
+    <ClCompile Include="src\Components\Camera.cpp">
       <Filter>Исходные файлы\Components</Filter>
     </ClCompile>
-    <ClCompile Include="KatamariSphereController.cpp">
-      <Filter>Исходные файлы\Components\Katamari</Filter>
-    </ClCompile>
-    <ClCompile Include="OrbitTransformController.cpp">
-      <Filter>Исходные файлы\Components\Katamari</Filter>
-    </ClCompile>
-    <ClCompile Include="KatamariPicker.cpp">
-      <Filter>Исходные файлы\Components\Katamari</Filter>
-    </ClCompile>
-    <ClCompile Include="LightComponent.cpp">
+    <ClCompile Include="src\Components\ColliderComponent.cpp">
       <Filter>Исходные файлы\Components</Filter>
     </ClCompile>
-    <ClCompile Include="PhongMeshMaterial.cpp">
-      <Filter>Исходные файлы\Materials</Filter>
+    <ClCompile Include="src\Components\InputComponent.cpp">
+      <Filter>Исходные файлы\Components</Filter>
     </ClCompile>
-    <ClCompile Include="SceneActor.cpp">
+    <ClCompile Include="src\Components\LightComponent.cpp">
+      <Filter>Исходные файлы\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Components\MoveComponent.cpp">
+      <Filter>Исходные файлы\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Components\OrbitRotator.cpp">
+      <Filter>Исходные файлы\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Components\OrbitTransformController.cpp">
+      <Filter>Исходные файлы\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Components\PaddleInputComponent.cpp">
+      <Filter>Исходные файлы\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Components\RotateComponent.cpp">
+      <Filter>Исходные файлы\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Components\SceneComponent.cpp">
+      <Filter>Исходные файлы\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Components\SphereCollider.cpp">
+      <Filter>Исходные файлы\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Components\TransformComponent.cpp">
+      <Filter>Исходные файлы\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Components\TransformController.cpp">
+      <Filter>Исходные файлы\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Core\Actor.cpp">
       <Filter>Исходные файлы\Core</Filter>
     </ClCompile>
-    <ClCompile Include="DefaultRenderPass.cpp">
-      <Filter>Исходные файлы\RenderStages</Filter>
+    <ClCompile Include="src\Core\ComponentBase.cpp">
+      <Filter>Исходные файлы\Core</Filter>
     </ClCompile>
-    <ClCompile Include="ShadowMapPass.cpp">
-      <Filter>Исходные файлы\RenderStages</Filter>
+    <ClCompile Include="src\Core\DeviceResources.cpp">
+      <Filter>Исходные файлы\Core</Filter>
     </ClCompile>
-    <ClCompile Include="DebugTextureMaterial.cpp">
-      <Filter>Исходные файлы\Materials</Filter>
+    <ClCompile Include="src\Core\FrameCounter.cpp">
+      <Filter>Исходные файлы\Core</Filter>
     </ClCompile>
-    <ClCompile Include="GeometryBuffer.cpp">
-      <Filter>Исходные файлы\Utils</Filter>
+    <ClCompile Include="src\Core\Game.cpp">
+      <Filter>Исходные файлы\Core</Filter>
     </ClCompile>
-    <ClCompile Include="DeferredRenderPass.cpp">
-      <Filter>Исходные файлы\RenderStages</Filter>
+    <ClCompile Include="src\Core\Material.cpp">
+      <Filter>Исходные файлы\Core</Filter>
     </ClCompile>
-    <ClCompile Include="MeshLibrary.cpp">
-      <Filter>Исходные файлы\Utils</Filter>
+    <ClCompile Include="src\Core\Renderer.cpp">
+      <Filter>Исходные файлы\Core</Filter>
     </ClCompile>
-    <ClCompile Include="DeferredDirectionalMaterial.cpp">
-      <Filter>Исходные файлы\Materials\LightMaterials</Filter>
+    <ClCompile Include="src\Core\SceneActor.cpp">
+      <Filter>Исходные файлы\Core</Filter>
     </ClCompile>
-    <ClCompile Include="DeferredPointMaterial.cpp">
-      <Filter>Исходные файлы\Materials\LightMaterials</Filter>
+    <ClCompile Include="src\Core\WindowApplication.cpp">
+      <Filter>Исходные файлы\Core</Filter>
     </ClCompile>
-    <ClCompile Include="DeferredAmbientMaterial.cpp">
-      <Filter>Исходные файлы\Materials\LightMaterials</Filter>
-    </ClCompile>
-    <ClCompile Include="DeferredMeshMaterial.cpp">
-      <Filter>Исходные файлы\Materials</Filter>
-    </ClCompile>
-    <ClCompile Include="DeferredLightLab.cpp">
+    <ClCompile Include="src\Games\CameraTestLab.cpp">
       <Filter>Исходные файлы\Games</Filter>
     </ClCompile>
+    <ClCompile Include="src\Games\DeferredLightLab.cpp">
+      <Filter>Исходные файлы\Games</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Games\KatamariGame.cpp">
+      <Filter>Исходные файлы\Games</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Games\PongGame.cpp">
+      <Filter>Исходные файлы\Games</Filter>
+    </ClCompile>
+    <ClCompile Include="src\InputDevice\Delegates.cpp">
+      <Filter>Исходные файлы\InputDevice</Filter>
+    </ClCompile>
+    <ClCompile Include="src\InputDevice\InputDevice.cpp">
+      <Filter>Исходные файлы\InputDevice</Filter>
+    </ClCompile>
+    <ClCompile Include="src\InputDevice\MouseBehaviour.cpp">
+      <Filter>Исходные файлы\InputDevice</Filter>
+    </ClCompile>
+    <ClCompile Include="src\InputDevice\SimpleMath.cpp">
+      <Filter>Исходные файлы\InputDevice</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Materials\Basic3DMaterial.cpp">
+      <Filter>Исходные файлы\Materials</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Materials\DebugTextureMaterial.cpp">
+      <Filter>Исходные файлы\Materials</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Materials\DeferredMeshMaterial.cpp">
+      <Filter>Исходные файлы\Materials</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Materials\LineStripMaterial.cpp">
+      <Filter>Исходные файлы\Materials</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Materials\Material2D.cpp">
+      <Filter>Исходные файлы\Materials</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Materials\MeshMaterial.cpp">
+      <Filter>Исходные файлы\Materials</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Materials\PhongMeshMaterial.cpp">
+      <Filter>Исходные файлы\Materials</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RenderData\BallRenderComponent.cpp">
+      <Filter>Исходные файлы\RenderData</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RenderData\BoxRenderData.cpp">
+      <Filter>Исходные файлы\RenderData</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RenderData\CommonRenderData.cpp">
+      <Filter>Исходные файлы\RenderData</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RenderData\MeshRenderData.cpp">
+      <Filter>Исходные файлы\RenderData</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RenderData\PaddleRenderComponent.cpp">
+      <Filter>Исходные файлы\RenderData</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RenderData\PlaneRenderData.cpp">
+      <Filter>Исходные файлы\RenderData</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RenderData\RenderData.cpp">
+      <Filter>Исходные файлы\RenderData</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RenderData\SphereRenderData.cpp">
+      <Filter>Исходные файлы\RenderData</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RenderStages\DefaultRenderPass.cpp">
+      <Filter>Исходные файлы\RenderStages</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RenderStages\DeferredRenderPass.cpp">
+      <Filter>Исходные файлы\RenderStages</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RenderStages\ShadowMapPass.cpp">
+      <Filter>Исходные файлы\RenderStages</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utils\GeometryBuffer.cpp">
+      <Filter>Исходные файлы\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utils\InputLayoutScheme.cpp">
+      <Filter>Исходные файлы\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utils\MeshLibrary.cpp">
+      <Filter>Исходные файлы\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utils\MeshLoader.cpp">
+      <Filter>Исходные файлы\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utils\Sampler.cpp">
+      <Filter>Исходные файлы\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Components\KatamariSphereController.cpp">
+      <Filter>Исходные файлы\Components\Katamari</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Components\KatamariPicker.cpp">
+      <Filter>Исходные файлы\Components\Katamari</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Materials\DeferredAmbientMaterial.cpp">
+      <Filter>Исходные файлы\Materials\LightMaterials</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Materials\DeferredDirectionalMaterial.cpp">
+      <Filter>Исходные файлы\Materials\LightMaterials</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Materials\DeferredPointMaterial.cpp">
+      <Filter>Исходные файлы\Materials\LightMaterials</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="InputDevice\Delegates.h">
-      <Filter>Файлы заголовков\InputDevice</Filter>
+    <ClInclude Include="src\Utils\UtilityFunctions.h">
+      <Filter>Файлы заголовков\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="InputDevice\InputDevice.h">
-      <Filter>Файлы заголовков\InputDevice</Filter>
+    <ClInclude Include="src\Utils\TextureLoader.h">
+      <Filter>Файлы заголовков\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="InputDevice\Keys.h">
-      <Filter>Файлы заголовков\InputDevice</Filter>
+    <ClInclude Include="src\Utils\Texture.h">
+      <Filter>Файлы заголовков\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="InputDevice\SimpleMath.h">
-      <Filter>Файлы заголовков\InputDevice</Filter>
+    <ClInclude Include="src\Utils\SphericalCoords.h">
+      <Filter>Файлы заголовков\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="RenderData.h">
-      <Filter>Файлы заголовков\RenderData</Filter>
+    <ClInclude Include="src\Utils\ShadowMap.h">
+      <Filter>Файлы заголовков\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="BallRenderComponent.h">
-      <Filter>Файлы заголовков\RenderData</Filter>
+    <ClInclude Include="src\Utils\Sampler.h">
+      <Filter>Файлы заголовков\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="PaddleRenderComponent.h">
-      <Filter>Файлы заголовков\RenderData</Filter>
+    <ClInclude Include="src\Utils\RenderTexture.h">
+      <Filter>Файлы заголовков\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="MoveComponent.h">
+    <ClInclude Include="src\Utils\MeshLoader.h">
+      <Filter>Файлы заголовков\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utils\MeshLibrary.h">
+      <Filter>Файлы заголовков\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utils\Mesh.h">
+      <Filter>Файлы заголовков\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utils\InputLayoutSchemes.h">
+      <Filter>Файлы заголовков\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utils\GeometryBuffer.h">
+      <Filter>Файлы заголовков\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Components\Camera.h">
       <Filter>Файлы заголовков\Components</Filter>
     </ClInclude>
-    <ClInclude Include="InputComponent.h">
+    <ClInclude Include="src\Components\ColliderComponent.h">
       <Filter>Файлы заголовков\Components</Filter>
     </ClInclude>
-    <ClInclude Include="ColliderComponent.h">
+    <ClInclude Include="src\Components\InputComponent.h">
       <Filter>Файлы заголовков\Components</Filter>
     </ClInclude>
-    <ClInclude Include="PaddleInputComponent.h">
+    <ClInclude Include="src\Components\LightComponent.h">
       <Filter>Файлы заголовков\Components</Filter>
     </ClInclude>
-    <ClInclude Include="ConstantBuffers.h">
+    <ClInclude Include="src\Components\MoveComponent.h">
+      <Filter>Файлы заголовков\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Components\OrbitRotator.h">
+      <Filter>Файлы заголовков\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Components\OrbitTransform.h">
+      <Filter>Файлы заголовков\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Components\OrbitTransformController.h">
+      <Filter>Файлы заголовков\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Components\PaddleInputComponent.h">
+      <Filter>Файлы заголовков\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Components\RotateComponent.h">
+      <Filter>Файлы заголовков\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Components\SceneComponent.h">
+      <Filter>Файлы заголовков\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Components\SphereCollider.h">
+      <Filter>Файлы заголовков\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Components\TransformComponent.h">
+      <Filter>Файлы заголовков\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Components\TransformController.h">
+      <Filter>Файлы заголовков\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ConstantBuffers.h">
       <Filter>Файлы заголовков\Core</Filter>
     </ClInclude>
-    <ClInclude Include="DeviceResources.h">
+    <ClInclude Include="src\Core\DeviceResources.h">
       <Filter>Файлы заголовков\Core</Filter>
     </ClInclude>
-    <ClInclude Include="WindowApplication.h">
+    <ClInclude Include="src\Core\FrameCounter.h">
       <Filter>Файлы заголовков\Core</Filter>
     </ClInclude>
-    <ClInclude Include="FrameCounter.h">
+    <ClInclude Include="src\Core\Game.h">
       <Filter>Файлы заголовков\Core</Filter>
     </ClInclude>
-    <ClInclude Include="Renderer.h">
+    <ClInclude Include="src\Core\Material.h">
       <Filter>Файлы заголовков\Core</Filter>
     </ClInclude>
-    <ClInclude Include="SceneActor.h">
+    <ClInclude Include="src\Core\Renderer.h">
       <Filter>Файлы заголовков\Core</Filter>
     </ClInclude>
-    <ClInclude Include="Actor.h">
+    <ClInclude Include="src\Core\SceneActor.h">
+      <Filter>Файлы заголовков\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Core\WindowApplication.h">
+      <Filter>Файлы заголовков\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Components\KatamariSphereController.h">
+      <Filter>Файлы заголовков\Components\Katamari</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Components\KatamariPicker.h">
+      <Filter>Файлы заголовков\Components\Katamari</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Core\Actor.h">
       <Filter>Файлы заголовков\Core\ComponentSystem</Filter>
     </ClInclude>
-    <ClInclude Include="ComponentBase.h">
+    <ClInclude Include="src\Core\ComponentBase.h">
       <Filter>Файлы заголовков\Core\ComponentSystem</Filter>
     </ClInclude>
-    <ClInclude Include="TransformComponent.h">
-      <Filter>Файлы заголовков\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>Файлы заголовков\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="PongGame.h">
+    <ClInclude Include="src\CameraTestLab.h">
       <Filter>Файлы заголовков\Games</Filter>
     </ClInclude>
-    <ClInclude Include="CameraTestLab.h">
+    <ClInclude Include="src\Games\DeferredLightLab.h">
       <Filter>Файлы заголовков\Games</Filter>
     </ClInclude>
-    <ClInclude Include="Camera.h">
-      <Filter>Файлы заголовков\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Material.h">
-      <Filter>Файлы заголовков\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Material2D.h">
-      <Filter>Файлы заголовков\Materials</Filter>
-    </ClInclude>
-    <ClInclude Include="Basic3DMaterial.h">
-      <Filter>Файлы заголовков\Materials</Filter>
-    </ClInclude>
-    <ClInclude Include="RotateComponent.h">
-      <Filter>Файлы заголовков\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="LineStripMaterial.h">
-      <Filter>Файлы заголовков\Materials</Filter>
-    </ClInclude>
-    <ClInclude Include="OrbitRotator.h">
-      <Filter>Файлы заголовков\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="TransformController.h">
-      <Filter>Файлы заголовков\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="BoxRenderData.h">
-      <Filter>Файлы заголовков\RenderData</Filter>
-    </ClInclude>
-    <ClInclude Include="SphereRenderData.h">
-      <Filter>Файлы заголовков\RenderData</Filter>
-    </ClInclude>
-    <ClInclude Include="PlaneRenderData.h">
-      <Filter>Файлы заголовков\RenderData</Filter>
-    </ClInclude>
-    <ClInclude Include="CommonRenderData.h">
-      <Filter>Файлы заголовков\RenderData</Filter>
-    </ClInclude>
-    <ClInclude Include="KatamariGame.h">
+    <ClInclude Include="src\Games\KatamariGame.h">
       <Filter>Файлы заголовков\Games</Filter>
     </ClInclude>
-    <ClInclude Include="Utils\TextureLoader.h">
-      <Filter>Файлы заголовков\Utils</Filter>
+    <ClInclude Include="src\Games\PongGame.h">
+      <Filter>Файлы заголовков\Games</Filter>
     </ClInclude>
-    <ClInclude Include="MeshRenderData.h">
-      <Filter>Файлы заголовков\RenderData</Filter>
-    </ClInclude>
-    <ClInclude Include="Texture.h">
-      <Filter>Файлы заголовков\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="MeshLoader.h">
-      <Filter>Файлы заголовков\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="Mesh.h">
-      <Filter>Файлы заголовков\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="MeshMaterial.h">
-      <Filter>Файлы заголовков\Materials</Filter>
-    </ClInclude>
-    <ClInclude Include="Sampler.h">
-      <Filter>Файлы заголовков\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="InputLayoutSchemes.h">
-      <Filter>Файлы заголовков\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="MouseBehaviour.h">
+    <ClInclude Include="src\InputDevice\Delegates.h">
       <Filter>Файлы заголовков\InputDevice</Filter>
     </ClInclude>
-    <ClInclude Include="SphereCollider.h">
-      <Filter>Файлы заголовков\Components</Filter>
+    <ClInclude Include="src\InputDevice\InputDevice.h">
+      <Filter>Файлы заголовков\InputDevice</Filter>
     </ClInclude>
-    <ClInclude Include="UtilityFunctions.h">
-      <Filter>Файлы заголовков\Utils</Filter>
+    <ClInclude Include="src\InputDevice\Keys.h">
+      <Filter>Файлы заголовков\InputDevice</Filter>
     </ClInclude>
-    <ClInclude Include="SphericalCoords.h">
-      <Filter>Файлы заголовков\Utils</Filter>
+    <ClInclude Include="src\InputDevice\MouseBehaviour.h">
+      <Filter>Файлы заголовков\InputDevice</Filter>
     </ClInclude>
-    <ClInclude Include="KatamariSphereController.h">
-      <Filter>Файлы заголовков\Components\Katamari</Filter>
+    <ClInclude Include="src\InputDevice\SimpleMath.h">
+      <Filter>Файлы заголовков\InputDevice</Filter>
     </ClInclude>
-    <ClInclude Include="OrbitTransform.h">
-      <Filter>Файлы заголовков\Components\Katamari</Filter>
-    </ClInclude>
-    <ClInclude Include="OrbitTransformController.h">
-      <Filter>Файлы заголовков\Components\Katamari</Filter>
-    </ClInclude>
-    <ClInclude Include="KatamariPicker.h">
-      <Filter>Файлы заголовков\Components\Katamari</Filter>
-    </ClInclude>
-    <ClInclude Include="LightComponent.h">
-      <Filter>Файлы заголовков\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="PhongMeshMaterial.h">
+    <ClInclude Include="src\Materials\Basic3DMaterial.h">
       <Filter>Файлы заголовков\Materials</Filter>
     </ClInclude>
-    <ClInclude Include="PhongRenderData.h">
+    <ClInclude Include="src\Materials\DebugTextureMaterial.h">
+      <Filter>Файлы заголовков\Materials</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Materials\DeferredMeshMaterial.h">
+      <Filter>Файлы заголовков\Materials</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Materials\LineStripMaterial.h">
+      <Filter>Файлы заголовков\Materials</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Materials\Material2D.h">
+      <Filter>Файлы заголовков\Materials</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Materials\MeshMaterial.h">
+      <Filter>Файлы заголовков\Materials</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Materials\PhongMeshMaterial.h">
+      <Filter>Файлы заголовков\Materials</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Materials\ShadowCastMaterial.h">
+      <Filter>Файлы заголовков\Materials</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Materials\DeferredAmbientMaterial.h">
+      <Filter>Файлы заголовков\Materials\LightMaterials</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Materials\DeferredDirectionalMaterial.h">
+      <Filter>Файлы заголовков\Materials\LightMaterials</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Materials\DeferredLightMaterial.h">
+      <Filter>Файлы заголовков\Materials\LightMaterials</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Materials\DeferredPointMaterial.h">
+      <Filter>Файлы заголовков\Materials\LightMaterials</Filter>
+    </ClInclude>
+    <ClInclude Include="src\RenderData\BallRenderComponent.h">
       <Filter>Файлы заголовков\RenderData</Filter>
     </ClInclude>
-    <ClInclude Include="ShadowMap.h">
-      <Filter>Файлы заголовков\Utils</Filter>
+    <ClInclude Include="src\RenderData\BoxRenderData.h">
+      <Filter>Файлы заголовков\RenderData</Filter>
     </ClInclude>
-    <ClInclude Include="ShadowCastMaterial.h">
-      <Filter>Файлы заголовков\Materials</Filter>
+    <ClInclude Include="src\RenderData\CommonRenderData.h">
+      <Filter>Файлы заголовков\RenderData</Filter>
     </ClInclude>
-    <ClInclude Include="SceneComponent.h">
-      <Filter>Файлы заголовков\Components</Filter>
+    <ClInclude Include="src\RenderData\MeshRenderData.h">
+      <Filter>Файлы заголовков\RenderData</Filter>
     </ClInclude>
-    <ClInclude Include="RenderPass.h">
-      <Filter>Файлы заголовков\RenderStages</Filter>
+    <ClInclude Include="src\RenderData\PaddleRenderComponent.h">
+      <Filter>Файлы заголовков\RenderData</Filter>
     </ClInclude>
-    <ClInclude Include="DefaultRenderPass.h">
-      <Filter>Файлы заголовков\RenderStages</Filter>
+    <ClInclude Include="src\RenderData\PhongRenderData.h">
+      <Filter>Файлы заголовков\RenderData</Filter>
     </ClInclude>
-    <ClInclude Include="ShadowMapPass.h">
-      <Filter>Файлы заголовков\RenderStages</Filter>
+    <ClInclude Include="src\RenderData\PlaneRenderData.h">
+      <Filter>Файлы заголовков\RenderData</Filter>
     </ClInclude>
-    <ClInclude Include="DebugTextureMaterial.h">
-      <Filter>Файлы заголовков\Materials</Filter>
+    <ClInclude Include="src\RenderData\RenderData.h">
+      <Filter>Файлы заголовков\RenderData</Filter>
     </ClInclude>
-    <ClInclude Include="GeometryBuffer.h">
-      <Filter>Файлы заголовков\Utils</Filter>
+    <ClInclude Include="src\RenderData\SphereRenderData.h">
+      <Filter>Файлы заголовков\RenderData</Filter>
     </ClInclude>
-    <ClInclude Include="RenderTexture.h">
-      <Filter>Файлы заголовков\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="DeferredMeshMaterial.h">
-      <Filter>Файлы заголовков\Materials</Filter>
-    </ClInclude>
-    <ClInclude Include="DeferredRenderPass.h">
-      <Filter>Файлы заголовков\RenderStages</Filter>
-    </ClInclude>
-    <ClInclude Include="DeferredLightMaterial.h">
-      <Filter>Файлы заголовков\Materials\LightMaterials</Filter>
-    </ClInclude>
-    <ClInclude Include="DeferredAmbientMaterial.h">
-      <Filter>Файлы заголовков\Materials\LightMaterials</Filter>
-    </ClInclude>
-    <ClInclude Include="DeferredPointMaterial.h">
-      <Filter>Файлы заголовков\Materials\LightMaterials</Filter>
-    </ClInclude>
-    <ClInclude Include="DeferredDirectionalMaterial.h">
-      <Filter>Файлы заголовков\Materials\LightMaterials</Filter>
-    </ClInclude>
-    <ClInclude Include="MeshLibrary.h">
-      <Filter>Файлы заголовков\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="LightRenderData.h">
+    <ClInclude Include="src\RenderData\AmbientRenderData.h">
       <Filter>Файлы заголовков\RenderData\LightRenderData</Filter>
     </ClInclude>
-    <ClInclude Include="AmbientRenderData.h">
+    <ClInclude Include="src\LightRenderData.h">
       <Filter>Файлы заголовков\RenderData\LightRenderData</Filter>
     </ClInclude>
-    <ClInclude Include="DeferredLightLab.h">
-      <Filter>Файлы заголовков\Games</Filter>
+    <ClInclude Include="src\RenderStages\DefaultRenderPass.h">
+      <Filter>Файлы заголовков\RenderStages</Filter>
+    </ClInclude>
+    <ClInclude Include="src\RenderStages\DeferredRenderPass.h">
+      <Filter>Файлы заголовков\RenderStages</Filter>
+    </ClInclude>
+    <ClInclude Include="src\RenderPass.h">
+      <Filter>Файлы заголовков\RenderStages</Filter>
+    </ClInclude>
+    <ClInclude Include="src\RenderStages\ShadowMapPass.h">
+      <Filter>Файлы заголовков\RenderStages</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Natvis Include="InputDevice\Delegates.natvis">
-      <Filter>Файлы ресурсов</Filter>
-    </Natvis>
+    <Natvis Include="src\InputDevice\Delegates.natvis" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
